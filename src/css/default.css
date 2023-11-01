@@ -1,0 +1,13 @@
+* {font-family: 'Noto Sans KR', 'Gowun Batang', sans-serif; margin:0; padding:0; vertical-align: top;} /* 폰트변경 */
+body {max-width: 1920px !important; min-width: 320px !important; margin: 0 auto !important;}
+li {list-style:none;}
+a {text-decoration:none !important;}
+img {border:0; max-width:100%;}
+
+/* 공통서식 */
+.page_wrap {width: 100%; margin: 0 auto;}
+.page_contents_wrap {width: 94.8%; margin: 150px auto;}
+.contents_title_box {width: 100%; margin: 0 auto; margin-bottom: 45px; font-family:'Cormorant Infant' ;}
+.contents_title { font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px; }
+.contents_article { font-size: 17px; letter-spacing: -1px; color: #838383; font-weight: 100; }
+
