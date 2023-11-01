@@ -1,0 +1,122 @@
+/* !important */
+.container {max-width: 1920px !important; margin:0 !important; padding:0 !important;}
+
+/* header */
+.navbar {width: 94.8%; margin: 0 auto;}
+
+/* section1 */
+.main_img{width: 94.8%; height: 901px; margin: 0 auto; position:relative; background: #ccc; 
+  margin-bottom: 180px; display: flex; flex-wrap: wrap; text-align: center; align-items: center; justify-content: center;  overflow: hidden;}
+
+.main_text_box{ color: #ffffff;}
+
+.main_article_t{font-family:'Cormorant Infant' ;font-weight:200; font-size: 20px ; margin-bottom: 10px;}
+.main_title{font-family:'Cormorant Infant' ; letter-spacing: -3px; line-height :60px; font-size: 76px ; font-weight:100; margin-bottom: 10px;}
+.main_title span{font-weight: 700;}
+.main_article_b{font-size: 18px ; font-weight:200; margin-bottom: 20px;}
+.main_text_box a{color: #ffffff; font-size: 13px ; border-bottom: 1px solid #ffffff;}
+.main_text_box a:hover{color: #000; border-bottom: 1px solid #000; }
+
+
+/* section2 */
+.news{width: 1440px;margin: 0 auto 180px auto; overflow: hidden;}
+
+.news .contents_title_box{position: relative;}
+.news .contents_title_box a{position: absolute; bottom: 0; right: 0; color: #8a8a8a; font-size: 12px; }
+.news .contents_title_box a:hover{color: #000;}
+
+.news_contents{display: flex; flex-wrap: wrap;}
+
+.news_img_box{width: 336px; margin-right: 32px; position: relative; overflow: hidden;}
+.news_img_box:last-child{margin-right: 0;}
+.news_img {position: relative; padding-bottom: 100%; overflow: hidden;}
+.news_img {background: #ccc;}
+
+.news_title{font-size: 18px; color: #313131; font-weight: 400; margin: 24px 16px 0 16px; letter-spacing: -1px;}
+
+/* section3 */
+.our_brands{width: 100%; margin: 0 auto 1px auto; margin-bottom: 180px; overflow: hidden;}
+
+.our_brands .contents_title_box{width: 1440px; margin: 0 auto 65px auto;}
+
+.brand_contents{display: flex; flex-wrap: wrap; align-items: flex-start; }
+
+.brand_img{width: 33.3%; height: 300px; }
+.brand_img:nth-child(1) {background: #ccc;}
+.brand_img:nth-child(2) {background: #ddd;}
+.brand_img:last-child{width: 33.4%; background: #666;}
+
+.brand_text_box{display: flex; flex-wrap: wrap; height: 238px; align-items: center; justify-content: center; 
+  color: #ffffff; background: #031b57; font-size: 20px; font-weight: 300; letter-spacing: -1px;}
+
+
+/* section4 */
+.architecture{width: 1440px; margin: 0 auto 180px auto; overflow: hidden;}
+
+.archite_contents{display: flex; flex-wrap: wrap; }
+
+.archite_img_box{width: 336px; position: relative; margin-right: 32px; background: #f1f0f0;}
+.archite_img_box:last-child{margin-right: 0; border: none;}
+
+.archite_img_title{font-size: 25px; padding-bottom: 80%; font-weight: bold; margin: 40px 30px 0 30px; letter-spacing: -2px;}
+.archite_img_title br{display: none;}
+
+.archite_img_box img {width: 336px; height: 300px; background: #ccc;}
+
+
+/* section5 */
+.story{width: 94.8%;margin: 0 auto 180px auto; display: flex; flex-wrap: wrap; min-width: 1440px; overflow: hidden;}
+
+.story .contents_title_box{width: 1440px; margin: 0 auto 45px auto;}
+
+.story_box_t{width: 100%; height: 664px; margin: 0 auto; background: #ccc ; margin-bottom: 20px; }
+.story_box_t_1440{width: 1440px; margin: 0 auto; position: relative;  min-width: auto;}
+
+.story_text_box{ position: absolute; top: 112px; left: 0; margin: 0 auto; }
+.story_title{font-size: 83px; font-family:'Cormorant Infant' ; font-weight: Medium; letter-spacing: -5px; margin-bottom: 25px; color: #031b57;
+  line-height: 65px; }
+.story_article{font-size: 18px; color: #031b57; font-weight: 100; letter-spacing: -2px;}
+
+.story_left_box{width: 73.3%; height:314px; margin-right: 1.4%; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;  
+  position: relative; background: #ccc;}
+.left_box_text{font-size: 30px; color: #ffffff; font-weight: 500; letter-spacing: -2px;}
+
+.story_right_box{width: 25.3%; height:314px; display: flex; flex-wrap: wrap; 
+  padding: 0 50px; box-sizing: border-box; justify-content: center; flex-direction: column;  background: #031b57;}
+.right_box_text{line-height: 35px ;font-size: 30px; color: #ffffff; font-weight: 500; letter-spacing: -2px; margin-bottom: 20px;}
+
+/* section5 */
+.sustain{width: 1440px; margin: 0 auto 180px auto;  overflow: hidden;}
+
+.sustain_contents{display: flex; flex-wrap: wrap; }
+
+.sustain_img_box{margin-right: 38px; width: 701px; position: relative;}
+.sustain_img_box:last-child{margin-right: 0;}
+.sustain_img{ width: 100%; height: 327px;  }
+.sustain_img_box:nth-child(1) .sustain_img{background: #ccc;}
+
+.sustain_img_box:nth-child(2) .sustain_img{ background: #ccc;}
+
+.sustain_title{font-size: 22px; font-weight: bold; color: #343333; margin: 36px 33px 8px 33px; letter-spacing: -2px;}
+.sustain_article{font-size: 16px; font-weight: 200; color: #989898; margin: 0 33px; letter-spacing: -1px;}
+
+/*footer*/
+footer{width: 100%; background: #f1f0f0; padding: 90px 0;}
+
+.footer_nav{margin-bottom: 60px;}
+.footer_nav ul{display: flex; flex-wrap: wrap; align-items: center; justify-content: center;}
+.footer_nav ul li {height: 14px; line-height: 14px;margin-right: 36px; text-align: center;}
+.footer_nav ul li:last-child{margin-right:0;}
+.footer_nav ul li a { color: #4c4c4c; font-size: 14px; font-weight: 300; }
+
+.footer_sns{ text-align: center; color: #4c4c4c;} 
+
+.follow {margin-bottom: 19px; font-size: 12px;}
+
+
+.footer_sns ul{display: flex ; flex-wrap: wrap; justify-content: center; margin-bottom: 19px; }
+.footer_sns ul li:first-child {margin-right: 20px;}
+.low ul li a{padding:0 15px; font-size: 10px; font-weight:bold; }
+.low ul li a:hover{color:#CCC;}
+
+.licence{font-size: 12px;}
