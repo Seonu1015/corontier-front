@@ -9,13 +9,19 @@ const TestPage = () => {
 
             <div className='page_contents_wrap'>
                 <div className='contents_title_box'>
-                    <p className='contents_title'>Test Page</p>
+                    <p className='contents_title'>Study Plan</p>
                     <p className='contents_article'>...</p>
                 </div>
 
                 <div className='page_contents'>
-                    <div className='box1'> 1 </div>
+                    <div className='study_plan_wrap'>
+                        <div className='study_plan_box1'> 1 </div>
+                        <div className='study_plan_box2'> 2 </div>
+                        <div className='study_plan_box3'> 3 </div>
+                    </div>
+
                     <div className='box2'> 2 </div>
+
                     <div className='box3'> 3 </div>
                 </div>
             </div>

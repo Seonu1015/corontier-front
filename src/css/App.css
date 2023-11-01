@@ -1,5 +1,5 @@
 /* !important */
-.container {max-width: 1920px !important; margin:0 !important; padding:0 !important;}
+.container {max-width: 1920px !important; margin:0 auto!important; padding:0 !important;}
 
 /* header */
 .navbar {width: 94.8%; margin: 0 auto;}
@@ -10,8 +10,8 @@
 
 .main_text_box{ color: #ffffff;}
 
-.main_article_t{font-family:'Cormorant Infant' ;font-weight:200; font-size: 20px ; margin-bottom: 10px;}
-.main_title{font-family:'Cormorant Infant' ; letter-spacing: -3px; line-height :60px; font-size: 76px ; font-weight:100; margin-bottom: 10px;}
+.main_article_t{font-weight:200; font-size: 20px ; margin-bottom: 10px;}
+.main_title{ letter-spacing: -3px; line-height :60px; font-size: 76px ; font-weight:100; margin-bottom: 10px;}
 .main_title span{font-weight: 700;}
 .main_article_b{font-size: 18px ; font-weight:200; margin-bottom: 20px;}
 .main_text_box a{color: #ffffff; font-size: 13px ; border-bottom: 1px solid #ffffff;}
@@ -73,7 +73,7 @@
 .story_box_t_1440{width: 1440px; margin: 0 auto; position: relative;  min-width: auto;}
 
 .story_text_box{ position: absolute; top: 112px; left: 0; margin: 0 auto; }
-.story_title{font-size: 83px; font-family:'Cormorant Infant' ; font-weight: Medium; letter-spacing: -5px; margin-bottom: 25px; color: #031b57;
+.story_title{font-size: 83px;  font-weight: Medium; letter-spacing: -5px; margin-bottom: 25px; color: #031b57;
   line-height: 65px; }
 .story_article{font-size: 18px; color: #031b57; font-weight: 100; letter-spacing: -2px;}
 
