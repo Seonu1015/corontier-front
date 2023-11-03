@@ -10,6 +10,8 @@
 
 >yarn add axios
 
+>npm install @toast-ui/react-editor --legacy-peer-deps
+
 ### Extension
 
 react 검색 후 ES7+ React/Redux/React-Native snippets 설치
