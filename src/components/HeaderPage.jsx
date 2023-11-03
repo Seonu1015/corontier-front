@@ -9,7 +9,7 @@ const HeaderPage = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <NavLink href="/problem/list">Problems</NavLink>
+                        <NavLink href="/problem/main">Problems</NavLink>
                         <NavLink href="/project/projectmain">Projects</NavLink>
                         <NavDropdown title="Community" id="basic-nav-dropdown">
                             <NavDropdown.Item href="/community/communitymain">라운지</NavDropdown.Item>

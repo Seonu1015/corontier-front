@@ -2,11 +2,8 @@ import React, { useState } from 'react'
 import { useContext } from 'react'
 import { Form, Row, Col, Dropdown, Button } from 'react-bootstrap'
 import { BoxContext } from '../BoxContext'
-import { Editor } from '@toast-ui/react-editor';
-import '@toast-ui/editor/dist/toastui-editor.css';
-import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
-import 'tui-color-picker/dist/tui-color-picker.css';
-import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
+
+import EditorComp from '../common/EditorComp'
 
 
 const ProblemInsert = () => {
@@ -33,14 +30,7 @@ const ProblemInsert = () => {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Description</Form.Label>
-                        <Editor
-                            initialValue="문제 설명"
-                            previewStyle="vertical"
-                            height="300px"
-                            initialEditType="wysiwyg"
-                            useCommandShortcut={false}
-                            plugins={[colorSyntax]}
-                        />
+                        <EditorComp/>
                     </Form.Group>
                     <Row>
                         <Col md={4}>
@@ -59,7 +49,7 @@ const ProblemInsert = () => {
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                 <Form.Label>Difficulty</Form.Label>
                                 <Dropdown className='Dropdown'>
-                                    <Dropdown.Toggle variant='outline-secondary' className='title_l px-4'>
+                                    <Dropdown.Toggle variant='outline-secondary' className='title_l'>
                                         난이도
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
