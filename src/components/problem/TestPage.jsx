@@ -172,7 +172,11 @@ const TestPage = () => {
                                 </ul>
                             </div>
 
-                            <div className='study_plan_recommendJob'></div>
+                            <div className='study_plan_recommendJob'>
+                                <h3 className='title'>
+                                    <a href="">홍길동님께 추천하는 포지션 ▸</a>
+                                </h3>
+                            </div>
                         </div>
                     </div>
                 </div>
