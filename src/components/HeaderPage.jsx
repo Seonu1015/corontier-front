@@ -26,7 +26,7 @@ const HeaderPage = () => {
                     </Nav>
                     <Nav>
                         <NavLink href="#">Register</NavLink>
-                        <NavLink href="/user/usermain">Sign in</NavLink>
+                        <NavLink href="/users/usermain">Sign in</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -2,7 +2,7 @@
 .banner img{max-width: 100%;}
 .contents_title_box{font-size: 1.5rem; margin-bottom: 1rem;}
 
-.page_contents{display: flex; flex-wrap: wrap; gap: 2rem;}
+.testpage_wrap{display: flex; flex-wrap: wrap; gap: 2rem;}
 .study_plan_wrap{display: flex; width: 100%;}
 
 .study_plan_wrap_l{width: 75%; height: 1000px; margin-right: 2%; background: #ededed;}
@@ -23,6 +23,8 @@
 .Dropdown {position: relative; min-width: 8.75rem;}
 .DropdownGroupstyle_DropdownGroup .Dropdown .title_l {width: 100%; cursor: pointer; display: flex; font-weight: 700; -webkit-box-pack: justify; justify-content: space-between; -webkit-box-align: center;
  align-items: center; padding: 0.6875rem 1.25rem; background-color: rgb(255, 255, 255); border-radius: 0.25rem; border: 0.0625rem solid rgb(215, 226, 235); color: #000 !important;}
+/* 부트스트랩 기본hover기능 #ffffff로 덮어씌움 */
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {background-color: #ffffff !important; }
 
 .DropdownGroupstyle_DropdownGroup .Dropdown .title_r {width: 100%; cursor: pointer; display: flex; font-weight: 700; -webkit-box-pack: justify; justify-content: space-between; -webkit-box-align: center;
  align-items: center; padding: 0.6875rem 1.25rem; background-color: rgb(255, 255, 255); border-radius: 0.25rem; border: 0.0625rem solid rgb(215, 226, 235); color: #000 !important;}
