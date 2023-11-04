@@ -12,8 +12,11 @@ import CommunityMain from './community/CommunityMain'
 
 import ProjectMain from './project/ProjectMain'
 
-import UserMain from './users/UserMain'
-import SolutionPage from './problem/SolutionPage'
+
+import Mypage from './user/mypage/Mypage'
+import SigninPage from './user/SigninPage'
+import SignupPage from './user/SignupPage'
+
 
 const RouterPage = () => {
     return (
@@ -22,15 +25,16 @@ const RouterPage = () => {
 
             <Route path="/problem/main" element={<ProblemPage />} />
             <Route path="/problem/insert" element={<ProblemInsert />} />
-            <Route path="/problem/solution" element={<SolutionPage/>}/>
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
 
             <Route path="/community/communitymain" element={<CommunityMain />} />
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
-
-            <Route path="/users/usermain" element={<UserMain />} />
+        
+            <Route path="/user/mypage" element={<Mypage />} />
+            <Route path="/user/signin" element={<SigninPage />} />
+            <Route path="/user/signup" element={<SignupPage />} />
         </Routes>
     )
 }
