@@ -1,20 +1,24 @@
-import React, { useState } from 'react'
-import { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { Form, Row, Col, Dropdown, Button } from 'react-bootstrap'
 import { BoxContext } from '../BoxContext'
 
 import EditorComp from '../common/EditorComp'
 
-
 const ProblemInsert = () => {
     const { setBox } = useContext(BoxContext);
+    const [loading, setLoading] = useState(false);
+    const [content, setContent] = useState('');
+
+    const onEditorChange = (data) => {
+        setContent(data);
+    };
 
     const onSubmit = () => {
         setBox({
             show: true,
             message: "등록하시겠습니까?",
-            action: () => {
-
+            action: async () => {
+                
             }
         });
     }
@@ -23,14 +27,14 @@ const ProblemInsert = () => {
         <div className='my-5'>
             <h1 className='text-center mb-5'>문제 등록</h1>
             <Row className='justify-content-center'>
-                <Col md={6} className='mx-3'>
+                <Col md={8} className='mx-3'>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Title</Form.Label>
                         <Form.Control type="text" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Description</Form.Label>
-                        <EditorComp/>
+                        <EditorComp onChange={onEditorChange} />
                     </Form.Group>
                     <Row>
                         <Col md={4}>
