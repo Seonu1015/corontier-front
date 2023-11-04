@@ -14,9 +14,9 @@ const ProjectMain = () => {
                 </div>
 
                 <div className='page_contents'>
-                    <div className='box1'> 1 </div>
-                    <div className='box2'> 2 </div>
-                    <div className='box3'> 3 </div>
+                    <div className='box1'> a </div>
+                    <div className='box2'> b </div>
+                    <div className='box3'> c </div>
                 </div>
             </div>
         </div>
