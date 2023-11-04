@@ -3,7 +3,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Pagination from 'react-js-pagination';
 import '../../css/Pagination.css';
 
-const TestPage = () => {
+const ProblemPage = () => {
     return (
         <div className='page_wrap'>
             <div className='banner'>
@@ -195,4 +195,4 @@ const TestPage = () => {
     );
 };
 
-export default TestPage;
+export default ProblemPage;
