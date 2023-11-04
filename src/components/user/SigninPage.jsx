@@ -1,8 +1,8 @@
 import React from 'react'
 
-const UserMain = () => {
-    return (
-        <div className='page_wrap'>
+export const SigninPage = () => {
+  return (
+    <div className='page_wrap'>
             <div className='banner'>
                 <img src="../images/banner.png" alt="" />
             </div>
@@ -20,7 +20,6 @@ const UserMain = () => {
                 </div>
             </div>
         </div>
-    )
+  )
 }
-
-export default UserMain
+export default SigninPage
