@@ -1,24 +1,21 @@
 import React from 'react'
+import SideMenu from './SideMenu'
+import { Outlet } from 'react-router-dom'
+
 
 const Mypage = () => {
   return (
     <div className='page_wrap'>
-        <div className='banner'>
-            <img src="../images/banner.png" alt="" />
+      <div className='page_contents_wrap '>               
+        <div className='contents_title_box'>
+          <p className='contents_title'>MyPage</p>
+          <p className='contents_article'>...</p>
         </div>
-
-        <div className='page_contents_wrap'>
-            <div className='contents_title_box'>
-                <p className='contents_title'>MyPageMain Page</p>
-                <p className='contents_article'>...</p>
-            </div>
-
-            <div className='page_contents'>
-                <div className='box1'> 1 </div>
-                <div className='box2'> 2 </div>
-                <div className='box3'> 3 </div>
-            </div>
+        <div className='d-flex'>
+        <SideMenu/>   
+        <Outlet/>
         </div>
+      </div>
     </div>
 )
 }
