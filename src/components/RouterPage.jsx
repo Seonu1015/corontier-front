@@ -16,6 +16,10 @@ import ProjectMain from './project/ProjectMain'
 import Mypage from './user/mypage/Mypage'
 import SigninPage from './user/SigninPage'
 import SignupPage from './user/SignupPage'
+import MyQuizPage from './user/mypage/detail/MyQuizPage'
+import MyActivityPage from './user/mypage/detail/MyActivityPage'
+import OXNotePage from './user/mypage/detail/OXNotePage'
+import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
 
 
 const RouterPage = () => {
@@ -32,7 +36,12 @@ const RouterPage = () => {
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
         
-            <Route path="/user/mypage" element={<Mypage />} />
+            <Route path="/user/mypage" element={<Mypage />} >
+                <Route path='' element={<MyQuizPage/>}></Route>
+                <Route path="myactivity" element={<MyActivityPage />} />               
+                <Route path="oxnote" element={<OXNotePage />} />               
+                <Route path="userupdate" element={<UserUpdatePage />} />               
+            </Route>
             <Route path="/user/signin" element={<SigninPage />} />
             <Route path="/user/signup" element={<SignupPage />} />
         </Routes>
