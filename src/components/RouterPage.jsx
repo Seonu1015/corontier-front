@@ -5,13 +5,14 @@ import HomePage from './HomePage'
 
 import ProblemPage from './problem/ProblemPage'
 import ProblemInsert from './problem/ProblemInsert'
+import ProblemList from './problem/ProblemList'
+import SolutionPage from './problem/SolutionPage'
 
 import ContestMain from './contest/ContestMain'
 
 import CommunityMain from './community/CommunityMain'
 
 import ProjectMain from './project/ProjectMain'
-
 
 import Mypage from './user/mypage/Mypage'
 import SigninPage from './user/SigninPage'
@@ -24,7 +25,9 @@ const RouterPage = () => {
             <Route path="/" element={<HomePage />} />
 
             <Route path="/problem/main" element={<ProblemPage />} />
+            <Route path="/problem/list" element={<ProblemList />} />
             <Route path="/problem/insert" element={<ProblemInsert />} />
+            <Route path="/problem/:problem_id" element={<SolutionPage/>}/>
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
 
