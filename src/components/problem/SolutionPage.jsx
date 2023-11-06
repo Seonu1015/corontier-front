@@ -10,8 +10,7 @@ import { java } from '@codemirror/lang-java';
 import { cpp } from '@codemirror/lang-cpp';
 import { vscodeDark } from '@uiw/codemirror-themes-all';
 
-
-import { Row, Col, Container, Button } from 'react-bootstrap';
+import { Row, Col, Container, Button, Spinner } from 'react-bootstrap';
 
 const SolutionPage = () => {
     const [loading, setLoading] = useState(false);
@@ -24,6 +23,7 @@ const SolutionPage = () => {
     });
     const { title, content, input, output } = problem;
     const [language, setLanguage] = useState("python");
+    const [result, setResult] = useState('........');
 
     const [value, setValue] = useState("");
     const { problem_id } = useParams();
@@ -34,9 +34,21 @@ const SolutionPage = () => {
         setValue(val);
     }, []);
 
+    const getProblem = async () => {
+        setLoading(true);
+        const res = await axios('/problem/' + problem_id, { problem_id });
+        // console.log(res.data);
+        const data = res.data;
+        console.log(data);
+        setProblem(data);
+        setValue(data.input);
+        setLoading(false);
+    }
+
     const languageComponents = {
         javascript: (
             <CodeMirror
+                // value={"function solution(a, b) \{\n    var answer = 0\;\n    return answer\;\n\}\n\nsolution(a, b)"}
                 value={value}
                 height="300px"
                 extensions={[javascript({ jsx: true })]}
@@ -46,6 +58,7 @@ const SolutionPage = () => {
         ),
         python: (
             <CodeMirror
+                // value={"def solution(a, b):\n    answer = \'\'\n    return answer\n\nprint(answer)"}
                 value={value}
                 height="300px"
                 extensions={[python()]}
@@ -55,6 +68,7 @@ const SolutionPage = () => {
         ),
         java: (
             <CodeMirror
+                // value={"class Solution \{\n    public int solution(int a, int b) \{\n        int answer = 0\;\n        return answer\;\n    \}\n\}\n\nsolution(int a, int b)"}
                 value={value}
                 height="300px"
                 extensions={[java()]}
@@ -64,6 +78,7 @@ const SolutionPage = () => {
         ),
         cpp: (
             <CodeMirror
+                // value={"using namespace std\;\n\nint solution(int a, int b) \{\n    int answer = 0\;\n    return answer\;\n}"}
                 value={value}
                 height="300px"
                 extensions={[cpp()]}
@@ -73,37 +88,19 @@ const SolutionPage = () => {
         ),
     };
 
-    const getProblem = async () => {
-        setLoading(true);
-        const res = await axios('/problem/' + problem_id, { problem_id });
-        // console.log(res.data);
-        const data = res.data;
-
-        const fieldsToDecode = ['content', 'input', 'output'];
-        for (let field of fieldsToDecode) {
-            const buffer = data[field].data;
-            const uintArray = new Uint8Array(buffer);
-            const decodedContent = new TextDecoder().decode(uintArray);
-            data[field] = decodedContent;
-        }
-        console.log(data);
-        setProblem(data);
-        setLoading(false);
-    }
-
     const onClickExecute = async () => {
         setLoading(true);
         try {
-            const res = await axios.post('/problem/execute', { code: value });
+            const res = await axios.post('/problem/execute', { code: value, language });
             const { data: executionResult } = res;
 
-            if (executionResult === output) {
-                document.getElementById('result').innerText = '테스트 결과 : 성공';
+            if (executionResult.toString() === output) {
+                setResult('테스트 결과 : 성공');
             } else {
-                document.getElementById('result').innerText = '테스트 결과 : 실패';
+                setResult('테스트 결과 : 실패');
             }
         } catch (error) {
-            document.getElementById('result').innerText = '코드 실행 중 오류가 발생했습니다.';
+            setResult('코드 실행 중 오류가 발생했습니다.');
         }
         setLoading(false);
     }
@@ -138,8 +135,8 @@ const SolutionPage = () => {
                                     <div className='pt-2 px-3 border-dark-subtle text-end' style={{ backgroundColor: "#1e1e1e", color: "white" }}>
                                         <Row>
                                             <Col></Col>
-                                            <Col md={2} className='pb-1'>
-                                                <select class="form-select form-select-sm" aria-label="Small select example"
+                                            <Col md={3} className='pb-1'>
+                                                <select className="form-select form-select-sm" aria-label="Small select example"
                                                     value={language}
                                                     onChange={(e) => setLanguage(e.target.value)}
                                                 >
@@ -157,8 +154,16 @@ const SolutionPage = () => {
                                     <div className='p-3 border-top border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white" }}>
                                         실행결과
                                     </div>
-                                    <div id="result" className='p-3 border-top border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", height: "300px" }}>
-                                        ........
+                                    <div className='p-3 border-top border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", height: "300px" }}>
+                                        {loading ? (
+                                            <div className='d-flex justify-content-center align-items-center' style={{ height: '100%' }}>
+                                                <Spinner animation='border' variant='light' />
+                                            </div>
+                                        ) : (
+                                            <div style={{ height: '100%', overflow: 'auto' }}>
+                                                {result}
+                                            </div>
+                                        )}
                                     </div>
                                 </Col>
                             </Row>
@@ -170,7 +175,6 @@ const SolutionPage = () => {
                     </div>
                 </Container>
             </div>
-
         </>
     )
 }
