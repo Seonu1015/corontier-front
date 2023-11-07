@@ -13,6 +13,7 @@ import ContestMain from './contest/ContestMain'
 import CommunityMain from './community/CommunityMain'
 
 import ProjectMain from './project/ProjectMain'
+import ProjectRead from './project/ProjectRead'
 
 import Mypage from './user/mypage/Mypage'
 import SigninPage from './user/SigninPage'
@@ -39,6 +40,8 @@ const RouterPage = () => {
             <Route path="/community/communitymain" element={<CommunityMain />} />
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
+            <Route path="/project/read/:post_id" element={<ProjectRead />} />
+            
             <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler/> }/>
     
             <Route path="/user/mypage" element={<Mypage />} >
