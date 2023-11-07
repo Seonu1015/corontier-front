@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
 
 const HeaderPage = () => {
+    
     return (
         <Navbar className="navbar">
             <Container>
@@ -9,7 +10,7 @@ const HeaderPage = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <NavLink href="/problem/testpage">Problems</NavLink>
+                        <NavLink href="/problem/main">Problems</NavLink>
                         <NavLink href="/project/projectmain">Projects</NavLink>
                         <NavDropdown title="Community" id="basic-nav-dropdown">
                             <NavDropdown.Item href="/community/communitymain">라운지</NavDropdown.Item>
@@ -25,8 +26,31 @@ const HeaderPage = () => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <NavLink href="#">Register</NavLink>
-                        <NavLink href="/user/usermain">Sign in</NavLink>
+                        {/** 로그인 case별 분기 */}
+                        {   /** admin일때 */
+                            sessionStorage.getItem('uid') === 'admin' && 
+                            <NavLink href="#">adminpage</NavLink>
+                        }
+                        {   /** admin이외 user로그인 */
+                            sessionStorage.getItem('uid') && sessionStorage.getItem('uid') !== 'admin' && 
+                            <>
+                            <NavLink href="/user/mypage">mypage(user)</NavLink>
+                            <NavLink href="#">logout(user)</NavLink>
+                            </>
+                        }
+                        {
+                            /** 비로그인 일때 */
+                            !sessionStorage.getItem('uid') &&
+                            <>
+                            <NavLink href="/user/signup">Sign up(not user)</NavLink>
+                            <NavLink href="/user/signin">Sign in(not user)</NavLink>
+                            </>
+                        }
+                        
+                        {/** mypage,회원가입,로그인완성 전까지 사용할 링크 & 작성완료이후 삭제예정 */}
+                        <NavLink href="/user/mypage">mypage</NavLink>
+                        <NavLink href="/user/signup">Sign up</NavLink>
+                        <NavLink href="/user/signin">Sign in</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -1,15 +1,15 @@
 import React from 'react'
 
-const UserMain = () => {
-    return (
-        <div className='page_wrap'>
+const SignupPage = () => {
+  return (
+    <div className='page_wrap'>
             <div className='banner'>
                 <img src="../images/banner.png" alt="" />
             </div>
 
             <div className='page_contents_wrap'>
                 <div className='contents_title_box'>
-                    <p className='contents_title'>Sign in</p>
+                    <p className='contents_title'>Sign up</p>
                     <p className='contents_article'>...</p>
                 </div>
 
@@ -20,7 +20,7 @@ const UserMain = () => {
                 </div>
             </div>
         </div>
-    )
+  )
 }
 
-export default UserMain
+export default SignupPage

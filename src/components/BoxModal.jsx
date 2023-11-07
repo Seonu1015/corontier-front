@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import { BoxContext } from './BoxContext';
 
@@ -7,16 +7,16 @@ const BoxModal = () => {
     const onClose = () => {
         setBox({
             ...box,
-            show: false
+            show:false
         });
-    };
+    }
 
     const onConfirm = () => {
-        if (box.action) {
+        if(box.action) {
             box.action();
         }
         onClose();
-    };
+    }
 
     return (
         <>
@@ -32,11 +32,11 @@ const BoxModal = () => {
                     {box.message}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={onConfirm}>
+                    <Button variant="dark" onClick={onConfirm} size='sm'>
                         확인
                     </Button>
                     {box.action &&
-                        <Button variant="outline-primary" onClick={onClose}>
+                        <Button variant="outline-dark" onClick={onClose} size='sm'>
                             취소
                         </Button>
                     }
