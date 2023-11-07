@@ -1,17 +1,24 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom';
 import { Card, Row, Col } from 'react-bootstrap'
 
 const ProjectMain = () => {
     const [tags, setTags] = useState([]);
+    const [posts, setPosts] = useState([]);
 
     //const tag_type_id 
     const getTag = async () => {
-        const res = await axios.get("/project/list.json?tag_type_id=2");
+        const res = await axios.get("/project/taglist.json?tag_type_id=3");
         setTags(res.data)
     }
 
-    useEffect(() => { getTag(); }, [])
+    const getPost = async () => {
+        const res = await axios.get("/project/projectlist.json?menu=1");
+        setPosts(res.data)
+    }
+
+    useEffect(() => { getTag(); getPost(); }, [])
 
     return (
         <div className='page_wrap'>
@@ -31,27 +38,28 @@ const ProjectMain = () => {
                     <div className='box3'> c </div>
                 </div>
 
-
                 <Row>
                     <Col md={3}>
                         <Card>
                             <Card.Header>기술 스택</Card.Header>
                             <Card.Body>
                                 {tags.map(tag =>
-                                    <div>
-                                        <input type='checkbox'/> {tag.tag_name}
+                                    <div key={tag.tag_id}>
+                                        <input type='checkbox' /> {tag.tag_name}
                                     </div>
                                 )}
                             </Card.Body>
                         </Card>
                     </Col>
-
-                    <Col>
-                        <Card>
-                            <Card.Header></Card.Header>
-                            <Card.Body></Card.Body>
-                            <Card.Footer></Card.Footer>
-                        </Card>
+                    <Col style={{ display: "flex" }}>
+                        {posts.map(post =>
+                            <NavLink to={`/project/read/${post.post_id}`}>
+                                <Card className='mx-2' key={post.post_id}>
+                                    <Card.Header>{post.view_cnt}</Card.Header>
+                                    <Card.Body>{post.title}</Card.Body>
+                                </Card>
+                            </NavLink>
+                        )}
                     </Col>
                 </Row>
 
