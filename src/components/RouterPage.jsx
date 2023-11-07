@@ -21,7 +21,7 @@ import MyQuizPage from './user/mypage/detail/MyQuizPage'
 import MyActivityPage from './user/mypage/detail/MyActivityPage'
 import OXNotePage from './user/mypage/detail/OXNotePage'
 import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
-
+import KakaoRedirectHandler from './user/KakaoRedirectHandler';
 
 const RouterPage = () => {
     return (
@@ -38,7 +38,8 @@ const RouterPage = () => {
             <Route path="/community/communitymain" element={<CommunityMain />} />
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
-        
+            <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler/> }/>
+    
             <Route path="/user/mypage" element={<Mypage />} >
                 <Route path='' element={<MyQuizPage/>}></Route>
                 <Route path="myactivity" element={<MyActivityPage />} />               
