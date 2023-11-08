@@ -1,0 +1,55 @@
+.side-bar {background-color: #f0f0f0; width: 20%; display: flex; flex-direction: column; height: 100%;  padding: 10px;}
+.side_userimg {display: flex; justify-content: center; margin: 20px;}
+.side_userid p {text-align: center; font-weight: 700; font-size: 1.5rem;}
+.contents {background-color: darkgray; width: 100%;}
+.side_bar_menu {display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 20px}
+.side_bar_menu button {width: 90%; margin-bottom: 10px;}
+.side_bar_menu ul {margin: 0 auto; padding: 0;}
+
+/* OXNOTEPAGE */
+.oxnotepage_wrap{width: 100%;}
+.oxnotepage_title{width: 100%; margin: 2%;}
+.oxnotepage_title p{padding-left: 2%; font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
+.oxnotepage_table{width: 90%; display: flex; justify-content: center; margin:0 auto;}
+.oxnotepage_table th, td{text-align: center;}
+.oxnotepage_table td{vertical-align: middle;}
+.oxnotepage_list td {height: 70px;}
+.oxnotepage_difficulty_hard{margin:0; width: 100%; border-radius: 20px; background-color: #FDB1A2}
+.oxnotepage_difficulty_easy{margin:0; width: 100%; border-radius: 20px; background-color: #A6F3AE;}
+.oxnotepage_difficulty_normal{margin:0; width: 100%; border-radius: 20px; background-color: #FFD492;}
+.oxnotepage_difficultytext{margin:0; text-align: center; color: white; font-weight: 700;}
+.oxnotepage_pluslist{margin-top: 15px; display: flex; justify-content: center;}
+
+/* MyListPage */
+.mylistpage_wrap{width: 100%;}
+.mylistpage_title{width: 100%; margin: 2%;}
+.mylistpage_title p{padding-left: 2%; font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
+.mylistpage_top{width: 90%; display: flex; justify-content: space-between; margin: 0 auto;}
+.mylistpage_dropdowngroup{margin: 0; width: 30%; display: flex; justify-content: left; margin-bottom: 30px;}
+.dropdown{margin-right: 10px;}
+.mylistpage_button{margin-right: 35px;}
+.mylistpage_table{width: 90%; display: flex; justify-content: center; margin:0 auto;}
+.mylistpage_table th, td{text-align: center;}
+.mylistpage_table td{vertical-align: middle;}
+.mylistpage_list td {height: 70px;}
+.mylistpage_difficulty_hard{margin:0; width: 100%; border-radius: 20px; background-color: #FDB1A2}
+.mylistpage_difficulty_easy{margin:0; width: 100%; border-radius: 20px; background-color: #A6F3AE;}
+.mylistpage_difficulty_normal{margin:0; width: 100%; border-radius: 20px; background-color: #FFD492;}
+.mylistpage_difficultytext{margin:0; text-align: center; color: white; font-weight: 700;}
+.mylistpage_pluslist{margin-top: 15px; display: flex; justify-content: center;}
+
+/* UserUpdatePage */
+.userupdatepage_wrap{width: 100%;}
+.userupdatepage_title{width: 100%; margin: 2%;}
+.userupdatepage_title p{padding-left: 2%; font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
+.userupdatepage_contents{width: 100%;}
+.userupdatepage_img{width: 15%; margin: 0 auto;}
+.userupdatepage_img img{width: 100%; border-radius: 100%;}
+.userupdatepage_userid p{text-align: center; font-weight: 700; font-size: 1.7rem; margin: 25px;}
+.userupdatepage_updateform{width: 100%; margin-top: 20px;}
+.userupdatepage_col {width: 35%; margin: 0 auto;}
+.userupdatepage_col .input-group-text { width:35%;}
+.updatebutton_group{text-align: center; margin: 7%;}
+
+
+
