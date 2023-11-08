@@ -24,6 +24,7 @@ import OXNotePage from './user/mypage/detail/OXNotePage'
 import MyListPage from './user/mypage/detail/MyListPage'
 import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
 import KakaoRedirectHandler from './user/KakaoRedirectHandler';
+import ProjectInsert from './project/ProjectInsert'
 
 const RouterPage = () => {
     return (
@@ -41,6 +42,7 @@ const RouterPage = () => {
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
             <Route path="/project/read/:post_id" element={<ProjectRead />} />
+            <Route path="/project/insert" element={<ProjectInsert />} />
             
             <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler/> }/>
     
