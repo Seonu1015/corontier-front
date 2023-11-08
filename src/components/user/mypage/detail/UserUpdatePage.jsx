@@ -2,6 +2,8 @@ import React from 'react'
 import { Button, Form, InputGroup } from 'react-bootstrap'
 
 const UserUpdatePage = () => {
+
+
   return (
     <div className='page_wrap'>
       <div className='userupdatepage_wrap'>
