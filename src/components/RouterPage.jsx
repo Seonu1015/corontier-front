@@ -26,6 +26,7 @@ import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
 import KakaoRedirectHandler from './user/KakaoRedirectHandler';import AdminPage from './admin/AdminPage'
 import AdminManagement from './admin/admin_detail/AdminManagement'
 import Myactive from './admin/admin_detail/Myactive'
+import Question from './problem/Question'
 
 
 const RouterPage = () => {
@@ -37,6 +38,7 @@ const RouterPage = () => {
             <Route path="/problem/list" element={<ProblemList />} />
             <Route path="/problem/insert" element={<ProblemInsert />} />
             <Route path="/problem/:problem_id" element={<SolutionPage />} />
+            <Route path="/problem/question" element={<Question />} />
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
 
