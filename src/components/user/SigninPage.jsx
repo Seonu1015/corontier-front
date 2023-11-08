@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import axios from 'axios';
 import {Row, Col, Form, InputGroup, Button, Card} from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link} from 'react-router-dom';
 import '../../css/LoginPG.css';
 
 
@@ -24,12 +24,12 @@ export const SigninPage = () => {
   
   
    const navi=useNavigate();
-   const ref_uid = useRef(null);
+   const ref_email = useRef(null);
    const [form, setForm] = useState({
-       uid: 'blue',
-       upass: 'pass'
+         email: '',
+         Upassword: '',
    });
-   const {uid, upass} = form;
+   const {email, Upassword} = form;
    const onChange = (e) => {
        setForm({
            ...form,
@@ -38,20 +38,26 @@ export const SigninPage = () => {
    }
    const onSubmit = async(e) => {
             e.preventDefault();
-                  if(uid==="") {
+                  if(email==="") {
                         alert("아이디를 입력하세요!");
-                        ref_uid.current.focus();
-                   }else if(upass===""){
+                        ref_email.current.focus();
+                   }else if(Upassword===""){
                          alert("비밀번호를 입력하세요!");
                    }else{
                         const res=await axios.post('/users/login', form);
-                               if(res.data==0){
+                        console.log(res);
+                        console.log(res.data.result);
+                               if(res.data.result=='0'){
+                               
                                                alert("아이디가 존재하지 않습니다!");
-                                                ref_uid.current.focus();
-                                 }else if(res.data==2){
+                                               ref_email.current.focus();
+                                 }else if(res.data.result=='2'){
                                                 alert("비빌번호가 일치하지 않습니다!");
                                  }else{
-                                                sessionStorage.setItem("uid", uid);
+                                    alert("로그인 성공!");
+                                               // console.log(user_id)
+                                                sessionStorage.setItem("user_id", res.data.user_id);
+                                                console.log(sessionStorage.getItem("user_id"));
                                                  if(sessionStorage.getItem("target")){
                                                                navi(sessionStorage.getItem("target"));
                                                 }else{
@@ -78,13 +84,15 @@ export const SigninPage = () => {
                                     <form onSubmit={onSubmit}>
                                              <InputGroup className='mb-2'>
                                                   <InputGroup.Text>Email</InputGroup.Text>
-                                                  <Form.Control onChange={onChange} ref={ref_uid} value={uid} name='uid'/> 
+                                                  <Form.Control onChange={onChange} ref={ref_email} value={email} name='email'/> 
                                             </InputGroup>
                                             <InputGroup className='mb-2'>
                                                   <InputGroup.Text>Password</InputGroup.Text>
-                                                   <Form.Control onChange={onChange} type="password" value={upass} name='upass'/>
+                                                   <Form.Control onChange={onChange} type="password" value={Upassword} name='Upassword'/>
                                             </InputGroup>
-                                            <Button className='w-100' type="submit">로그인</Button>
+                                            <Button className='mb-2 w-100' type="submit">로그인</Button>
+
+                                            <Button className='mb-2 w-100' as={Link} to="/user/signup">회원가입 </Button>
                                     </form>
                                     <a href={KAKAO_AUTH_URL}>
                                         <img src="../images/kakao_login_medium_narrow.png" alt="카카오 로그인" style={{ cursor: 'pointer' }}  />
