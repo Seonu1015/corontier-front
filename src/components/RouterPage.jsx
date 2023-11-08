@@ -46,6 +46,11 @@ const RouterPage = () => {
             <Route path="/project/read/:post_id" element={<ProjectRead />} />
             
             <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler/> }/>
+
+            <Route path="/admin/adminpage" element={<AdminPage />} >
+                <Route path='' element={<AdminManagement/>}></Route>            
+                <Route path='myactive' element={<Myactive/>}></Route>            
+            </Route>
     
             <Route path="/user/mypage" element={<Mypage />} >
                 <Route path='' element={<MyQuizPage/>}></Route>
