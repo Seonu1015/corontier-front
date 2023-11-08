@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
 
@@ -11,8 +11,11 @@ import { cpp } from '@codemirror/lang-cpp';
 import { vscodeDark } from '@uiw/codemirror-themes-all';
 
 import { Row, Col, Container, Button, Spinner } from 'react-bootstrap';
+import Question from './Question';
 
 const SolutionPage = () => {
+
+    const [prob_id, setProb_id] = useState(0);
     const [loading, setLoading] = useState(false);
     const [problem, setProblem] = useState({
         problem_id: '',
@@ -109,74 +112,92 @@ const SolutionPage = () => {
         getProblem();
     }, []);
 
+    const onClickQuestion = (problem_id) => {
+        setProb_id(problem_id);  
+    }
+
     return (
         <>
-            <div className='m-5'>
-                <Container>
-                    <div className='py-2 px-4 border-bottom border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", fontSize: "30px" }}>
-                        {title}
-                    </div>
-                    <Row>
-                        <Col className='border-end border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px" }}>
-                            <div className='my-3 mx-3'>
-                                <p>Description</p><br />
-                                <p dangerouslySetInnerHTML={{ __html: content }} />
-                                <br />
-                                <p className='pt-3 border-top border-dark-subtle'>Input</p><br />
-                                <p dangerouslySetInnerHTML={{ __html: input }} />
-                                <br />
-                                <p className='pt-3 border-top border-dark-subtle'>Output</p><br />
-                                <p>{output}</p>
+            {prob_id === 0 && (
+                <div className='m-5'>
+                    <Container>
+                        <div className='py-2 px-4 border-bottom border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", fontSize: "30px" }}>
+                            {title}
+                        </div>
+                        <Row>
+                            <Col className='border-end border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px" }}>
+                                <div className='my-3 mx-3'>
+                                    <p>Description</p><br />
+                                    <p dangerouslySetInnerHTML={{ __html: content }} />
+                                    <br />
+                                    <p className='pt-3 border-top border-dark-subtle'>Input</p><br />
+                                    <p dangerouslySetInnerHTML={{ __html: input }} />
+                                    <br />
+                                    <p className='pt-3 border-top border-dark-subtle'>Output</p><br />
+                                    <p>{output}</p>
+                                </div>
+                            </Col>
+                            <Col>
+                                <Row>
+                                    <Col className='ps-0'>
+                                        <div className='pt-2 px-3 border-dark-subtle text-end' style={{ backgroundColor: "#1e1e1e", color: "white" }}>
+                                            <Row>
+                                                <Col></Col>
+                                                <Col md={3} className='pb-1'>
+                                                    <select className="form-select form-select-sm" aria-label="Small select example"
+                                                        value={language}
+                                                        onChange={(e) => setLanguage(e.target.value)}
+                                                    >
+                                                        <option value="cpp">C++</option>
+                                                        <option value="java">Java</option>
+                                                        <option value="javascript">Javascript</option>
+                                                        <option value="python">Python</option>
+                                                    </select>
+                                                </Col>
+                                            </Row>
+                                        </div>
+                                        <div>
+                                            {languageComponents[language]}
+                                        </div>
+                                        <div className='p-3 border-top border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white" }}>
+                                            실행결과
+                                        </div>
+                                        <div className='p-3 border-top border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", height: "300px" }}>
+                                            {loading ? (
+                                                <div className='d-flex justify-content-center align-items-center' style={{ height: '100%' }}>
+                                                    <Spinner animation='border' variant='light' />
+                                                </div>
+                                            ) : (
+                                                <div style={{ height: '100%', overflow: 'auto' }}>
+                                                    {result}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                        <div className='sol_btn_wrap' >
+                            <div className='sol_btn'>
+                                <Button className='me-2 px-4' variant="secondary" onClick={()=>onClickQuestion(problem_id)}>질문하기</Button>
+                                <Button className='px-4'>테스트 만들기</Button>
                             </div>
-                        </Col>
-                        <Col>
-                            <Row>
-                                <Col className='ps-0'>
-                                    <div className='pt-2 px-3 border-dark-subtle text-end' style={{ backgroundColor: "#1e1e1e", color: "white" }}>
-                                        <Row>
-                                            <Col></Col>
-                                            <Col md={3} className='pb-1'>
-                                                <select className="form-select form-select-sm" aria-label="Small select example"
-                                                    value={language}
-                                                    onChange={(e) => setLanguage(e.target.value)}
-                                                >
-                                                    <option value="cpp">C++</option>
-                                                    <option value="java">Java</option>
-                                                    <option value="javascript">Javascript</option>
-                                                    <option value="python">Python</option>
-                                                </select>
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                    <div>
-                                        {languageComponents[language]}
-                                    </div>
-                                    <div className='p-3 border-top border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white" }}>
-                                        실행결과
-                                    </div>
-                                    <div className='p-3 border-top border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", height: "300px" }}>
-                                        {loading ? (
-                                            <div className='d-flex justify-content-center align-items-center' style={{ height: '100%' }}>
-                                                <Spinner animation='border' variant='light' />
-                                            </div>
-                                        ) : (
-                                            <div style={{ height: '100%', overflow: 'auto' }}>
-                                                {result}
-                                            </div>
-                                        )}
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
-                    <div className='pt-2 pb-3 px-4 border-top border-dark-subtle text-end justify-content-center align-content-middle' style={{ backgroundColor: "#1e1e1e", color: "white", fontSize: "30px" }}>
-                        <Button className='me-2 px-4' variant="secondary" onClick={onClickExecute}>실행</Button>
-                        <Button className='px-4' type='submit'>제출</Button>
-                    </div>
-                </Container>
-            </div>
+                            <div className='sol_btn'>
+                                <Button className='me-2 px-4' variant="secondary" onClick={onClickExecute}>실행</Button>
+                                <Button className='px-4' type='submit'>제출</Button>
+                            </div>
+                        </div>
+                    </Container>
+                </div>
+            )}
+            {prob_id > 0 && (
+                <>
+                    <Question prob_id={prob_id} />
+                </>
+            )}
         </>
     )
 }
 
-export default SolutionPage
+
+    export default SolutionPage
