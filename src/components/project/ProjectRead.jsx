@@ -54,7 +54,7 @@ const ProjectRead = () => {
                         </tbody>
                     </Table>
                     <Card>
-                        
+                        <Card.Body>{post.intro}</Card.Body>
                     </Card>
                 </Col>
             </Row>
