@@ -21,6 +21,9 @@ import MyQuizPage from './user/mypage/detail/MyQuizPage'
 import MyActivityPage from './user/mypage/detail/MyActivityPage'
 import OXNotePage from './user/mypage/detail/OXNotePage'
 import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
+import AdminPage from './admin/AdminPage'
+import AdminManagement from './admin/admin_detail/AdminManagement'
+import Myactive from './admin/admin_detail/Myactive'
 
 
 const RouterPage = () => {
@@ -31,19 +34,24 @@ const RouterPage = () => {
             <Route path="/problem/main" element={<ProblemPage />} />
             <Route path="/problem/list" element={<ProblemList />} />
             <Route path="/problem/insert" element={<ProblemInsert />} />
-            <Route path="/problem/:problem_id" element={<SolutionPage/>}/>
+            <Route path="/problem/:problem_id" element={<SolutionPage />} />
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
 
             <Route path="/community/communitymain" element={<CommunityMain />} />
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
-        
+
+            <Route path="/admin/adminpage" element={<AdminPage />}>
+                <Route path='' element={<AdminManagement />}></Route>
+                <Route path='myactive' element={<Myactive />}></Route>
+            </Route>
+
             <Route path="/user/mypage" element={<Mypage />} >
-                <Route path='' element={<MyQuizPage/>}></Route>
-                <Route path="myactivity" element={<MyActivityPage />} />               
-                <Route path="oxnote" element={<OXNotePage />} />               
-                <Route path="userupdate" element={<UserUpdatePage />} />               
+                <Route path='' element={<MyQuizPage />}></Route>
+                <Route path="myactivity" element={<MyActivityPage />} />
+                <Route path="oxnote" element={<OXNotePage />} />
+                <Route path="userupdate" element={<UserUpdatePage />} />
             </Route>
             <Route path="/user/signin" element={<SigninPage />} />
             <Route path="/user/signup" element={<SignupPage />} />
