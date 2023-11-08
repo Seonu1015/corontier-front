@@ -1,9 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { Form, Row, Col, Dropdown, Button } from 'react-bootstrap'
+import { Form, Row, Col, Button } from 'react-bootstrap'
 import { BoxContext } from '../BoxContext'
-
 import EditorComp from '../common/EditorComp'
-import { async } from 'q'
 import axios from 'axios'
 
 const ProblemInsert = () => {
@@ -13,13 +11,12 @@ const ProblemInsert = () => {
     const [tags, setTags] = useState([]);
     const [grades, setGrades] = useState([]);
     const [problem, setProblem] = useState({
-       problem_id:
-       title:
-       content:
-       input:
-       output:
-       grade_id:
-       
+        problem_id: "",
+        title: "",
+        content: "",
+        input: "",
+        output: "",
+        grade_id: "",
     });
 
     const getTags = async () => {
@@ -45,9 +42,9 @@ const ProblemInsert = () => {
     const onSubmit = () => {
         setBox({
             show: true,
-            message: "등록하시겠습니까?",
+            message: "문제를 등록하시겠습니까?",
             action: async () => {
-                axios.post('/problem/insert', {title,})
+                const data = 
             }
         });
     }
