@@ -7,25 +7,25 @@ const AdminSideMenu = () => {
       <div className='admin_sidebar_box'>
         <ol className='admin_sidebar_ol'>
           <li className='account_management'>
-            <h3 className='my_account'> 내 정보 관리 </h3>
+            <h3 className='my_account'> Problems </h3>
             <ol>
               <Link to="">계정관리</Link>
-              <Link to="myactive">나의활동</Link>
+              <Link to="myactive">문제관리</Link> 
             </ol>
           </li>
 
           <li className='school_management'>
-            <h3 className='my_account'> 스쿨 관리 </h3>
+            <h3 className='my_account'> Projects </h3>
             <ol>
-              <a href="#">계정관리</a>
+              <a href="#">프로젝트 관리</a>
               <a href="#">나의활동</a>
             </ol>
           </li>
 
           <li className='career_management'>
-            <h3 className='my_account'> 커리어 관리 </h3>
+            <h3 className='my_account'> Contest </h3>
             <ol>
-              <a href="#">계정관리</a>
+              <a href="#">공모전 관리</a>
               <a href="#">나의활동</a>
               <a href="#">나의활동</a>
               <a href="#">나의활동</a>
