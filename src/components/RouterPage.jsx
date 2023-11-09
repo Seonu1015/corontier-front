@@ -53,7 +53,8 @@ const RouterPage = () => {
 
             <Route path="/admin/adminpage" element={<AdminPage />} >
                 <Route path='' element={<AdminManagement/>}></Route>            
-                <Route path='myactive' element={<Myactive/>}></Route>            
+                <Route path='myactive' element={<Myactive/>}></Route>
+                <Route path='problemlist' element={<ProblemList/>}></Route>
             </Route>
     
             <Route path="/user/mypage" element={<Mypage />} >

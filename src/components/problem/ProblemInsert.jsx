@@ -44,7 +44,7 @@ const ProblemInsert = () => {
 
                 const selTags = data.tags;
                 const tagRequests = selTags.map(tag_id => axios.post("/insert/tags", { problem_id: problem_id, tag_ids: [tag_id] }));
-                await axios.all(tagRequests);
+                await Promise.all(tagRequests);
 
                 setLoading(false);
                 window.location.href = "/problem/list";
@@ -99,13 +99,13 @@ const ProblemInsert = () => {
                             <Col md={4}>
                                 <Form.Group className="mb-3" controlId="input">
                                     <Form.Label>Input</Form.Label>
-                                    <Form.Control type="text" {...register('input')} />
+                                    <Form.Control as="textarea" {...register('input')} />
                                 </Form.Group>
                             </Col>
                             <Col md={4}>
                                 <Form.Group className="mb-3" controlId="output">
                                     <Form.Label>Output</Form.Label>
-                                    <Form.Control type="text" {...register('output')} />
+                                    <Form.Control as="textarea" {...register('output')} />
                                 </Form.Group>
                             </Col>
                         </Row>

@@ -10,7 +10,7 @@ const AdminSideMenu = () => {
             <h3 className='my_account'> Problems </h3>
             <ol>
               <Link to="">계정관리</Link>
-              <Link to="myactive">문제관리</Link> 
+              <Link to="problemlist">문제관리</Link> 
             </ol>
           </li>
 

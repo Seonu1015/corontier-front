@@ -3,27 +3,33 @@ import { BoxContext } from '../BoxContext';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Button, Table } from 'react-bootstrap';
+import Pagination from 'react-js-pagination';
+import '../../css/Pagination.css';
 
 const ProblemList = () => {
     const { setBox } = useContext(BoxContext);
     const [problems, setProblems] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [total, setTotal] = useState(0);
 
     const navi = useNavigate();
 
-    const size = 20;
+    const size = 10;
     const location = useLocation();
+    const path = location.pathname;
     const search = new URLSearchParams(location.search);
     const page = search.get("page") ? parseInt(search.get("page")) : 1;
-
 
     const getProblems = async () => {
         setLoading(true);
         const res = await axios(`/problem/list.json?page=${page}&size=${size}`);
-        const list = res.data.list;
-        console.log(list);
-        setProblems(list);
+        setProblems(res.data.list);
+        setTotal(res.data.total);
         setLoading(false);
+    }
+
+    const onChangePage = (page) => {
+        navi(`${path}?page=${page}&size=${size}`);
     }
 
     useEffect(() => {
@@ -31,8 +37,7 @@ const ProblemList = () => {
     }, [page]);
 
     return (
-        <div className='m-5'>
-            <h1 className='text-center mb-5'>문제 리스트</h1>
+        <div>
             <Table hover className='problemList text-center'>
                 <thead>
                     <tr>
@@ -47,19 +52,19 @@ const ProblemList = () => {
                     {problems.map(p =>
                         <>
                             <tr key={p.problem_id}>
-                                <td style={{verticalAlign:"middle"}}>{p.grade}</td>
+                                <td style={{ verticalAlign: "middle" }}>{p.grade}</td>
                                 <td className='text-start ps-5'>
                                     <div>{p.title}</div>
                                     <div style={{ fontSize: "70%" }}>{p.tag_names}</div>
                                 </td>
-                                <td style={{verticalAlign:"middle"}}>
+                                <td style={{ verticalAlign: "middle" }}>
                                     <div>{p.fmt_created}</div>
                                     <div style={{ fontSize: "70%" }}>수정 : {p.fmt_updated}</div>
                                 </td>
-                                <td style={{verticalAlign:"middle"}}>
-                                    <Button size='sm' onClick={()=> navi(`/problem/update/${p.problem_id}`)}>수정</Button>
+                                <td style={{ verticalAlign: "middle" }}>
+                                    <Button size='sm' onClick={() => navi(`/problem/update/${p.problem_id}`)}>수정</Button>
                                 </td>
-                                <td style={{verticalAlign:"middle"}}>
+                                <td style={{ verticalAlign: "middle" }}>
                                     <Button variant='danger' size='sm'>삭제</Button>
                                 </td>
                             </tr>
@@ -67,6 +72,15 @@ const ProblemList = () => {
                     )}
                 </tbody>
             </Table>
+            <Pagination
+                    activePage={page}
+                    itemsCountPerPage={size}
+                    totalItemsCount={total}
+                    pageRangeDisplayed={10}
+                    prevPageText={'‹'}
+                    nextPageText={'›'}
+                    onChange={onChangePage} // 이벤트 핸들러 추가
+                />
         </div>
     )
 }

@@ -42,7 +42,7 @@ const SolutionPage = () => {
         const res = await axios('/problem/' + problem_id, { problem_id });
         // console.log(res.data);
         const data = res.data;
-        console.log(data);
+        // console.log(data);
         setProblem(data);
         setValue(data.input);
         setLoading(false);
@@ -53,7 +53,7 @@ const SolutionPage = () => {
             <CodeMirror
                 // value={"function solution(a, b) \{\n    var answer = 0\;\n    return answer\;\n\}\n\nsolution(a, b)"}
                 value={value}
-                height="300px"
+                height="500px"
                 extensions={[javascript({ jsx: true })]}
                 theme={vscodeDark}
                 onChange={onChange}
@@ -63,7 +63,7 @@ const SolutionPage = () => {
             <CodeMirror
                 // value={"def solution(a, b):\n    answer = \'\'\n    return answer\n\nprint(answer)"}
                 value={value}
-                height="300px"
+                height="500px"
                 extensions={[python()]}
                 theme={vscodeDark}
                 onChange={onChange}
@@ -73,7 +73,7 @@ const SolutionPage = () => {
             <CodeMirror
                 // value={"class Solution \{\n    public int solution(int a, int b) \{\n        int answer = 0\;\n        return answer\;\n    \}\n\}\n\nsolution(int a, int b)"}
                 value={value}
-                height="300px"
+                height="500px"
                 extensions={[java()]}
                 theme={vscodeDark}
                 onChange={onChange}
@@ -83,7 +83,7 @@ const SolutionPage = () => {
             <CodeMirror
                 // value={"using namespace std\;\n\nint solution(int a, int b) \{\n    int answer = 0\;\n    return answer\;\n}"}
                 value={value}
-                height="300px"
+                height="500px"
                 extensions={[cpp()]}
                 theme={vscodeDark}
                 onChange={onChange}
@@ -113,7 +113,7 @@ const SolutionPage = () => {
     }, []);
 
     const onClickQuestion = (problem_id) => {
-        setProb_id(problem_id);  
+        setProb_id(problem_id);
     }
 
     return (
@@ -125,16 +125,17 @@ const SolutionPage = () => {
                             {title}
                         </div>
                         <Row>
-                            <Col className='border-end border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px" }}>
+                            <Col className='border-end border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px", overflow: "auto", height: "750px" }}>
                                 <div className='my-3 mx-3'>
                                     <p>Description</p><br />
-                                    <p dangerouslySetInnerHTML={{ __html: content }} />
+                                    <p style={{ fontSize: "16px" }} dangerouslySetInnerHTML={{ __html: content }} />
                                     <br />
                                     <p className='pt-3 border-top border-dark-subtle'>Input</p><br />
-                                    <p dangerouslySetInnerHTML={{ __html: input }} />
+                                    <pre style={{ fontSize: "16px" }} dangerouslySetInnerHTML={{ __html: input }} />
                                     <br />
-                                    <p className='pt-3 border-top border-dark-subtle'>Output</p><br />
-                                    <p dangerouslySetInnerHTML={{ __html: output }} />
+                                    <p className='pt-3 border-top border-dark-subtle'>Output</p>
+                                    <pre style={{ fontSize: "16px" }} dangerouslySetInnerHTML={{ __html: output }} />
+                                    <br />
                                 </div>
                             </Col>
                             <Col>
@@ -162,7 +163,7 @@ const SolutionPage = () => {
                                         <div className='p-3 border-top border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white" }}>
                                             실행결과
                                         </div>
-                                        <div className='p-3 border-top border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", height: "300px" }}>
+                                        <div className='p-3 border-top border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", height: "150px" }}>
                                             {loading ? (
                                                 <div className='d-flex justify-content-center align-items-center' style={{ height: '100%' }}>
                                                     <Spinner animation='border' variant='light' />
@@ -179,7 +180,7 @@ const SolutionPage = () => {
                         </Row>
                         <div className='sol_btn_wrap' >
                             <div className='sol_btn'>
-                                <Button className='me-2 px-4' variant="secondary" onClick={()=>onClickQuestion(problem_id)}>질문하기</Button>
+                                <Button className='me-2 px-4' variant="secondary" onClick={() => onClickQuestion(problem_id)}>질문하기</Button>
                                 <Button className='px-4'>테스트 만들기</Button>
                             </div>
                             <div className='sol_btn'>
@@ -200,4 +201,4 @@ const SolutionPage = () => {
 }
 
 
-    export default SolutionPage
+export default SolutionPage
