@@ -10,8 +10,8 @@ const Posts = () => {
   const getPosts= async()=>{
 
     //내가쓴 post정보들을 가져오는 쿼리
-    //const res = await axios.get()
-    //setPosts(res.data);
+    // const res = await axios.get()
+    // setPosts(res.data);
   }
   useEffect(()=>{
     getPosts();
