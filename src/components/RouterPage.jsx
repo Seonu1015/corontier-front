@@ -27,6 +27,7 @@ import KakaoRedirectHandler from './user/KakaoRedirectHandler';import AdminPage 
 import AdminManagement from './admin/admin_detail/AdminManagement'
 import Myactive from './admin/admin_detail/Myactive'
 
+import ProjectInsert from './project/ProjectInsert'
 
 const RouterPage = () => {
     return (
@@ -44,6 +45,7 @@ const RouterPage = () => {
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
             <Route path="/project/read/:post_id" element={<ProjectRead />} />
+            <Route path="/project/insert" element={<ProjectInsert />} />
             
             <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler/> }/>
 

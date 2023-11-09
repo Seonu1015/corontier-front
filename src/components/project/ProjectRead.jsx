@@ -18,9 +18,10 @@ const ProjectRead = () => {
 
     const getProject = async () => {
         setLoading(true);
-        const res = await axios.get("/project/projectpick.json?post_id=" + post_id);
+        const res = await axios.get("/project/prcedures?post_id=" + post_id);
         console.log(res.data)
-        setPost(res.data);
+        let listOne = res.data.listOne;
+        setPost(listOne);
         setLoading(false);
     }
 
@@ -53,7 +54,7 @@ const ProjectRead = () => {
                         </tbody>
                     </Table>
                     <Card>
-                        
+                        <Card.Body>{post.intro}</Card.Body>
                     </Card>
                 </Col>
             </Row>

@@ -2,13 +2,19 @@
 .banner img{max-width: 100%;}
 .contents_title_box{font-size: 1.5rem; margin-bottom: 1rem;}
 
+.page_contents_wrap_prj {width: 94.8%; margin: 150px auto; border: 0.0625rem solid rgb(215, 226, 235); border-radius: 0.9375rem;}
+
 .page_contents{display: flex; flex-wrap: wrap; gap: 2rem;}
 .study_plan_wrap{display: flex; width: 100%;}
 
 .study_plan_wrap_l{width: 75%; height: 1000px; margin-right: 2%; background: #ededed;}
+.study_plan_wrap_l_prj{width: 75%; height: 1000px; margin-right: 2%;}
 .planbox_wrap{display: flex; flex-wrap: wrap; margin-bottom: 10px;}
+.planbox_wrap_prj{display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;}
 .study_plan_box{width: 32%; height: 220px; margin-right: 2%; background: #acacac;}
+.study_plan_box_prj{display: grid; width: 100%; height: 350px; margin-right: 1%; margin-bottom: 2%; background-color: rgb(255, 255, 255); border: 0.0625rem solid rgb(215, 226, 235); border-radius: 0.9375rem;}
 .study_plan_box:last-child{margin-right: 0;}
+
 
 /* Challengesstyle_SearchForm */
 .Challengesstyle_SearchForm{margin-bottom: 8px;}
@@ -42,6 +48,7 @@
 
 /* study_plan_wrap_r */
 .study_plan_wrap_r {width: 23%; height: 1000px; flex: 0 0 auto; background-color: rgb(255, 255, 255); border: 0.0625rem solid rgb(215, 226, 235); border-radius: 0.9375rem; display: block;}
+.study_plan_wrap_r_prj {width: 16%; height: 1000px; flex: 0 0 auto; background-color: rgb(255, 255, 255); border: 0.0625rem solid rgb(215, 226, 235); border-radius: 0.9375rem; display: block;}
 .study_plan_userdata {padding: 1.5rem;}
 .userdata_loggeding .name {font-size: 1.125rem; font-weight: 700; line-height: 150%; letter-spacing: -0.009rem; word-break: break-all;}
 .userdata_loggeding .data {display: flex; margin: 0.75rem 0px;}
