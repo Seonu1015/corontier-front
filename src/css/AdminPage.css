@@ -14,6 +14,7 @@
 .account_management ol a, .school_management ol a, .career_management ol a {padding: 0.6875rem 1rem; border-radius: 0.25rem;  font-size: 1rem; line-height: 1.4375rem; display: flex; flex-direction: column; color: #666;}
 .account_management a:first-child {background: #e6f2ff; font-weight: bold;}
 
+
 /* AdminManagement */
 .admin_management_title {margin-bottom: 24px; font-size: 1.5625rem; font-weight: 700; line-height: 44px;}
 .admin_management_contents_wrap {display: flex; flex-direction: column;}
