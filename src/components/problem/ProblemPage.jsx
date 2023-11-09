@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Dropdown from 'react-bootstrap/Dropdown';
+import { Dropdown, Button } from 'react-bootstrap';
 import Pagination from 'react-js-pagination';
 import '../../css/Pagination.css';
 import { useLocation, Link, NavLink, useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ import axios from 'axios';
 const ProblemPage = () => {
     const [problems, setProblems] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [keyword, setKeyword] = useState('');
     const navi = useNavigate();
 
     const size = 20;
@@ -35,8 +36,12 @@ const ProblemPage = () => {
     }, [page]);
 
     const onClickLink = (problem_id) => {
-        window.location.href="/problem/" + problem_id;
+        window.location.href = "/problem/" + problem_id;
     }
+
+    const handleInputChange = (e) => {
+        setKeyword(e.target.value);
+    };
 
     return (
         <div className='page_wrap'>
@@ -46,30 +51,26 @@ const ProblemPage = () => {
 
             <div className='page_contents_wrap'>
                 <div className='contents_title_box'>
-                    <p className='contents_title'>Test Page</p>
                 </div>
 
                 <div className='page_contents'>
                     <div className='study_plan_wrap'>
                         <div className='study_plan_wrap_l'>
                             <div className='planbox_wrap'>
-                                <div className='study_plan_box'>1</div>
-                                <div className='study_plan_box'>2</div>
-                                <div className='study_plan_box'>3</div>
+                                <div className='study_plan_box'>SQL문 연습해보기</div>
+                                <div className='study_plan_box'>Python이 뭔지알아?</div>
+                                <div className='study_plan_box'>난 코딩최강자 짱짱</div>
                             </div>
 
                             <div className='Challengesstyle_SearchForm'>
                                 <form className='SearchForm'>
-                                    <input className='keyword' type='search' autoComplete='off' placeholder='풀고 싶은 문제 제목, 기출문제 검색' value='' />
-                                    <div className='SearchFormstyle_Buttons'>
-                                        <button className='SearchFormstyle_submit' type='submit' aria-label='검색'>🔍</button>
-                                        <button className='SearchFormstyle__Reset-sc-1p5mlk4-4 XNLJR reset' type='reset' aria-label='검색어 초기화'></button>
-                                    </div>
+                                    <input className='keyword' type='search' autoComplete='off' placeholder='풀고 싶은 문제 제목, 기출문제 검색' value={keyword} onChange={handleInputChange} />
+                                    <Button className='SearchFormstyle_Button' variant='outline-secondary'>검색</Button>
                                 </form>
                             </div>
 
                             <div className='DropdownGroupstyle_DropdownGroup'>
-                                <Dropdown className='Dropdown'>
+                                <Dropdown className='DropdownGroup'>
                                     <Dropdown.Toggle variant='outline-dark' className='title_l'>
                                         상태
                                     </Dropdown.Toggle>
@@ -80,7 +81,7 @@ const ProblemPage = () => {
                                     </Dropdown.Menu>
                                 </Dropdown>
 
-                                <Dropdown className='Dropdown'>
+                                <Dropdown className='DropdownGroup'>
                                     <Dropdown.Toggle variant='outline-dark' className='title_l'>
                                         난이도
                                     </Dropdown.Toggle>
@@ -95,7 +96,7 @@ const ProblemPage = () => {
                                     </Dropdown.Menu>
                                 </Dropdown>
 
-                                <Dropdown className='Dropdown'>
+                                <Dropdown className='DropdownGroup'>
                                     <Dropdown.Toggle variant='outline-dark' className='title_r'>
                                         언어
                                     </Dropdown.Toggle>
@@ -107,7 +108,7 @@ const ProblemPage = () => {
                                     </Dropdown.Menu>
                                 </Dropdown>
 
-                                <Dropdown className='Dropdown'>
+                                <Dropdown className='DropdownGroup'>
                                     <Dropdown.Toggle variant='outline-dark' className='title_r'>
                                         등록한 문제
                                     </Dropdown.Toggle>
@@ -136,7 +137,7 @@ const ProblemPage = () => {
                                             <tr key={p.problem_id}>
                                                 {/* <td></td> */}
                                                 <td>
-                                                    <NavLink onClick={()=>onClickLink(p.problem_id)}>{p.title}</NavLink>
+                                                    <NavLink onClick={() => onClickLink(p.problem_id)}>{p.title}</NavLink>
                                                 </td>
                                                 <td>{p.grade}</td>
                                                 <td></td>
@@ -151,7 +152,7 @@ const ProblemPage = () => {
                         <div className='study_plan_wrap_r'>
                             <div className='study_plan_userdata'>
                                 <div className='userdata_loggeding'>
-                                    <h2 className='name'>홍길동</h2>
+                                    <h2 className='name'><Link>홍길동</Link></h2>
                                     <ul className='data'>
                                         <li>
                                             <div className='label'>순위</div>
@@ -218,16 +219,6 @@ const ProblemPage = () => {
                         </div>
                     </div>
                 </div>
-
-                <Pagination
-                    activePage={1}
-                    itemsCountPerPage={1}
-                    totalItemsCount={10}
-                    pageRangeDisplayed={10}
-                    prevPageText={'‹'}
-                    nextPageText={'›'}
-                    onChange={() => { }} // 이벤트 핸들러 추가
-                />
             </div>
         </div>
     );

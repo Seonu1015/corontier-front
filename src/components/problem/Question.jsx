@@ -19,14 +19,9 @@ const Question = ({ prob_id }) => {
       <div className='page_contents_wrap'>
         <div className='question_wrap'>
           <div className='question_contents'>
-            <Button className="btn_back" variant='dark'>강의로 돌아가기</Button>
+            <Button className="btn_back" variant='secondary'>강의로 돌아가기</Button>
 
             <div className='question_new_wrap'>
-              <div className='q_form_group'>
-                <label className='q_required'><span>*</span> 제목 </label>
-                <input placeholder="입력하세요." class="form-control" type="text"></input>
-              </div>
-
               <div className='q_editor_body'>
                 <div className='q_form_group'>
                   <label className='q_required'><span>*</span> 내용 </label>
@@ -36,8 +31,7 @@ const Question = ({ prob_id }) => {
               </div>
 
               <div className='q_btn_wrap'>
-                <Button className='q_btn'> 미리보기 </Button>
-                <Button className='q_btn'> 취소 </Button>
+                <Button className='q_btn' variant='dark'> 취소 </Button>
                 <Button className='q_btn' variant='outline-dark'> 등록 </Button>
               </div>
             </div>

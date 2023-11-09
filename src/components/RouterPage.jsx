@@ -25,8 +25,8 @@ import MyListPage from './user/mypage/detail/MyListPage'
 import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
 import KakaoRedirectHandler from './user/KakaoRedirectHandler';import AdminPage from './admin/AdminPage'
 import AdminManagement from './admin/admin_detail/AdminManagement'
-import Myactive from './admin/admin_detail/Myactive'
 import Question from './problem/Question'
+import AdminProblem from './admin/admin_detail/AdminProblem'
 
 
 const RouterPage = () => {
@@ -51,7 +51,7 @@ const RouterPage = () => {
 
             <Route path="/admin/adminpage" element={<AdminPage />} >
                 <Route path='' element={<AdminManagement/>}></Route>            
-                <Route path='myactive' element={<Myactive/>}></Route>            
+                <Route path='myactive' element={<AdminProblem/>}></Route>            
             </Route>
     
             <Route path="/user/mypage" element={<Mypage />} >

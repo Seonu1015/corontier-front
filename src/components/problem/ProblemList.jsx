@@ -19,12 +19,6 @@ const ProblemList = () => {
         setLoading(true);
         const res = await axios(`/problem/list.json?page=${page}&size=${size}`);
         const list = res.data.list;
-        for (let i = 0; i < list.length; i++) {
-            const buffer = list[i].content.data;
-            const uintArray = new Uint8Array(buffer);
-            const content = new TextDecoder().decode(uintArray);
-            list[i].content = content;
-        }
         // console.log(list);
         setProblems(list);
         setLoading(false);
