@@ -22,7 +22,7 @@ const UserUpdatePage = () => {
   const getUser=async()=>{
 
     //로그인구현전 예시로 넣은 로그인된 user정보 
-    sessionStorage.setItem('user_id',1);
+    sessionStorage.setItem('user_id',8);
     //user정보가져오는 쿼리
     const res = await axios.get(`/users/read/${sessionStorage.getItem("user_id")}`);  
     setUser(res.data);
@@ -85,7 +85,7 @@ const UserUpdatePage = () => {
           <p>✏️ 개인정보 수정</p>
         </div>
         <div className='userupdatepage_contents'>
-          <div className='userupdatepage_img'>
+          <div className='userupdatepage_img text-center'>
             <img src={profile_image||"http://via.placeholder.com/250x250"} width="100" className='photo' />
             <input  type="file" ref={ref_file} onChange={onChangeFile} style={{display:'none'}}/>
             <Button onClick={()=>{ref_file.current.click()}}>변경</Button><Button onClick={onUpdateProfileIMG}>저장</Button>
