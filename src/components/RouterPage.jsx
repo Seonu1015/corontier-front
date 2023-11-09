@@ -7,6 +7,7 @@ import ProblemPage from './problem/ProblemPage'
 import ProblemInsert from './problem/ProblemInsert'
 import ProblemList from './problem/ProblemList'
 import SolutionPage from './problem/SolutionPage'
+import Question from './problem/Question'
 
 import ContestMain from './contest/ContestMain'
 
@@ -26,7 +27,6 @@ import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
 import KakaoRedirectHandler from './user/KakaoRedirectHandler';import AdminPage from './admin/AdminPage'
 import AdminManagement from './admin/admin_detail/AdminManagement'
 import Myactive from './admin/admin_detail/Myactive'
-import Question from './problem/Question'
 
 
 const RouterPage = () => {

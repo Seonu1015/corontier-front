@@ -134,7 +134,7 @@ const SolutionPage = () => {
                                     <p dangerouslySetInnerHTML={{ __html: input }} />
                                     <br />
                                     <p className='pt-3 border-top border-dark-subtle'>Output</p><br />
-                                    <p>{output}</p>
+                                    <p dangerouslySetInnerHTML={{ __html: output }} />
                                 </div>
                             </Col>
                             <Col>

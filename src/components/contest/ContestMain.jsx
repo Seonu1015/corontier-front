@@ -1,26 +1,68 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Spinner, Table, Row, Col, InputGroup, Form, Button } from 'react-bootstrap';
+import Pagination from "react-js-pagination";
 
-const ContestMain = () => {
+
+const CompetitonList = () => {
+
+    const [competions, setCompetions] = useState([]);
+
+    const getCompes = async () => {
+        const url = `/crawler/list.json`;
+        const res = await axios(url);
+        console.log(res.data);
+        setCompetions(res.data.list);
+
+    }
+
+    useEffect(() => {
+        getCompes();
+    }, []);
+
+
     return (
-        <div className='page_wrap'>
-            <div className='banner'>
-                <img src="../images/banner.png" alt="" />
-            </div>
-
-            <div className='page_contents_wrap'>
-                <div className='contents_title_box'>
-                    <p className='contents_title'>ContestMain Page</p>
-                    <p className='contents_article'>...</p>
-                </div>
-
-                <div className='page_contents'>
-                    <div className='box1'> 1 </div>
-                    <div className='box2'> 2 </div>
-                    <div className='box3'> 3 </div>
-                </div>
-            </div>
+      
+        <div className='my-5 p-5'> 공모전 목록 
+        
+        <Table striped hover className='text-center my-3'>
+                <thead>
+                    <tr>
+                        <th>공모전ID</th><td>제목</td><td>모집기간</td><td>상태</td>
+                
+                    </tr>
+                </thead>
+                   <tbody>
+                    {competions.map(competion =>
+                        <tr key={competion.cid}>
+                            <td>{competion.cid}</td>
+                            <td width="30%"><div className='ellipsis'>{competion.title}</div></td>
+                            <td width="20%"><div className='ellipsis'>{competion.date1}</div></td>
+                            <td>{competion.status1}</td>
+            
+                        </tr>
+                    )}
+                </tbody>
+            </Table>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         </div>
+
+
+
     )
 }
 
-export default ContestMain
+export default CompetitonList
