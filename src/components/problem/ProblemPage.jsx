@@ -177,7 +177,7 @@ const ProblemPage = () => {
                                     <a href="">홍길동님께 추천하는 포지션 ▸</a>
                                 </h3>
                             </div>
-                        </div>;->
+                        </div>
                     </div>
                 </div>
 
