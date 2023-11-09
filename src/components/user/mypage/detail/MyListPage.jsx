@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Dropdown, Table } from 'react-bootstrap'
 
 const MyListPage = () => {
+  
   return (
     <div className='page_wrap'>
       <div className='mylistpage_wrap'>
