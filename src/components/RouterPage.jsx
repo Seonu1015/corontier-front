@@ -7,6 +7,7 @@ import ProblemPage from './problem/ProblemPage'
 import ProblemInsert from './problem/ProblemInsert'
 import ProblemList from './problem/ProblemList'
 import SolutionPage from './problem/SolutionPage'
+import Question from './problem/Question'
 
 import ContestMain from './contest/ContestMain'
 
@@ -38,6 +39,7 @@ const RouterPage = () => {
             <Route path="/problem/list" element={<ProblemList />} />
             <Route path="/problem/insert" element={<ProblemInsert />} />
             <Route path="/problem/:problem_id" element={<SolutionPage />} />
+            <Route path="/problem/question" element={<Question />} />
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
 
@@ -51,7 +53,8 @@ const RouterPage = () => {
 
             <Route path="/admin/adminpage" element={<AdminPage />} >
                 <Route path='' element={<AdminManagement/>}></Route>            
-                <Route path='myactive' element={<Myactive/>}></Route>            
+                <Route path='myactive' element={<Myactive/>}></Route>
+                <Route path='problemlist' element={<ProblemList/>}></Route>
             </Route>
     
             <Route path="/user/mypage" element={<Mypage />} >

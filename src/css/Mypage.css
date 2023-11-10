@@ -1,3 +1,18 @@
+.ellipsis1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.ellipsis2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient: vertical;
+}
+
 .side-bar {background-color: #f0f0f0; width: 20%; display: flex; flex-direction: column; height: 100%;  padding: 10px;}
 .side_userimg {display: flex; justify-content: center; margin: 20px;}
 .side_userid p {text-align: center; font-weight: 700; font-size: 1.5rem;}
@@ -27,6 +42,7 @@
 .mylistpage_top{width: 90%; display: flex; justify-content: space-between; margin: 0 auto;}
 .mylistpage_dropdowngroup{margin: 0; width: 30%; display: flex; justify-content: left; margin-bottom: 30px;}
 .dropdown{margin-right: 10px;}
+.dropdown:last-child{margin-right: 0;} /* 나중에 알아서 삭제하셈 */
 .mylistpage_button{margin-right: 35px;}
 .mylistpage_table{width: 90%; display: flex; justify-content: center; margin:0 auto;}
 .mylistpage_table th, td{text-align: center;}
