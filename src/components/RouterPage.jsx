@@ -9,7 +9,11 @@ import ProblemList from './problem/ProblemList'
 import SolutionPage from './problem/SolutionPage'
 
 import ContestMain from './contest/ContestMain'
-
+import ContestTip from './contest/contestlist/ContestTip'
+import ContestReview from './contest/contestlist/ContestReview'
+import ContestL from './contest/contestlist/ContestL'
+import ContestTipDetail from './contest/contestlist/ContestTipDetail'
+import ContestReviewDetail from './contest/contestlist/ContestReviewDetail'
 import CommunityMain from './community/CommunityMain'
 
 import ProjectMain from './project/ProjectMain'
@@ -39,7 +43,12 @@ const RouterPage = () => {
             <Route path="/problem/:problem_id" element={<SolutionPage />} />
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
+            <Route path="/contest/contest-tip" element={<ContestTip />} />
+            <Route path="/contest/ContestReview" element={<ContestReview />} />
 
+            <Route path="/contest/ContestList" element={<ContestL />} />
+            <Route path="/contest/contest-tip/:post_id" element={<ContestTipDetail />} />
+            <Route path="/contest/contest-review/:post_id" element={<ContestReviewDetail />} />
             <Route path="/community/communitymain" element={<CommunityMain />} />
 
             <Route path="/project/projectmain" element={<ProjectMain />} />

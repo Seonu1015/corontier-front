@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Spinner, Table, Row, Col, InputGroup, Form, Button } from 'react-bootstrap';
 import Pagination from "react-js-pagination";
+import { Container, Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
 
 
 
@@ -23,8 +24,18 @@ const CompetitonList = () => {
     }, []);
 
     return (
-      
+       
         <div className='my-5 p-5'>
+             <Navbar className="justify-content-center">
+                <Container>
+                    <Nav className="me-auto" >
+                    <NavLink href="/contest/contestList">공모전 목록</NavLink>
+                    <NavLink href="/contest/contest-tip">공모전 TIP 게시판</NavLink>
+                    <NavLink href="/contest/ContestReview">공모전 리뷰 게시판</NavLink>
+                        {/* 다른 Nav.Link 요소들 */}
+                    </Nav>
+                </Container>
+        </Navbar>
                 <div className='text-center'>
 
                 <h2>공모전 목록</h2>
