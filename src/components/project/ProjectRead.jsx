@@ -33,10 +33,10 @@ const ProjectRead = () => {
         <div className='top'>
             <div className='page_wrap_prj'>
                 <div className='banner'>
-                    <img src="../images/banner.png" alt="" />
+                    <img src="../../images/banner.png" alt="" />
                 </div>
                 <div className='page_contents_wrap_prj_read'>
-                    <div className='page_contents justify-content-center'>
+                    <div className='page_contents_prj'>
                         <div className='mt-5'>
                             <span className='contents_title'> {post.title} </span>
                         </div>
@@ -95,7 +95,7 @@ const ProjectRead = () => {
                     </div>
                 </div>
 
-                <div className='page_contents_wrap_prj_read'>
+                <div className='page_contents_wrap_prj_comm'>
                     <ProjectComments />
                 </div>
 

@@ -10,8 +10,24 @@
     margin: 80px auto;
 }
 
+.page_contents_wrap_prj_comm {
+    width: 94.8%;
+    margin: 80px auto;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.page_contents_prj {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
 .top {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     border-radius: 0.9375rem;
 }
@@ -21,7 +37,7 @@
 }
 
 .page_wrap_prj {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     height: 100%;
 }

@@ -18,6 +18,7 @@ const ProjectMain = () => {
     const getProject = async () => {
         const url = `/project/prcedures`
         const res = await axios.get(url);
+        setTotal(res.data.total);
         let listAll = res.data.listAll;
         setProjects(listAll);
     }
@@ -92,7 +93,7 @@ const ProjectMain = () => {
 
 
                         <div className='study_plan_wrap_l_prj ms-4'>
-
+                            <h5 className='mb-3'><span style={{ color: "red" }}>✔</span> 총 {total}건 </h5>
                             <div className='planbox_wrap_prj'>
                                 {projects.map(project =>
                                     <NavLink to={`/project/read/${project.post_id}`}>

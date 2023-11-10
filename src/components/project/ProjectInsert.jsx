@@ -12,7 +12,7 @@ const ProjectInsert = () => {
         <div>
             <div className='page_wrap'>
                 <div className='banner'>
-                    <img src="../images/banner.png" alt="" />
+                    <img src="../../images/banner.png" alt="" />
                 </div>
                 <div className='page_contents_wrap_prj'>
                     <div className='page_contents justify-content-center'>
