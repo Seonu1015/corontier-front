@@ -11,7 +11,15 @@ import Question from './problem/Question'
 
 import ContestMain from './contest/ContestMain'
 
-import CommunityMain from './community/CommunityMain'
+import NoticePage from './community/notice/NoticePage'
+import NoticeInsert from './community/notice/NoticeInsert'
+import NoticeUpdate from './community/notice/NoticeUpdate'
+import LoungePage from './community/lounge/LoungePage'
+import ProjectPage from './community/project/ProjectPage'
+import QuestionPage from './community/q&a/QuestionPage'
+import TextbookPage from './community/study/TextbookPage'
+
+
 
 import ProjectMain from './project/ProjectMain'
 import ProjectRead from './project/ProjectRead'
@@ -43,7 +51,15 @@ const RouterPage = () => {
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
 
-            <Route path="/community/communitymain" element={<CommunityMain />} />
+            <Route path="/community/notice/NoticePage" element={<NoticePage />} />
+            <Route path="/community/notice/NoticeInsert" element={<NoticeInsert />} />
+            <Route path="/community/notice/NoticeUpdate/:post_id" element={<NoticeUpdate />} />
+            <Route path="/community/lounge/loungepage" element={<LoungePage />} />
+            <Route path="/community/project/projectpage" element={<ProjectPage />} />
+            <Route path="/community/q&a/questionpage" element={<QuestionPage />} />
+            <Route path="/community/study/textbookpage" element={<TextbookPage />} />
+
+
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
             <Route path="/project/read/:post_id" element={<ProjectRead />} />
