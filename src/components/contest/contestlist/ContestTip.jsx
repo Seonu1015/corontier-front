@@ -1,39 +1,49 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Spinner, Table, Row, Col, InputGroup, Form, Button } from 'react-bootstrap';
+import {  useNavigate } from 'react-router-dom';
+import { Table} from 'react-bootstrap';
 import Pagination from "react-js-pagination";
-
-
+import { Container, Nav, Navbar,NavLink } from 'react-bootstrap';
 
 const ContestTip = () => {
 
     const [ContestTips, setContestTips] = useState([]);
-
+    const navigate = useNavigate();
     const ContestTipcall = async () => {
         const url = `/contest/list.json`;
         const res = await axios(url);
-        console.log(res.data);
         let list = res.data;
         list = list.map(p => p && { ...p, show: false });
+        console.log(list);
         
         setContestTips(list);
     }
 
 
-    useEffect(() => {
+    useEffect(() => { 
         ContestTipcall();
-    }, []);
+                            }, []);
 
-    const onClickTitle = (id) => {
-        const newPosts = ContestTips.map(p => p.post_id === id ? { ...p, show: !p.show } : p);
-        // console.log(newPosts)
-        setContestTips(newPosts);
-    }
+
+    const onClickTitle = (post_Id) => {
+        navigate(`/contest/contest-tip/${post_Id}`); // 상세 페이지로 이동합니다.
+      };
+
 
 
     return (
         <div className='my-5 p-5'>
+
+        <Navbar className="justify-content-center">
+                <Container>
+                    <Nav className="me-auto" >
+                    <NavLink href="/contest/contestList">공모전 목록</NavLink>
+                    <NavLink href="/contest/contest-tip">공모전 TIP 게시판</NavLink>
+                    <NavLink href="/contest/ContestReview">공모전 리뷰 게시판</NavLink>
+                        {/* 다른 Nav.Link 요소들 */}
+                    </Nav>
+                </Container>
+        </Navbar>
         <div className='text-center'>
          <h2>공모전 Tip 게시판 </h2>
         </div>
@@ -48,7 +58,9 @@ const ContestTip = () => {
                                 <tr key={ContestTip.post_id}>
                                 <td>{ContestTip.post_id}</td>   
                                 <td>    
-                                <div onClick={() => onClickTitle(ContestTip.post_id)} style={{ cursor: "pointer" }}>{ContestTip.title}</div>
+                                <div onClick={() => onClickTitle(ContestTip.post_id)} style={{ cursor: 'pointer' }}>
+                  {ContestTip.title}
+                </div>
                                 <td colSpan={4}>
                                     {ContestTip.show && <div>{ContestTip.content}</div>}
                                 </td>

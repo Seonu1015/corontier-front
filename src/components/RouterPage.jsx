@@ -10,6 +10,12 @@ import SolutionPage from './problem/SolutionPage'
 import Question from './problem/Question'
 
 import ContestMain from './contest/ContestMain'
+import ContestTip from './contest/contestlist/ContestTip'
+import ContestReview from './contest/contestlist/ContestReview'
+import ContestL from './contest/contestlist/ContestL'
+import ContestTipDetail from './contest/contestlist/ContestTipDetail'
+import ContestReviewDetail from './contest/contestlist/ContestReviewDetail'
+import CommunityMain from './community/CommunityMain'
 
 import NoticePage from './community/notice/NoticePage'
 import NoticeInsert from './community/notice/NoticeInsert'
@@ -18,8 +24,6 @@ import LoungePage from './community/lounge/LoungePage'
 import ProjectPage from './community/project/ProjectPage'
 import QuestionPage from './community/q&a/QuestionPage'
 import TextbookPage from './community/study/TextbookPage'
-
-
 
 import ProjectMain from './project/ProjectMain'
 import ProjectRead from './project/ProjectRead'
@@ -50,7 +54,13 @@ const RouterPage = () => {
             <Route path="/problem/question" element={<Question />} />
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
-
+            <Route path="/contest/contest-tip" element={<ContestTip />} />
+            <Route path="/contest/ContestReview" element={<ContestReview />} />
+            <Route path="/contest/ContestList" element={<ContestL />} />
+            <Route path="/contest/contest-tip/:post_id" element={<ContestTipDetail />} />
+            <Route path="/contest/contest-review/:post_id" element={<ContestReviewDetail />} />
+              
+            <Route path="/community/communitymain" element={<CommunityMain />} />
             <Route path="/community/notice/NoticePage" element={<NoticePage />} />
             <Route path="/community/notice/NoticeInsert" element={<NoticeInsert />} />
             <Route path="/community/notice/NoticeUpdate/:post_id" element={<NoticeUpdate />} />
@@ -58,8 +68,6 @@ const RouterPage = () => {
             <Route path="/community/project/projectpage" element={<ProjectPage />} />
             <Route path="/community/q&a/questionpage" element={<QuestionPage />} />
             <Route path="/community/study/textbookpage" element={<TextbookPage />} />
-
-
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
             <Route path="/project/read/:post_id" element={<ProjectRead />} />

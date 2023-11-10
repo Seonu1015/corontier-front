@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Spinner, Table, Row, Col, InputGroup, Form, Button } from 'react-bootstrap';
 import Pagination from "react-js-pagination";
-
+import { Container, Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
 
 
 const ContestReview = () => {
@@ -11,7 +11,7 @@ const ContestReview = () => {
     
 
     const [ContestReviews, setContestReviews] = useState([]);
-
+    const navigate = useNavigate();
     const ContestReviewcall = async () => {
         const url = `/contest/reviewlist.json`;
         const res = await axios(url);
@@ -27,15 +27,23 @@ const ContestReview = () => {
         ContestReviewcall();
     }, []);
 
-    const onClickTitle = (id) => {
-        const newPosts = ContestReviews.map(p => p.post_id === id ? { ...p, show: !p.show } : p);
-        // console.log(newPosts)
-        setContestReviews(newPosts);
-    }
-
+    const onClickTitle = (post_id) => {
+        navigate(`/contest/contest-review/${post_id}`); // 상세 페이지로 이동합니다.
+      };
 
     return (
         <div className='my-5 p-5'>
+        <Navbar className="justify-content-center">
+                <Container>
+                    <Nav className="me-auto" >
+                    <NavLink href="/contest/contestList">공모전 목록</NavLink>
+                    <NavLink href="/contest/contest-tip">공모전 TIP 게시판</NavLink>
+                    <NavLink href="/contest/ContestReview">공모전 리뷰 게시판</NavLink>
+                        {/* 다른 Nav.Link 요소들 */}
+                    </Nav>
+                </Container>
+        </Navbar>
+            
         <div className='text-center'>
          <h2>공모전 리뷰 게시판 </h2>
         </div>
@@ -50,10 +58,9 @@ const ContestReview = () => {
                                 <tr key={ContestReview.post_id}>
                                 <td>{ContestReview.post_id}</td>   
                                 <td>    
-                                <div onClick={() => onClickTitle(ContestReview.post_id)} style={{ cursor: "pointer" }}>{ContestReview.title}</div>
-                                <td colSpan={4}>
-                                    {ContestReview.show && <div>{ContestReview.content}</div>}
-                                </td>
+                                <div onClick={() => onClickTitle(ContestReview.post_id)} style={{ cursor: 'pointer' }}>
+                  {ContestReview.title}
+                </div>
                             </td>
                     <td width="20%"><div className='ellipsis'>{ContestReview.user_id}</div></td>
                     <td>{ContestReview.created_at}</td>
