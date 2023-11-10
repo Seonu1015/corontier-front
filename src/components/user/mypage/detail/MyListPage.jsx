@@ -6,11 +6,11 @@ const MyListPage = () => {
     <div className='page_wrap'>
       <div className='mylistpage_wrap'>
         <div className='mylistpage_title'>
-          <p>📖 My List</p>
+          <p>My List</p>
         </div>
         <div className='mylistpage_top'>
           <div className='mylistpage_dropdowngroup'>
-            <Dropdown className='dropdown'>
+            <Dropdown className='mylistpage_dropdown'>
               <Dropdown.Toggle variant='outline-dark'>
                 난이도
               </Dropdown.Toggle>
@@ -20,11 +20,11 @@ const MyListPage = () => {
                 <Dropdown.Item href='#'>Lv. 2</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            <Dropdown>
+            <Dropdown className='mylistpage_dropdown'>
               <Dropdown.Toggle variant='outline-dark'>
                 난이도
               </Dropdown.Toggle>
-              <Dropdown.Menu className='dropdown'>
+              <Dropdown.Menu>
                 <Dropdown.Item href='#'>Lv. 0</Dropdown.Item>
                 <Dropdown.Item href='#'>Lv. 1</Dropdown.Item>
                 <Dropdown.Item href='#'>Lv. 2</Dropdown.Item>
