@@ -22,7 +22,7 @@ const UserUpdatePage = () => {
   const getUser = async () => {
 
     //로그인구현전 예시로 넣은 로그인된 user정보 
-    sessionStorage.setItem('user_id', 1);
+    sessionStorage.setItem('user_id',8);
     //user정보가져오는 쿼리
     //const res = await axios.get(`/users/read/${sessionStorage.getItem("user_id")}`);  
     //setUser(res.data);
@@ -96,12 +96,6 @@ const UserUpdatePage = () => {
           <div className='userupdatepage_updateform'>
             <div className='userupdatepage_col'>
               <form onSubmit={onUpdate}>
-                <InputGroup className='inputgroup mb-2'>
-                  <InputGroup.Text>아이디</InputGroup.Text>
-                  {/* user_id auto_increase되는 index일뿐이라  user를 특정할 login id?컬럼을 만드는지 이메일로 대체하는지? */}
-                  <div className='px-3'><h3>{user_id}</h3> </div>
-                </InputGroup>
-
                 <InputGroup className='inputgroup mb-2'>
                   <InputGroup.Text>비밀번호</InputGroup.Text>
                   <Form.Control name='password' value={password} style={{ display: 'none' }} onChange={onChange} readOnly />

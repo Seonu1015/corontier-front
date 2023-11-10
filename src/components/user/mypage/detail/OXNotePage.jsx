@@ -1,12 +1,27 @@
+import axios from 'axios'
 import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
 import { Button, Table } from 'react-bootstrap'
 
 const OXNotePage = () => {
+  const [oxnotes, setOXNotePage] = useState([]);
+
+  const getOXNotePage = async () => {
+    const res = await axios.get(`/mypage/oxnote.list?user_id=${sessionStorage.getItem("user_id")}`);
+    console.log(res.data);
+    setOXNotePage(res.data);
+  }
+
+  useEffect(()=>{
+    getOXNotePage();
+  },[]);
+
   return (
     <div className='page_wrap'>
       <div className='oxnotepage_wrap'>
         <div className='oxnotepage_title'>
-          <p>📖 오답노트</p>
+          <p>오답노트</p>
         </div>
         <div className='oxnotepage_table'>
           <Table>
@@ -21,66 +36,20 @@ const OXNotePage = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className='oxnotepage_list'>
-                <td>01</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='oxnotepage_difficulty_hard'>
-                    <p className='oxnotepage_difficultytext'>Lv. 2</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
-              <tr className='oxnotepage_list'>
-                <td>02</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='oxnotepage_difficulty_easy'>
-                    <p className='oxnotepage_difficultytext'>Lv. 0</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
-              <tr className='oxnotepage_list'>
-                <td>03</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='oxnotepage_difficulty_normal'>
-                    <p className='oxnotepage_difficultytext'>Lv. 1</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
-              <tr className='oxnotepage_list'>
-                <td>04</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='oxnotepage_difficulty_normal'>
-                    <p className='oxnotepage_difficultytext'>Lv. 1</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
-              <tr className='oxnotepage_list'>
-                <td>05</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='oxnotepage_difficulty_hard'>
-                    <p className='oxnotepage_difficultytext'>Lv. 2</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
+              {oxnotes.map(o =>
+                <tr className='oxnotepage_list'>
+                  <td>{o.note_id}</td>
+                  <td>{o.title}</td>
+                  <td>O</td>
+                  <td>
+                    <div className='oxnotepage_difficulty_hard'>
+                      <p className='oxnotepage_difficultytext'>{o.grade_id}</p>
+                    </div>
+                  </td>
+                  <td>2023.11.01</td>
+                  <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button> <Button>노트보기</Button></td>
+                </tr>
+              )}
             </tbody>
           </Table>
         </div>
