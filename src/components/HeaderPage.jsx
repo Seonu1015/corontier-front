@@ -13,11 +13,11 @@ const HeaderPage = () => {
                         <NavLink href="/problem/main">Problems</NavLink>
                         <NavLink href="/project/projectmain">Projects</NavLink>
                         <NavDropdown title="Community" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/community/CommunityMain">공지사항</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">라운지</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">스터디&프로젝트</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.4">Q&A</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.5">교재&강의추천</NavDropdown.Item>
+                            <NavDropdown.Item href="/community/notice/NoticePage">공지사항</NavDropdown.Item>
+                            <NavDropdown.Item href="/community/lounge/loungepage">라운지</NavDropdown.Item>
+                            <NavDropdown.Item href="/community/project/projectpage">스터디&프로젝트</NavDropdown.Item>
+                            <NavDropdown.Item href="/community/q&a/questionpage">Q&A</NavDropdown.Item>
+                            <NavDropdown.Item href="/community/study/textbookpage">교재&강의추천</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Contest" id="basic-nav-dropdown">
                             <NavDropdown.Item href="/contest/contestmain">공모전</NavDropdown.Item>

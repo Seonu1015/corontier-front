@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Button, Pagination, Table } from 'react-bootstrap'
+import { Button, Table } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import CommunityMain from '../CommunityMain';
 
 
 const NoticePage = () => {
@@ -9,7 +11,7 @@ const NoticePage = () => {
     const navi = useNavigate();
 
     const getPosts = async () => {
-        const url='/posts/list.json';
+        const url = '/community/noticelist.json';
         const res = await axios(url);
         let list = res.data;
         list = list.map(p => p && { ...p, show: false });
@@ -28,17 +30,23 @@ const NoticePage = () => {
     }
 
     return (
-        <div className='my-5 p-5'>
-            <div className='text-center'>
+        <>
+            <div className='page_contents'>
+                <Container>
+                    <CommunityMain />
+                </Container>
+            </div>
+            <div className='text-center p-5'>
                 <h2>공지사항</h2>
             </div>
             <div className='text-end'>
-                <Button onClick={() => navi('/community/notice/insert')}>등록하기</Button>
+                <Button onClick={() => navi('/community/notice/NoticeInsert')}>등록하기</Button>
             </div>
+            <hr />
             <Table striped hover className='text-center my-3'>
                 <thead>
                     <tr>
-                        <th>NO</th>
+                        <th>분류</th>
                         <th>제목</th>
                         <th>작성자</th>
                         <th>작성일</th>
@@ -48,15 +56,22 @@ const NoticePage = () => {
                 <tbody>
                     {posts.map(post =>
                         <tr key={post.post_id}>
-                            <td>{post.post_id}</td>
+                            <td>{post.category}</td>
                             <td>
-                                <div onClick={() => onClickTitle(post.post_id)} style={{cursor: "pointer"}}>{post.title}</div>
+                                <div onClick={() => onClickTitle(post.post_id)} style={{ cursor: "pointer" }}>{post.title}</div>
                                 <td colSpan={4}>
-                                    {post.show && <div>{post.content}</div>}
+                                    {post.show &&
+                                        <>
+                                            {post.content}
+                                            <div className='text-end'>
+                                                <Button onClick={() => navi(`/community/notice/NoticeUpdate/${post.post_id}`)} variant='success' size='sm'>수정하기</Button>
+                                            </div>
+                                        </>
+                                    }
                                 </td>
                             </td>
-                            <td>{post.user_id}</td>
-                            <td>{post.created_at}</td>
+                            <td>{post.nickname}</td>
+                            <td>{post.fmtdate}</td>
                             <td>{post.view_cnt}</td>
                         </tr>
                     )}
@@ -74,8 +89,7 @@ const NoticePage = () => {
             {/*onChange={onChangePage} */}
             {/* } */}
 
-        </div>
-
+        </>
     )
 }
 
