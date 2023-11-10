@@ -7,6 +7,7 @@ import ProblemPage from './problem/ProblemPage'
 import ProblemInsert from './problem/ProblemInsert'
 import ProblemList from './problem/ProblemList'
 import SolutionPage from './problem/SolutionPage'
+import Question from './problem/Question'
 
 import ContestMain from './contest/ContestMain'
 import ContestTip from './contest/contestlist/ContestTip'
@@ -15,6 +16,14 @@ import ContestL from './contest/contestlist/ContestL'
 import ContestTipDetail from './contest/contestlist/ContestTipDetail'
 import ContestReviewDetail from './contest/contestlist/ContestReviewDetail'
 import CommunityMain from './community/CommunityMain'
+
+import NoticePage from './community/notice/NoticePage'
+import NoticeInsert from './community/notice/NoticeInsert'
+import NoticeUpdate from './community/notice/NoticeUpdate'
+import LoungePage from './community/lounge/LoungePage'
+import ProjectPage from './community/project/ProjectPage'
+import QuestionPage from './community/q&a/QuestionPage'
+import TextbookPage from './community/study/TextbookPage'
 
 import ProjectMain from './project/ProjectMain'
 import ProjectRead from './project/ProjectRead'
@@ -31,6 +40,7 @@ import KakaoRedirectHandler from './user/KakaoRedirectHandler';import AdminPage 
 import AdminManagement from './admin/admin_detail/AdminManagement'
 import Myactive from './admin/admin_detail/Myactive'
 
+import ProjectInsert from './project/ProjectInsert'
 
 const RouterPage = () => {
     return (
@@ -41,24 +51,34 @@ const RouterPage = () => {
             <Route path="/problem/list" element={<ProblemList />} />
             <Route path="/problem/insert" element={<ProblemInsert />} />
             <Route path="/problem/:problem_id" element={<SolutionPage />} />
+            <Route path="/problem/question" element={<Question />} />
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
             <Route path="/contest/contest-tip" element={<ContestTip />} />
             <Route path="/contest/ContestReview" element={<ContestReview />} />
-
             <Route path="/contest/ContestList" element={<ContestL />} />
             <Route path="/contest/contest-tip/:post_id" element={<ContestTipDetail />} />
             <Route path="/contest/contest-review/:post_id" element={<ContestReviewDetail />} />
+              
             <Route path="/community/communitymain" element={<CommunityMain />} />
+            <Route path="/community/notice/NoticePage" element={<NoticePage />} />
+            <Route path="/community/notice/NoticeInsert" element={<NoticeInsert />} />
+            <Route path="/community/notice/NoticeUpdate/:post_id" element={<NoticeUpdate />} />
+            <Route path="/community/lounge/loungepage" element={<LoungePage />} />
+            <Route path="/community/project/projectpage" element={<ProjectPage />} />
+            <Route path="/community/q&a/questionpage" element={<QuestionPage />} />
+            <Route path="/community/study/textbookpage" element={<TextbookPage />} />
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
             <Route path="/project/read/:post_id" element={<ProjectRead />} />
+            <Route path="/project/insert" element={<ProjectInsert />} />
             
             <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler/> }/>
 
             <Route path="/admin/adminpage" element={<AdminPage />} >
                 <Route path='' element={<AdminManagement/>}></Route>            
-                <Route path='myactive' element={<Myactive/>}></Route>            
+                <Route path='myactive' element={<Myactive/>}></Route>
+                <Route path='problemlist' element={<ProblemList/>}></Route>
             </Route>
     
             <Route path="/user/mypage" element={<Mypage />} >

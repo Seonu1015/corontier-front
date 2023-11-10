@@ -1,7 +1,22 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react'
 import { Button, Table } from 'react-bootstrap'
+import axios from 'axios';
 
 const OXNotePage = () => {
+  const [notes,setNotes] =useState([]);
+
+  const getNotes=async()=>{
+    //오답노트에 해당되는 QUIZ가져오기
+    //api임의작성
+    const user_id = sessionStorage.getItem('user_id')
+    const res = await axios.get('/oxnote.list',user_id)
+    //어떻게 정보가져올지....
+  }
+  useEffect(()=>{
+
+  },[])
   return (
     <div className='page_wrap'>
       <div className='oxnotepage_wrap'>
