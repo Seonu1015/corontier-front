@@ -76,7 +76,7 @@ const Posts = () => {
       
       <div>
       <Dropdown onSelect={handleSelect}>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
+        <Dropdown.Toggle variant="success" id="dropdown-basic" className='post-categ-dropdownbtn'>
           {getMenutype(menu)}
         </Dropdown.Toggle>
         
