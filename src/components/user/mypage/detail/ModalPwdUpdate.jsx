@@ -39,6 +39,7 @@ const ModalPwdUpdate = ({user,setUser}) => {
         show: true,
         message: '새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다',
       });
+      
     }else {
       //현재 비밀번호확인과정       
       const res = await axios(`/users/read/${user.user_id}`);
@@ -57,9 +58,10 @@ const ModalPwdUpdate = ({user,setUser}) => {
             message: '비밀번호가 변경되었습니다.',
             action:()=>{
               setUser({...user,password:newPassword1});
-              handleClose(); //수정완료시 비밀번호 변경 전체 모달창 close();
             }
           });
+          //수정완료시 비밀번호 변경 전체 모달창 close();
+          handleClose();
         }else {
           setBox({
             show: true,
