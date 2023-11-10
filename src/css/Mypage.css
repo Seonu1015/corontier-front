@@ -1,15 +1,31 @@
-.side-bar {background-color: #f0f0f0; width: 20%; display: flex; flex-direction: column; height: 100%;  padding: 10px;}
+/* MyPage */
+.mypage_wrap {display: flex; max-width: 90rem; flex-direction: row; justify-content: center; padding: 0 1.25rem; margin: 0 auto;}
+.mypage_contents_wrap {flex-grow: 1; padding-bottom: 40px; padding-left: 30px; margin-top: 48px;}
+
+
+/* Sidebar */
+/* .side-bar {background-color: #f0f0f0; width: 20%; display: flex; flex-direction: column; height: 100%;  padding: 10px;}
 .side_userimg {display: flex; justify-content: center; margin: 20px;}
 .side_userid p {text-align: center; font-weight: 700; font-size: 1.5rem;}
 .contents {background-color: darkgray; width: 100%;}
 .side_bar_menu {display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 20px}
 .side_bar_menu button {width: 90%; margin-bottom: 10px;}
-.side_bar_menu ul {margin: 0 auto; padding: 0;}
+.side_bar_menu ul {margin: 0 auto; padding: 0;} */
+
+.mypage_sidebar_wrap {margin-top: 3rem;}
+.mypage_sidebar_box {width: 18rem; border: 0.0625rem solid #d7e2eb; border-radius: 0.9375rem; margin-bottom: 6.0625rem; background-color: #fff;}/*height: 100%; 주면 사이드 박스 높이 채워서 가능*/
+.mypage_sidebar_ol {padding: 0 1.5rem; margin-bottom: initial;}
+.activities_menagement, .account_menagement {margin-bottom: 2.5rem; font-size: inherit;}
+
+.mypage_account {margin-top: 2.5rem; margin-bottom: 1.0625rem; color: #9b9b9b; font-size: .9375rem; font-weight: 700; line-height: 1.375rem;}
+
+.activities_menagement ol, .account_menagement ol {padding-left: 0;}
+.activities_menagement ol a, .account_menagement ol a {padding: 0.6875rem 1rem; border-radius: 0.25rem;  font-size: 1rem; line-height: 1.4375rem; display: flex; flex-direction: column; color: #666;}
+.activities_menagement a:first-child {background: #e6f2ff; font-weight: bold;}
 
 /* OXNOTEPAGE */
 .oxnotepage_wrap{width: 100%;}
-.oxnotepage_title{width: 100%; margin: 2%;}
-.oxnotepage_title p{padding-left: 2%; font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
+.oxnotepage_title{width: 100%; text-align: center; margin-bottom: 3%; font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500;}
 .oxnotepage_table{width: 90%; display: flex; justify-content: center; margin:0 auto;}
 .oxnotepage_table th, td{text-align: center;}
 .oxnotepage_table td{vertical-align: middle;}
@@ -26,7 +42,6 @@
 .mylistpage_title p{padding-left: 2%; font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
 .mylistpage_top{width: 90%; display: flex; justify-content: space-between; margin: 0 auto;}
 .mylistpage_dropdowngroup{margin: 0; width: 30%; display: flex; justify-content: left; margin-bottom: 30px;}
-.dropdown{margin-right: 10px;}
 .mylistpage_button{margin-right: 35px;}
 .mylistpage_table{width: 90%; display: flex; justify-content: center; margin:0 auto;}
 .mylistpage_table th, td{text-align: center;}
@@ -51,5 +66,12 @@
 .userupdatepage_col .input-group-text { width:35%;}
 .updatebutton_group{text-align: center; margin: 7%;}
 
-
-
+/* MyQuizPage */
+.myquizpage_wrap{width: 100%;}
+.myquizpage_title{width: 100%; margin: 2%;}
+.myquizpage_title p{padding-left: 2%; font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
+.myquizpage_recentquizgroup{width: 90%; margin: 0 auto; background-color:#f0f0f0; border-radius: 15px;}
+.myquizpage_recentquiz{width: 100%; margin: 0 auto; padding: 30px;}
+.myquizpage_recenttable{margin: 0 !important;}
+.myquizpage_recentquiz th, td{text-align: center;}
+.myquizpage_recentquiz td{height: 40px;}
