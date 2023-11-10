@@ -18,6 +18,7 @@ const ProjectMain = () => {
     const getProject = async () => {
         const url = `/project/prcedures`
         const res = await axios.get(url);
+        setTotal(res.data.total);
         let listAll = res.data.listAll;
         setProjects(listAll);
     }
@@ -31,7 +32,7 @@ const ProjectMain = () => {
                 <img src="../images/banner.png" alt="" />
             </div>
 
-            <div className='page_contents_wrap'>
+            <div className='page_contents_wrap_prj'>
 
                 {/* <div className='contents_title_box'>
                     <p className='contents_title'> 프로젝트 공유하기 </p>
@@ -52,7 +53,7 @@ const ProjectMain = () => {
                 <div className='page_contents'>
                     <div className='study_plan_wrap justify-content-center'>
 
-                        <div className='study_plan_wrap_r_prj'>
+                        <div className='study_plan_wrap_r_prj'> 
                             <div className='study_plan_userdata'>
                                 <div className='userdata_loggeding'>
 
@@ -79,16 +80,26 @@ const ProjectMain = () => {
                                     )}
                                 </div>
                             </div>
+
+                            <div className='study_plan_recommendCourse'>
+                                <h3 className='title'> 개발 인원 </h3>
+                                <div>
+                                    <input type='checkbox'/> 개인
+                                    <input type='checkbox'/> 팀
+                                </div>
+                            </div>
+
                         </div>
 
 
                         <div className='study_plan_wrap_l_prj ms-4'>
-
+                            <h5 className='mb-3'><span style={{ color: "red" }}>✔</span> 총 {total}건 </h5>
                             <div className='planbox_wrap_prj'>
                                 {projects.map(project =>
                                     <NavLink to={`/project/read/${project.post_id}`}>
                                         <div className='study_plan_box_prj' key={project.post_id}>
                                             <h3>{project.title}</h3>
+                                            <p>{project.intro}</p>
                                         </div>
                                     </NavLink>
                                 )}
