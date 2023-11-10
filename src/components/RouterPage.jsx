@@ -7,6 +7,7 @@ import ProblemPage from './problem/ProblemPage'
 import ProblemInsert from './problem/ProblemInsert'
 import ProblemList from './problem/ProblemList'
 import SolutionPage from './problem/SolutionPage'
+import Question from './problem/Question'
 
 import ContestMain from './contest/ContestMain'
 
@@ -31,7 +32,11 @@ import MyActivityPage from './user/mypage/detail/MyActivityPage'
 import OXNotePage from './user/mypage/detail/OXNotePage'
 import MyListPage from './user/mypage/detail/MyListPage'
 import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
-import KakaoRedirectHandler from './user/KakaoRedirectHandler';
+import KakaoRedirectHandler from './user/KakaoRedirectHandler';import AdminPage from './admin/AdminPage'
+import AdminManagement from './admin/admin_detail/AdminManagement'
+import Myactive from './admin/admin_detail/Myactive'
+
+import ProjectInsert from './project/ProjectInsert'
 
 const RouterPage = () => {
     return (
@@ -41,7 +46,8 @@ const RouterPage = () => {
             <Route path="/problem/main" element={<ProblemPage />} />
             <Route path="/problem/list" element={<ProblemList />} />
             <Route path="/problem/insert" element={<ProblemInsert />} />
-            <Route path="/problem/:problem_id" element={<SolutionPage/>}/>
+            <Route path="/problem/:problem_id" element={<SolutionPage />} />
+            <Route path="/problem/question" element={<Question />} />
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
 
@@ -57,8 +63,15 @@ const RouterPage = () => {
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
             <Route path="/project/read/:post_id" element={<ProjectRead />} />
+            <Route path="/project/insert" element={<ProjectInsert />} />
             
             <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler/> }/>
+
+            <Route path="/admin/adminpage" element={<AdminPage />} >
+                <Route path='' element={<AdminManagement/>}></Route>            
+                <Route path='myactive' element={<Myactive/>}></Route>
+                <Route path='problemlist' element={<ProblemList/>}></Route>
+            </Route>
     
             <Route path="/user/mypage" element={<Mypage />} >
                 <Route path='' element={<MyQuizPage/>}></Route>

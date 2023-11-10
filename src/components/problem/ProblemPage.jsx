@@ -1,9 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import Pagination from 'react-js-pagination';
 import '../../css/Pagination.css';
+import { useLocation, Link, NavLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ProblemPage = () => {
+    const [problems, setProblems] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const navi = useNavigate();
+
+    const size = 20;
+    const location = useLocation();
+    const search = new URLSearchParams(location.search);
+    const page = search.get("page") ? parseInt(search.get("page")) : 1;
+
+    const getProblems = async () => {
+        setLoading(true);
+        const res = await axios(`/problem/list.json?page=${page}&size=${size}`);
+        const list = res.data.list;
+        for (let i = 0; i < list.length; i++) {
+            const buffer = list[i].content.data;
+            const uintArray = new Uint8Array(buffer);
+            const content = new TextDecoder().decode(uintArray);
+            list[i].content = content;
+        }
+        // console.log(list);
+        setProblems(list);
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        getProblems();
+    }, [page]);
+
+    const onClickLink = (problem_id) => {
+        window.location.href="/problem/" + problem_id;
+    }
+
     return (
         <div className='page_wrap'>
             <div className='banner'>
@@ -51,9 +85,13 @@ const ProblemPage = () => {
                                         난이도
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href='#/action-1'>푼 문제</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-2'>안 푼 문제</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-3'>다른 사람 풀이 확인 문제</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-0'>Lv.0</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-1'>Lv.1</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-2'>Lv.2</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-3'>Lv.3</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-4'>Lv.4</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-5'>Lv.5</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-6'>Lv.6</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
 
@@ -62,20 +100,21 @@ const ProblemPage = () => {
                                         언어
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href='#/action-1'>푼 문제</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-2'>안 푼 문제</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-3'>다른 사람 풀이 확인 문제</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-1'>javascript</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-2'>python</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-3'>java</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-4'>C++</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
 
                                 <Dropdown className='Dropdown'>
                                     <Dropdown.Toggle variant='outline-dark' className='title_r'>
-                                        기출문제 모음
+                                        등록한 문제
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href='#/action-1'>푼 문제</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-2'>안 푼 문제</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-3'>다른 사람 풀이 확인 문제</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-1'>1</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-2'>2</Dropdown.Item>
+                                        <Dropdown.Item href='#/action-3'>3</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </div>
@@ -84,7 +123,7 @@ const ProblemPage = () => {
                                 <table className='test_table'>
                                     <thead>
                                         <tr>
-                                            <th className='status'>상태</th>
+                                            {/* <th className='status'>상태</th> */}
                                             <th className='title'>제목</th>
                                             <th className='level'>난이도</th>
                                             <th className='finished_count'>완료한 사람</th>
@@ -93,18 +132,17 @@ const ProblemPage = () => {
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                        </tr>
+                                        {problems.map(p =>
+                                            <tr key={p.problem_id}>
+                                                {/* <td></td> */}
+                                                <td>
+                                                    <NavLink onClick={()=>onClickLink(p.problem_id)}>{p.title}</NavLink>
+                                                </td>
+                                                <td>{p.grade}</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        )}
                                     </tbody>
                                 </table>
                             </div>
@@ -177,7 +215,7 @@ const ProblemPage = () => {
                                     <a href="">홍길동님께 추천하는 포지션 ▸</a>
                                 </h3>
                             </div>
-                        </div>
+                        </div>;->
                     </div>
                 </div>
 

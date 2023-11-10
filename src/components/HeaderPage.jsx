@@ -48,6 +48,7 @@ const HeaderPage = () => {
                         }
                         
                         {/** mypage,회원가입,로그인완성 전까지 사용할 링크 & 작성완료이후 삭제예정 */}
+                        <NavLink href="/admin/adminpage">adminpage</NavLink>
                         <NavLink href="/user/mypage">mypage</NavLink>
                         <NavLink href="/user/signup">Sign up</NavLink>
                         <NavLink href="/user/signin">Sign in</NavLink>
