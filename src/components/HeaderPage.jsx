@@ -6,11 +6,11 @@ const HeaderPage = () => {
     return (
         <Navbar className="navbar">
             <Container>
-                <Navbar.Brand href="/">LOGO</Navbar.Brand>
+                <Navbar.Brand href="/"><img src='../../images/logo.png' width="50" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <NavLink href="/problem/main">Problems</NavLink>
+                        <NavLink href="/problem">Problems</NavLink>
                         <NavLink href="/project/projectmain">Projects</NavLink>
                         <NavDropdown title="Community" id="basic-nav-dropdown">
                             <NavDropdown.Item href="/community/notice/NoticePage">공지사항</NavDropdown.Item>

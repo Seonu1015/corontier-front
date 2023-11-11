@@ -166,7 +166,7 @@ const SolutionPage = () => {
                             {title}
                         </div>
                         <Row>
-                            <Col xs={6} sm={6} md={6} className='border-end border-dark-subtle scrollbar' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px", overflow: "auto", height: "750px" }}>
+                            <Col xs={6} sm={6} md={6} className='border-end border-dark-subtle scrollbar' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px", overflow: "auto", height: "751px" }}>
                                 <div className='my-3 mx-3'>
                                     <p>Description</p><br />
                                     <p style={{ fontSize: "16px" }} dangerouslySetInnerHTML={{ __html: content }} />
