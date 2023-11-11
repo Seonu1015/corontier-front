@@ -1,13 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { BoxContext } from '../../BoxContext';
-import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Badge, Button, Col, Row, Table } from 'react-bootstrap';
+import { Badge, Col, Row, Table } from 'react-bootstrap';
 import Pagination from 'react-js-pagination';
 import '../../../css/Pagination.css';
 
 const SolutionList = () => {
-    const { setBox } = useContext(BoxContext);
     const [solutions, setSolutions] = useState([]);
     const [loading, setLoading] = useState(false);
     const [total, setTotal] = useState(0);
@@ -45,46 +43,50 @@ const SolutionList = () => {
     }, [page]);
 
     return (
-        <div >
-            <Table striped hover className='problemList text-center'>
-                <thead>
-                    <tr>
-                        <th>문제</th>
-                        <th width="8%">상태</th>
-                        <th width="8%">난이도</th>
-                        <th width="18%">푼 날짜</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {solutions.map(s =>
-                        <React.Fragment key={s.sol_id}>{/* 키 오류 해결을 위해 코드 추가 */}
+        <div>
+            <Row className='m-5'>
+                <Col>
+                    <Table striped hover className='problemList text-center'>
+                        <thead>
                             <tr>
-                                <td className='text-start ps-5'>
-                                    <div onClick={() => onTitleClick(s.sol_id)} style={{ cursor: "pointer" }}>{s.p_title}</div>
-                                    <div style={{ fontSize: "70%" }}>{s.tag_names}</div>
-                                </td>
-                                <td style={{ verticalAlign: "middle", fontSize: "1.2rem" }}>
-                                    {s.complete === 1 ? <Badge pill bg="success">성공</Badge> : <Badge pill bg="danger">실패</Badge>}
-                                </td>
-                                <td style={{ verticalAlign: "middle" }}><Badge bg="secondary">{s.grade}</Badge></td>
-                                <td style={{ verticalAlign: "middle" }}>
-                                    <div>{s.s_fmt_created}</div>
-                                    <div style={{ fontSize: "70%" }}>수정 : {s.s_fmt_updated}</div>
-                                </td>
+                                <th>문제</th>
+                                <th width="8%">상태</th>
+                                <th width="8%">난이도</th>
+                                <th width="18%">푼 날짜</th>
                             </tr>
-                        </React.Fragment>
-                    )}
-                </tbody>
-            </Table>
-            <Pagination
-                activePage={page}
-                itemsCountPerPage={size}
-                totalItemsCount={total}
-                pageRangeDisplayed={10}
-                prevPageText={'‹'}
-                nextPageText={'›'}
-                onChange={onChangePage} // 이벤트 핸들러 추가
-            />
+                        </thead>
+                        <tbody>
+                            {solutions.map(s =>
+                                <React.Fragment key={s.sol_id}>{/* 키 오류 해결을 위해 코드 추가 */}
+                                    <tr>
+                                        <td className='text-start ps-5'>
+                                            <div onClick={() => onTitleClick(s.sol_id)} style={{ cursor: "pointer" }}>{s.p_title}</div>
+                                            <div style={{ fontSize: "70%" }}>{s.tag_names}</div>
+                                        </td>
+                                        <td style={{ verticalAlign: "middle", fontSize: "1.2rem" }}>
+                                            {s.complete === 1 ? <Badge pill bg="success">성공</Badge> : <Badge pill bg="danger">실패</Badge>}
+                                        </td>
+                                        <td style={{ verticalAlign: "middle" }}><Badge bg="secondary">{s.grade}</Badge></td>
+                                        <td style={{ verticalAlign: "middle" }}>
+                                            <div>{s.s_fmt_created}</div>
+                                            <div style={{ fontSize: "70%" }}>수정 : {s.s_fmt_updated}</div>
+                                        </td>
+                                    </tr>
+                                </React.Fragment>
+                            )}
+                        </tbody>
+                    </Table>
+                    <Pagination
+                        activePage={page}
+                        itemsCountPerPage={size}
+                        totalItemsCount={total}
+                        pageRangeDisplayed={10}
+                        prevPageText={'‹'}
+                        nextPageText={'›'}
+                        onChange={onChangePage} // 이벤트 핸들러 추가
+                    />
+                </Col>
+            </Row>
         </div>
     );
 }
