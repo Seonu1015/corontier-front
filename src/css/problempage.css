@@ -10,6 +10,7 @@
 .study_plan_box{width: 32%; height: 220px; margin-right: 2%; background: #acacac;}
 .study_plan_box:last-child{margin-right: 0;}
 
+
 /* Challengesstyle_SearchForm */
 .Challengesstyle_SearchForm{margin-bottom: 8px;}
 .SearchForm{width: 100%; height: 3.5rem; position: relative;}
@@ -32,7 +33,7 @@
 .test_table_wrap .test_table {background-color: rgb(255, 255, 255); border: 0.0625rem solid rgb(215, 226, 235); border-radius: 0.25rem;} /* overflow: hidden;} */
 .test_table {width: 100%; table-layout: fixed; border-collapse: collapse;}
 .test_table tr {border-bottom: 0.0625rem solid rgb(215, 226, 235); margin: 0; color: inherit; font: inherit;}
-.test_table tbody td {padding: 0.5625rem 0.75rem;} 
+.test_table tbody td {padding: 0.9rem 0.75rem;} 
 .test_table thead th {padding: 0.5625rem 0.75rem; text-align: center; font-weight: 700; font-size: 0.75rem; line-height: 150%; color: rgb(152, 168, 185);}
 .test_table .status {width: 5%;}
 .test_table .title {width: 65%;}
@@ -64,3 +65,25 @@
 
 .study_plan_recommendJob {display: block; padding: 1.5rem; border-top: 0.0625rem solid rgb(215, 226, 235);}
 .study_plan_recommendJob .title a {display: flex; -webkit-box-align: center; align-items: center; font-weight: 700; font-size: 1rem; color: rgb(0, 0, 0); line-height: 150%; letter-spacing: -0.009em;}
+
+/* SolutionPage */
+.sol_btn_wrap {background: #1e1e1e; color: #ffffff; font-size: 30px; display: flex; justify-content: space-between; padding: 20px; border-top: 1px solid#fff;}
+.custom_link {color: #ffffff;}
+
+/* Question */
+.question_wrap {padding: 2.5rem; display: flex; max-width: 94.8%; flex-direction: row; justify-content: center; padding: 0 1.25rem; margin: 0 auto;}
+.question_contents {width: 100%;}
+.btn_back {cursor: pointer; display: inline-block; margin-bottom: 2.5rem; color: #000; vertical-align: top; border-color: #EEEBFF;}
+
+.question_new_wrap {padding-bottom: 1rem; border-bottom: 1px dashed #D7E2EB;}
+.q_form_group {margin-bottom: 1rem; width: 70%;}
+.q_required {font-size: 14px; line-height: 1.5; display: inline-block; margin-bottom: 2px;}
+.q_required span {color: red;}
+
+.q_editor_body{margin-bottom: 2rem;}
+
+.q_btn_wrap {display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start;}
+.q_btn {margin-right: 5px;}
+.q_btn:nth-child(1), .q_btn:nth-child(2) {background: #ccc; border: none; color: #000;}
+.q_btn:last-child {margin-right: 0;}
+
