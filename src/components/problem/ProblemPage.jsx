@@ -122,6 +122,10 @@ const ProblemMain = () => {
     }, [])
 
     return (
+        <div className='page_wrap'>
+            <div className='banner'>
+                <img src="../images/banner.png" alt="" />
+            </div>
         <div className='page_contents_wrap'>
             <Container>
                 <Row>
@@ -239,15 +243,15 @@ const ProblemMain = () => {
                                     <CardBody className='mx-3'>
                                         <Row>
                                             <Col>
-                                                <DonutChart clearcnt={clearcnt}/>
+                                                <DonutChart clearcnt={clearcnt} />
                                             </Col>
                                             <Col md={4}>
-                                                <Row className='mb-2'><Col style={{color:"#79c7e3"}}><strong>Lv.0</strong></Col><Col className='text-end'>{clearcnt.lv0}개</Col></Row>
-                                                <Row className='mb-2'><Col style={{color:"#12939a"}}><strong>Lv.1</strong></Col><Col className='text-end'>{clearcnt.lv1}개</Col></Row>
-                                                <Row className='mb-2'><Col style={{color:"#ef5d28"}}><strong>Lv.2</strong></Col><Col className='text-end'>{clearcnt.lv2}개</Col></Row>
-                                                <Row className='mb-2'><Col style={{color:"#ff9833"}}><strong>Lv.3</strong></Col><Col className='text-end'>{clearcnt.lv3}개</Col></Row>
-                                                <Row className='mb-2'><Col style={{color:"#1a3177"}}><strong>Lv.4</strong></Col><Col className='text-end'>{clearcnt.lv4}개</Col></Row>
-                                                <Row><Col style={{color:"#12939a"}}><strong>Lv.5</strong></Col><Col className='text-end'>{clearcnt.lv5}개</Col></Row>
+                                                <Row className='mb-2'><Col style={{ color: "#79c7e3" }}><strong>Lv.0</strong></Col><Col className='text-end'>{clearcnt.lv0}개</Col></Row>
+                                                <Row className='mb-2'><Col style={{ color: "#12939a" }}><strong>Lv.1</strong></Col><Col className='text-end'>{clearcnt.lv1}개</Col></Row>
+                                                <Row className='mb-2'><Col style={{ color: "#ef5d28" }}><strong>Lv.2</strong></Col><Col className='text-end'>{clearcnt.lv2}개</Col></Row>
+                                                <Row className='mb-2'><Col style={{ color: "#ff9833" }}><strong>Lv.3</strong></Col><Col className='text-end'>{clearcnt.lv3}개</Col></Row>
+                                                <Row className='mb-2'><Col style={{ color: "#1a3177" }}><strong>Lv.4</strong></Col><Col className='text-end'>{clearcnt.lv4}개</Col></Row>
+                                                <Row><Col style={{ color: "#12939a" }}><strong>Lv.5</strong></Col><Col className='text-end'>{clearcnt.lv5}개</Col></Row>
                                             </Col>
                                         </Row>
                                     </CardBody>
@@ -259,6 +263,7 @@ const ProblemMain = () => {
                     </Col>
                 </Row>
             </Container >
+        </div>
         </div>
     )
 }
