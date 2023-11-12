@@ -43,6 +43,7 @@ const RouterPage = () => {
                 <Route path="oxnote" element={<OXNotePage />} />               
                 <Route path="mylist" element={<MyListPage />} />               
                 <Route path="userupdate" element={<UserUpdatePage />} />               
+                <Route path="analysis"  />               
             </Route>
             <Route path="/user/signin" element={<SigninPage />} />
             <Route path="/user/signup" element={<SignupPage />} />
