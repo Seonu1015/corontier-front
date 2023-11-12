@@ -13,8 +13,8 @@ const KakaoRedirectHandler = () => {
       let code = params.get("code");
       const data = queryString.stringify({
         grant_type: "authorization_code",
-        client_id: "----",
-        redirect_uri: "http://localhost:3000/oauth/callback/kakao",
+        client_id: "edb2e3648fa374acbe7be705a5474a8a",
+        redirect_uri: "http://localhost:5000/kakaologin/callback",
         code: code,
       });
 

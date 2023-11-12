@@ -8,7 +8,7 @@ import { Container, Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
 
 
 const CompetitonList = () => {
-
+    const [scrMap, setscrMap] = useState({}); // likesMap 상태 추가
     const [competions, setCompetions] = useState([]);
 
     const getCompes = async () => {
@@ -18,6 +18,51 @@ const CompetitonList = () => {
         setCompetions(res.data.list);
 
     }
+
+    const getSCRCount = async () => {
+        const res = await axios.get("/contest/getPostLikeCount.json"); // 경로변경 
+        const contestTipSCRs = res.data;
+        console.log(res.data)
+        const newLikesMap = {};
+        contestTipSCRs.forEach(like => {
+            newLikesMap[like.post_id] = like.scr_count;
+        });
+        setscrMap(newLikesMap); // likesMap 업데이트
+    };
+
+
+    const onClickInsertSCR = async (rid) => {
+   
+        const res = await axios.post('/contest/postlikeinsert', {
+            user_id: sessionStorage.getItem("user_id"), // user_id 수정
+            post_id : rid
+  
+        });
+        if (res.data === 1) {
+            getSCRCount();
+     
+        }
+    }
+
+
+    const onClickDeleteSCR  = async (rid) => {
+ 
+        const res = await axios.post('/contest/postlikedelete', {
+            user_id: sessionStorage.getItem("user_id"), // user_id 수정
+            post_id : rid
+  
+        });
+        if (res.data === 1) {
+          getSCRCount();
+     
+        }
+    }  /// 부트스트랩아이콘이안되서 버튼하나더추가 아이콘추가시 토글로 바꿀예정
+
+
+
+
+
+
 
     useEffect(() => {
         getCompes();
@@ -52,12 +97,13 @@ const CompetitonList = () => {
                 </thead>
                    <tbody>
                     {competions.map(competion =>
-                        <tr key={competion.cid}>
-                            <td>{competion.cid}</td>
+                        <tr key={competion.contest_id}>
+                            <td>{competion.contest_id}</td>
                             <td width="30%"><div className='ellipsis'>{competion.title}</div></td>
-                            <td width="20%"><div className='ellipsis'>{competion.date1}</div></td>
-                            <td>{competion.status1}</td>
-            
+                            <td width="20%"><div className='ellipsis'>{competion.period}</div></td>
+                            <td>{competion.con_status}</td>
+                            <td> <Button variant="primary" size="sm" onClick={() => onClickInsertSCR(competion.contest_id)} >좋아요 {scrMap[competion.contest_id] || 0}</Button></td>
+                            <td> <Button variant="primary" size="sm" onClick={() => onClickDeleteSCR(competion.contest_id)} >좋아요 취소</Button></td>
                         </tr>
                     )}
                 </tbody>
