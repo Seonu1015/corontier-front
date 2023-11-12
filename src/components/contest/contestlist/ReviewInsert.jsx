@@ -1,14 +1,18 @@
+
 import axios from 'axios';
 import React, { useState } from 'react'
-import { Card, Row, Col, Form, Button, Container } from 'react-bootstrap'
+import { Card, Row, Col, Form, Button, Container ,Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
-import CommunityMain from '../CommunityMain';
 
 
-const Insert = () => {
+
+const TipInsert = () => {
+
     const [content, setContents] = useState("");
     const [title, setTitles] = useState("");
     const navi = useNavigate();
+
+
 
     const onClickInsert = async () => {
         if (title === "") {
@@ -16,23 +20,38 @@ const Insert = () => {
         } else if (content === "") {
             alert("내용을 입력해주세요")
         } else {
-            const res = await axios.post('/community/insert', {
-                user_id: "21",
-                menu: "2",
+            const res = await axios.post('/contest/allpostinsert', {
+                user_id: sessionStorage.getItem("user_id"),
+                menu: "8",
                 title: title,
                 content: content
             });
-            window.location.href = "/community/notice/NoticePage";
+            if (res.data === 1) {
+                alert("게시 완료!")
+                window.location.href = "/contest/ContestReview";
+
+            }else{
+                alert("네트워크 오류!")
+            }
         }
     }
-    return (
-        <>
-            <div className='page_contents'>
-                <Container>
-                    <CommunityMain />
-                </Container>
-            </div>
 
+
+
+
+
+  return (
+    <>
+                  <Navbar className="justify-content-center">
+                <Container>
+                    <Nav className="me-auto" >
+                    <NavLink href="/contest/contestList">공모전 목록</NavLink>
+                    <NavLink href="/contest/contest-tip">공모전 TIP 게시판</NavLink>
+                    <NavLink href="/contest/ContestReview">공모전 리뷰 게시판</NavLink>
+                        {/* 다른 Nav.Link 요소들 */}
+                    </Nav>
+                </Container>
+        </Navbar>
             <div>
                 <h1 className='text-center'>글 등록하기</h1>
                 <Row md={2} className='mx-5'>
@@ -46,14 +65,14 @@ const Insert = () => {
                                 onChange={(e) => setContents(e.target.value)} value={content} />
                             <div className='text-center my-3'>
                                 <Button variant='primary' size='me-3' onClick={() => onClickInsert()}>등록</Button>
-                                <Button className='mx-1' variant='secondary' size='me-3' onClick={() => navi('/community/notice/NoticePage')}>취소</Button>
+                                <Button className='mx-1' variant='secondary' size='me-3' onClick={() => navi('/contest/contest-tip')}>취소</Button>
                             </div>
                         </Card>
                     </Col>
                 </Row>
             </div>
         </>
-    )
+  )
 }
 
-export default Insert
+export default TipInsert

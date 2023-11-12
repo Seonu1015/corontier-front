@@ -1,0 +1,8 @@
+.noticepage_tablegroup {display: flex; justify-content: center;}
+.communitypage_contents_wrap {width: 94.8%; margin: 60px auto;}
+.community_nav {margin: 0 auto;}
+
+.community_wrap{display: flex; width: 100%; justify-content: center;}
+.community_wrap_l{width: 12%; height: 350px; margin-right: 2%; background: #ededed;}
+.community_wrap_r {width: 65%; height: 600px; flex: 0 0 auto; background-color: rgb(255, 255, 255); border-radius: 0.9375rem; display: block;}
+.photo{border-radius:50%; }
