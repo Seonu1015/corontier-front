@@ -15,9 +15,9 @@ const HeaderPage = () => {
                         <NavDropdown title="Community" id="basic-nav-dropdown">
                             <NavDropdown.Item href="/community/notice/NoticePage">공지사항</NavDropdown.Item>
                             <NavDropdown.Item href="/community/lounge/loungepage">라운지</NavDropdown.Item>
-                            <NavDropdown.Item href="/community/project/projectpage">스터디&프로젝트</NavDropdown.Item>
+                            <NavDropdown.Item href="/community/applystudy&project/applyprojectpage">스터디&프로젝트</NavDropdown.Item>
                             <NavDropdown.Item href="/community/q&a/questionpage">Q&A</NavDropdown.Item>
-                            <NavDropdown.Item href="/community/study/textbookpage">교재&강의추천</NavDropdown.Item>
+                            <NavDropdown.Item href="/community/recomendcontents/textbookpage">교재&강의추천</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Contest" id="basic-nav-dropdown">
                             <NavDropdown.Item href="/contest/contestList">공모전</NavDropdown.Item>
