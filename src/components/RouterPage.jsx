@@ -103,11 +103,13 @@ const RouterPage = () => {
             </Route>
 
             <Route path="/user/mypage" element={<Mypage />} >
-                <Route path='' element={<MyQuizPage />}></Route>
-                <Route path="myactivity" element={<MyActivityPage />} />
-                <Route path="oxnote" element={<OXNotePage />} />
-                <Route path="mylist" element={<MyListPage />} />
-                <Route path="userupdate" element={<UserUpdatePage />} />
+                <Route path='' element={<MyQuizPage/>}></Route>
+                <Route path="myactivity" element={<MyActivityPage />} />               
+                <Route path="oxnote" element={<OXNotePage />} />               
+                <Route path="mylist" element={<MyListPage />} />               
+                <Route path="userupdate" element={<UserUpdatePage />} />               
+                <Route path="analysis"  />               
+
             </Route>
             <Route path="/user/signin" element={<SigninPage />} />
             <Route path="/user/signup" element={<SignupPage />} />

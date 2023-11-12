@@ -20,6 +20,7 @@ const SideMenu = () => {
           <Link to='oxnote'><Button variant='outline-secondary'>오답노트</Button></Link>
           <Link to='mylist'><Button variant='outline-secondary'>My List</Button></Link>
           <Link to='myactivity'><Button variant='outline-secondary'>나의활동</Button></Link>
+          <Link to='analysis'><Button variant='outline-secondary'>분석</Button></Link>
           <Link to='userupdate'><Button variant='outline-secondary'>개인정보수정</Button></Link>
           <Button variant='outline-danger'>로그아웃</Button>
       </ul>
