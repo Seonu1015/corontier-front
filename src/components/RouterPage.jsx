@@ -35,7 +35,6 @@ import TextbookPage from './community/recomendcontents/TextbookPage'
 import TextbookRead from './community/recomendcontents/TextbookRead'
 import LecturePage from './community/recomendcontents/LecturePage'
 import LectureRead from './community/recomendcontents/LectureRead'
-import TextbookPage from './community/study/TextbookPage'
 
 import ProjectMain from './project/ProjectMain'
 import ProjectRead from './project/ProjectRead'
@@ -90,7 +89,6 @@ const RouterPage = () => {
             <Route path="/community/recomendcontents/Textbookread" element={<TextbookRead />} />
             <Route path="/community/recomendcontents/lecturepage" element={<LecturePage />} />
             <Route path="/community/recomendcontents/lectureread" element={<LectureRead />} />
-            <Route path="/community/study/textbookpage" element={<TextbookPage />} />
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
             <Route path="/project/read/:post_id" element={<ProjectRead />} />

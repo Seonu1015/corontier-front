@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 
 const HomePage = () => {
-    alert(sessionStorage.getItem("user_id"));
+    // alert(sessionStorage.getItem("user_id"));
     return (
         <div className='wrap'>
             <div className="main_img">
