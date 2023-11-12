@@ -32,7 +32,7 @@ const ModalPwdUpdate = ({user,setUser}) => {
     if (!password || !newPassword1 || !newPassword2) {
       setBox({
         show: true,
-        message: '입력않은 칸이 있습니다.',
+        message: '입력하지않은 칸이 있습니다.',
       });
     }else if (newPassword1 !== newPassword2) {
       setBox({
