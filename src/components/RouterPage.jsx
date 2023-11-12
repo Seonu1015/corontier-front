@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom'
 
 import HomePage from './HomePage'
 
-import ProblemMain from './problem/ProblemMain'
 import ProblemPage from './problem/ProblemPage'
 import ProblemInsert from './problem/ProblemInsert'
 import ProblemList from './problem/ProblemList'
@@ -51,7 +50,6 @@ const RouterPage = () => {
             <Route path="/" element={<HomePage />} />
 
             <Route path="/problem/main" element={<ProblemPage />} />
-            <Route path="/problem" element={<ProblemMain />} />
             <Route path="/problem/list" element={<ProblemList />} />
             <Route path="/problem/insert" element={<ProblemInsert />} />
             <Route path="/problem/:problem_id" element={<SolutionPage />} />
