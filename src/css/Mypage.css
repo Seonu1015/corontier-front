@@ -13,7 +13,7 @@
   -webkit-box-orient: vertical;
 }
 
-.side-bar {background-color: #f0f0f0; width: 20%; display: flex; flex-direction: column; height: 100%;  padding: 10px;}
+.side-bar {background-color: #f0f0f0; width: 20%; display: flex; flex-direction: column; padding: 10px;}
 .side_userimg {display: flex; justify-content: center; margin: 20px;}
 .side_userid p {text-align: center; font-weight: 700; font-size: 1.5rem;}
 .contents {background-color: darkgray; width: 100%;}
@@ -38,7 +38,7 @@
 /* MyListPage */
 .mylistpage_wrap{width: 100%;}
 .mylistpage_title{width: 100%; margin: 2%;}
-.mylistpage_title p{padding-left: 2%; font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
+.mylistpage_title p{font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
 .mylistpage_top{width: 90%; display: flex; justify-content: space-between; margin: 0 auto;}
 .mylistpage_dropdowngroup{margin: 0; width: 30%; display: flex; justify-content: left; margin-bottom: 30px;}
 .dropdown{margin-right: 10px;}
@@ -56,8 +56,8 @@
 
 /* UserUpdatePage */
 .userupdatepage_wrap{width: 100%;}
-.userupdatepage_title{width: 100%; margin: 2%;}
-.userupdatepage_title p{padding-left: 2%; font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
+.userupdatepage_title{width: 100%;margin-bottom: 50px;}
+.userupdatepage_title p{ font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
 .userupdatepage_contents{width: 100%;}
 .userupdatepage_img{width: 15%; margin: 0 auto;}
 .userupdatepage_img img{width: 100%; border-radius: 100%;}
@@ -67,5 +67,5 @@
 .userupdatepage_col .input-group-text { width:35%;}
 .updatebutton_group{text-align: center; margin: 7%;}
 
-
-
+/* MyActivityPage */
+.post-categ-dropdownbtn {width: 150px;}

@@ -20,9 +20,9 @@ const HeaderPage = () => {
                             <NavDropdown.Item href="/community/recomendcontents/textbookpage">교재&강의추천</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Contest" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/contest/contestmain">공모전</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">팁</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">후기</NavDropdown.Item>
+                            <NavDropdown.Item href="/contest/contestList">공모전</NavDropdown.Item>
+                            <NavDropdown.Item href="/contest/contest-tip">팁</NavDropdown.Item>
+                            <NavDropdown.Item href="/contest/ContestReview">후기</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Nav>
