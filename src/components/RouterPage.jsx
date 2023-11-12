@@ -6,8 +6,10 @@ import HomePage from './HomePage'
 import ProblemPage from './problem/ProblemPage'
 import ProblemInsert from './problem/ProblemInsert'
 import ProblemList from './problem/ProblemList'
-import SolutionPage from './problem/solution/SolutionPage'
 import Question from './problem/Question'
+import SolutionPage from './problem/solution/SolutionPage'
+import SolutionList from './problem/solution/SolutionList'
+import SolutionRead from './problem/solution/SolutionRead'
 
 import ContestMain from './contest/ContestMain'
 import ContestTip from './contest/contestlist/ContestTip'
@@ -51,8 +53,6 @@ import AdminManagement from './admin/admin_detail/AdminManagement'
 import Myactive from './admin/admin_detail/Myactive'
 
 import ProjectInsert from './project/ProjectInsert'
-import SolutionList from './problem/solution/SolutionList'
-import SolutionRead from './problem/solution/SolutionRead'
 
 const RouterPage = () => {
     return (
