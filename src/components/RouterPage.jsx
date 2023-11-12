@@ -14,6 +14,9 @@ import ContestReview from './contest/contestlist/ContestReview'
 import ContestL from './contest/contestlist/ContestL'
 import ContestTipDetail from './contest/contestlist/ContestTipDetail'
 import ContestReviewDetail from './contest/contestlist/ContestReviewDetail'
+import TipInsert from './contest/contestlist/TipInsert'
+import ReviewInsert from './contest/contestlist/ReviewInsert'
+
 import CommunityMain from './community/CommunityMain'
 
 import ProjectMain from './project/ProjectMain'
@@ -49,6 +52,9 @@ const RouterPage = () => {
             <Route path="/contest/ContestList" element={<ContestL />} />
             <Route path="/contest/contest-tip/:post_id" element={<ContestTipDetail />} />
             <Route path="/contest/contest-review/:post_id" element={<ContestReviewDetail />} />
+            <Route path="/contest/TipInsert" element={<TipInsert />} />
+            <Route path="/contest/ReviewInsert" element={<ReviewInsert />} />
+            
             <Route path="/community/communitymain" element={<CommunityMain />} />
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
