@@ -50,8 +50,8 @@ const ProblemList = () => {
                 </thead>
                 <tbody>
                     {problems.map(p =>
-                        <>
-                            <tr key={p.problem_id}>
+                        <React.Fragment key={p.problem_id}>{/* 키 오류 해결을 위해 코드 추가 */}
+                            <tr>
                                 <td style={{ verticalAlign: "middle" }}>{p.grade}</td>
                                 <td className='text-start ps-5'>
                                     <div>{p.title}</div>
@@ -68,7 +68,7 @@ const ProblemList = () => {
                                     <Button variant='danger' size='sm'>삭제</Button>
                                 </td>
                             </tr>
-                        </>
+                        </React.Fragment>
                     )}
                 </tbody>
             </Table>

@@ -20,11 +20,6 @@ const FooterPage = () => {
 
             <div className="footer_sns">
                 <p className="follow">FOLLOW US ON</p>
-
-                <ul>
-                    <li><a href=""><img src="../images/f_youtube.png" alt="" /></a></li>
-                    <li><a href=""><img src="../images/f_instagram.png" alt="" /></a></li>
-                </ul>
                 <p className="licence">© Since 1945 Amorepacific, All Rights Reserved</p>
             </div>
         </footer>
