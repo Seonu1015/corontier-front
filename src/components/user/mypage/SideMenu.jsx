@@ -27,9 +27,10 @@ const SideMenu = () => {
           </ol>
         </li>
       </ol>
+
     </div>
   </div>
-)
+  )
 }
 
 export default SideMenu

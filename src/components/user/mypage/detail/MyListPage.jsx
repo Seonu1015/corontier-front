@@ -4,22 +4,6 @@ import { Button, Dropdown, Table } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom';
 
 const MyListPage = () => {
-  const [mylists, setMyLists] = useState([]);
-
-  const getMyList = async () => {
-    const res = await axios.get(`/mypage/mylist.list?user_id=${sessionStorage.getItem("user_id")}`)
-    console.log(res.data);
-    setMyLists(res.data);
-  }
-
-  useEffect(() => {
-    getMyList();
-  });
-
-  // 문제페이지 이동
-  const onClickLink = (problem_id) => {
-    window.location.href="/problem/" + problem_id;
-  }
 
   return (
     <div className='page_wrap'>

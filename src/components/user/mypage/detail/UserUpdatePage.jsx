@@ -24,8 +24,8 @@ const UserUpdatePage = () => {
     //로그인구현전 예시로 넣은 로그인된 user정보 
     sessionStorage.setItem('user_id',8);
     //user정보가져오는 쿼리
-    //const res = await axios.get(`/users/read/${sessionStorage.getItem("user_id")}`);  
-    //setUser(res.data);
+    const res = await axios.get(`/users/read/${sessionStorage.getItem("user_id")}`);  
+    setUser(res.data);
   }
   //첫 랜더링시 해당 USER정보 가져오기
   useEffect(() => {
@@ -86,16 +86,17 @@ const UserUpdatePage = () => {
         </div>
         <div className='userupdatepage_contents'>
           <div className='userupdatepage_img text-center'>
-            <img src={profile_image || "http://via.placeholder.com/250x250"} width="100" className='photo' alt=''/>
-            <input type="file" ref={ref_file} onChange={onChangeFile} style={{ display: 'none' }} />
-            <Button onClick={() => { ref_file.current.click() }}>변경</Button><Button onClick={onUpdateProfileIMG}>저장</Button>
+            <img src={profile_image||"http://via.placeholder.com/250x250"} width="100" className='photo' />
+            <input  type="file" ref={ref_file} onChange={onChangeFile} style={{display:'none'}}/>
+            <Button onClick={()=>{ref_file.current.click()}} variant='outline-dark' size='sm' className='m-2'>변경</Button><Button variant='outline-dark' size='sm' onClick={onUpdateProfileIMG}>저장</Button>
           </div>
           <div className='userupdatepage_userid'>
-            <p>USERID</p>
+            <p>{email}<div className='text-center'><ModalPwdUpdate user={user} setUser={setUser}/></div></p>         
           </div>
           <div className='userupdatepage_updateform'>
             <div className='userupdatepage_col'>
               <form onSubmit={onUpdate}>
+
                 <InputGroup className='inputgroup mb-2'>
                   <InputGroup.Text>비밀번호</InputGroup.Text>
                   <Form.Control name='password' value={password} style={{ display: 'none' }} onChange={onChange} readOnly />
