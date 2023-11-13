@@ -65,11 +65,7 @@ const RouterPage = () => {
             <Route path="/contest/TipInsert" element={<TipInsert />} />
             <Route path="/contest/ReviewInsert" element={<ReviewInsert />} />
             
-<<<<<<< HEAD
-           
-=======
-              
->>>>>>> 5068afe2e78a3b91dee13735d7f7b581723a5af8
+
             <Route path="/community/communitymain" element={<CommunityMain />} />
             <Route path="/community/notice/NoticePage" element={<NoticePage />} />
             <Route path="/community/notice/NoticeInsert" element={<NoticeInsert />} />
