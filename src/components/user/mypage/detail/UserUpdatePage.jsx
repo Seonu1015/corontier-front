@@ -14,7 +14,6 @@ const UserUpdatePage = () => {
     nickname: '',
     profile_image: '',
     file: null
-    //login id 할건지?
   });
   const { user_id, password, email, nickname, profile_image, file } = user;
   const ref_file = useRef(null);
@@ -46,7 +45,8 @@ const UserUpdatePage = () => {
       show: true,
       message: '정보를수정하시겠어요?',
       action: async () => {
-        //수정 api
+        const res = await axios.post('/users/update', {user_id,email,nickname,profile_image});
+        alert(res.data)
       }
     })
 
@@ -81,7 +81,7 @@ const UserUpdatePage = () => {
   return (
     <div className='page_wrap'>
       <div className='userupdatepage_wrap'>
-        <div className='userupdatepage_title text-center'>
+        <div className='userupdatepage_title'>
           <p>개인정보 수정</p>
         </div>
         <div className='userupdatepage_contents'>
@@ -96,8 +96,13 @@ const UserUpdatePage = () => {
           <div className='userupdatepage_updateform'>
             <div className='userupdatepage_col'>
               <form onSubmit={onUpdate}>
-                
-                
+
+                <InputGroup className='inputgroup mb-2'>
+                  <InputGroup.Text>비밀번호</InputGroup.Text>
+                  <Form.Control name='password' value={password} style={{ display: 'none' }} onChange={onChange} readOnly />
+                  <ModalPwdUpdate user={user} setUser={setUser} />
+                </InputGroup>
+
                 <InputGroup className='inputgroup mb-2'>
                   <InputGroup.Text>이메일</InputGroup.Text>
                   <Form.Control name='email' value={email} onChange={onChange} />
@@ -109,7 +114,7 @@ const UserUpdatePage = () => {
                 </InputGroup>
 
                 <div className='updatebutton_group'>
-                  <Button variant='dark' className='me-2 px-5' type='submit'>저장</Button>
+                  <Button variant='dark' className='me-2 px-5' type='submit' onClick={onUpdate}>저장</Button>
                   <Button onClick={() => getUser()} variant='outline-dark' className='px-5' type='reset'>취소</Button>
                 </div>
               </form>
