@@ -34,15 +34,22 @@ const KakaoRedirectHandler = () => {
 
         // 서버에 로그인 요청을 보냅니다.
         const loginResponse = await axios.post('/users/kakaologin',decodedToken ); 
-        if (loginResponse.data === 1) {
+        if (loginResponse.data.result=='1') {
           alert(`안녕하세요, ${decodedToken.nickname} 님`);
+          sessionStorage.setItem("user_id", loginResponse.data.user_id);
           navigate('/');
         } else {
           alert("아이디 없음 가입 함 ");  //섭밋같은 확인 or 취소로 바꿔야함 모달에 넣어도될듯
           const kakaoinsert = await axios.post('/users/kakaologininsert',decodedToken );
           if (kakaoinsert.data === 1) {
-             alert(`안녕하세요, ${decodedToken.nickname} 님`);
-              navigate('/'); 
+                const loginResponse2 = await axios.post('/users/kakaologin',decodedToken ); 
+                  if (loginResponse2.data.result=='1') {
+                          alert(`안녕하세요, ${decodedToken.nickname} 님`);
+                           sessionStorage.setItem("user_id", loginResponse2.data.user_id);
+                           navigate('/');
+                  }else{
+                    alert("네트워크 오류");
+                  }
           }else{
             alert("가입오류");
           }
