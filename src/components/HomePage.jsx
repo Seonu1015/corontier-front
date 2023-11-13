@@ -1,5 +1,4 @@
 import React from 'react'
-import { useEffect } from 'react'
 
 const HomePage = () => {
   return (
@@ -23,72 +22,60 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* ----------------------------------------section2--------------------------------------------------- */}
+      {/* ----------------------------------------section1--------------------------------------------------- */}
 
       <section className="news">
         <div className="contents_title_box">
           <p className="contents_title" data-aos="fade-right" data-aos-duration="600">국비지원으로 개발자 커리어 시작!</p>
-
-          <p className="contents_article" data-aos="fade-right" data-aos-duration="700">
-            .
-          </p>
-
-          <a href="" data-aos="fade-left" data-aos-duration="600">VIEW MORE +</a>
+          <a href="" data-aos="fade-left" data-aos-duration="600">더 보기 +</a>
         </div>
 
         <div className="news_contents">
           <div className="news_img_box" data-aos="fade-up" data-aos-duration="700">
-
             <div className="news_img">
-              <img src="" alt="" />
+              <img src="/images/news01.png" alt="News 01" />
             </div>
 
             <p className="news_title">
-              플랫폼 서비스 개발 팀원
+              무료
             </p>
           </div>
 
           <div className="news_img_box" data-aos="fade-up" data-aos-duration="900">
-
             <div className="news_img">
-              <img src="" alt="" />
+              <img src="/images/news02.png" alt="News 02" />
             </div>
             <p className="news_title">
-              이러닝 웹 솔루션 개발자
+              무료
             </p>
           </div>
 
           <div className="news_img_box" data-aos="fade-up" data-aos-duration="1000">
-
             <div className="news_img">
-              <img src="" alt="" />
+              <img src="/images/news03.png" alt="News 03" />
             </div>
             <p className="news_title">
-              CICD/DevOps 담당자 모집
+              무료
             </p>
           </div>
 
           <div className="news_img_box" data-aos="fade-up" data-aos-duration="1200">
-
-
             <div className="news_img">
-              <img src="" alt="" />
+              <img src="/images/news04.png" alt="News 04" />
             </div>
             <p className="news_title">
-              프론트엔드 엔지니어
+              무료
             </p>
           </div>
         </div>
       </section>
 
-      {/* ----------------------------------------section3--------------------------------------------------- */}
+      {/* ----------------------------------------section2--------------------------------------------------- */}
 
       <section className="our_brands">
         <div className="contents_title_box">
           <p className="contents_title" data-aos="fade-right" data-aos-duration="600">추천 강의</p>
-          <p className="contents_article" data-aos="fade-right" data-aos-duration="700">
-            .
-          </p>
+          <a href="" data-aos="fade-left" data-aos-duration="600">더 보기 +</a>
         </div>
 
         <div className="brand_contents">
@@ -105,7 +92,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ----------------------------------------section4--------------------------------------------------- */}
+      {/* ----------------------------------------section3--------------------------------------------------- */}
 
       <section className="sustain">
         <div className="contents_title_box">
