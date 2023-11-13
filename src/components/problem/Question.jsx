@@ -31,7 +31,7 @@ const Question = ({ prob_id }) => {
               </div>
 
               <div className='q_btn_wrap'>
-                <Button className='q_btn' variant='dark'> 취소 </Button>
+                <Button className='q_btn' variant='dark' href="/problem/solution"> 취소 </Button>
                 <Button className='q_btn' variant='outline-dark'> 등록 </Button>
               </div>
             </div>

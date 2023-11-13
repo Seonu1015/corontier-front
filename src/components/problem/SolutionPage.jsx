@@ -180,7 +180,7 @@ const SolutionPage = () => {
                         <div className='sol_btn_wrap' >
                             <div className='sol_btn'>
                                 <Button className='me-2 px-4' variant="secondary" onClick={()=>onClickQuestion(problem_id)}>질문하기</Button>
-                                <Button className='px-4'>테스트 만들기</Button>
+                                {/* <Button className='px-4'>테스트 만들기</Button> */}
                             </div>
                             <div className='sol_btn'>
                                 <Button className='me-2 px-4' variant="secondary" onClick={onClickExecute}>실행</Button>
