@@ -39,7 +39,7 @@ const MyListPage = () => {
           </div>
         </div>
         <div className='mylistpage_table'>
-          <Table>
+          {/* <Table>
             <thead>
               <tr>
                 <th width='5%'>번호</th>
@@ -66,7 +66,7 @@ const MyListPage = () => {
                 </tr>
               )}
             </tbody>
-          </Table>
+          </Table> */}
         </div>
       </div>
       <div>

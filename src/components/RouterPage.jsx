@@ -53,8 +53,8 @@ import AdminManagement from './admin/admin_detail/AdminManagement'
 import AdminProblem from './admin/admin_detail/AdminProblem'
 import AdminContest from './admin/admin_detail/AdminContest'
 
-
 import ProjectInsert from './project/ProjectInsert'
+import SolutionOthers from './problem/solution/SolutionOthers'
 import UserProbsDataAnaly from './user/mypage/detail/UserProbsDataAnaly'
 
 const RouterPage = () => {
@@ -69,6 +69,7 @@ const RouterPage = () => {
             <Route path="/problem/question" element={<Question />} />
             <Route path="/solution/:user_id" element={<SolutionList />} />
             <Route path="/solution/read/:sol_id" element={<SolutionRead />} />
+            <Route path="/solution/other/:problem_id" element={<SolutionOthers />} />
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
             <Route path="/contest/contest-tip" element={<ContestTip />} />
