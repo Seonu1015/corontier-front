@@ -1,8 +1,20 @@
 import React from 'react'
 import { Container, Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
+import { useNavigate} from 'react-router-dom'
+
 
 const HeaderPage = () => {
-    
+    const navi = useNavigate();
+    const onLogout = (e)=> {
+        e.preventDefault();
+      
+        if(window.confirm("로그아웃하실래요?")) {
+            sessionStorage.clear();
+            navi("/");
+        }
+     
+       
+    }
     return (
         <Navbar className="navbar">
             <Container>
@@ -28,30 +40,27 @@ const HeaderPage = () => {
                     <Nav>
                         {/** 로그인 case별 분기 */}
                         {   /** admin일때 */
-                            sessionStorage.getItem('uid') === 'admin' && 
+                            sessionStorage.getItem('user_id') === 'admin' && 
                             <NavLink href="#">adminpage</NavLink>
                         }
                         {   /** admin이외 user로그인 */
-                            sessionStorage.getItem('uid') && sessionStorage.getItem('uid') !== 'admin' && 
+                            sessionStorage.getItem('user_id') && sessionStorage.getItem('user_id') !== 'admin' && 
                             <>
                             <NavLink href="/user/mypage">mypage(user)</NavLink>
-                            <NavLink href="#">logout(user)</NavLink>
+                            <NavLink onClick={onLogout} href="/user/signin">logout </NavLink>
                             </>
                         }
                         {
                             /** 비로그인 일때 */
-                            !sessionStorage.getItem('uid') &&
+                            !sessionStorage.getItem('user_id') &&
                             <>
                             <NavLink href="/user/signup">Sign up(not user)</NavLink>
-                            <NavLink href="/user/signin">Sign in(not user)</NavLink>
+                            <NavLink  href="/user/signin">Sign in(not user)</NavLink>
                             </>
                         }
                         
                         {/** mypage,회원가입,로그인완성 전까지 사용할 링크 & 작성완료이후 삭제예정 */}
-                        <NavLink href="/admin/adminpage">adminpage</NavLink>
-                        <NavLink href="/user/mypage">mypage</NavLink>
-                        <NavLink href="/user/signup">Sign up</NavLink>
-                        <NavLink href="/user/signin">Sign in</NavLink>
+                 
                     </Nav>
                 </Navbar.Collapse>
             </Container>
