@@ -60,19 +60,46 @@ const Scraps = ({getMenutype}) => {
         <thead>
           <tr>
             <th width="12%">카테고리</th>
-            <th>title</th>
-            <th>작성일(수정일)</th>
-            <th></th>
+            <th >title</th>
+            <th width="15%"></th>
+            
           </tr>
         </thead>
         <tbody>
           {scraps.map(scrap=>
             <tr>
               <td>{scrap.menu_link}{scrap.menu}{scrap.link}{getMenutype(String(scrap.menu_link||scrap.menu||scrap.link))}</td>
-              <td><div className='ellipsis1'>{scrap.title}</div> </td>
-              <td>{scrap.created_at === scrap.updated_at ?
-              scrap.date:scrap.newdate}</td>
-              <td><Button variant='outline-dark' size='sm'>해당 게시글로 이동</Button></td>
+              <td><div className='ellipsis1'>{scrap.title}</div> </td>         
+              <td><Button variant='outline-dark' size='sm' onClick={()=>{
+                if((scrap.menu_link && scrap.menu_link.length>1)||scrap.link){
+                  window.location.href=scrap.menu_link||scrap.link
+                } else {
+                  const menutype = scrap.menu_link||scrap.menu;
+                  switch (menutype) {
+                    case 1:
+                      window.location.href=`/project/read/${scrap.post_id}`
+                      break;
+                    case 3:
+                      window.location.href=`/community/lounge/loungeread/${scrap.post_id}`
+                      break;
+                    case 4:
+                      window.location.href=`/community/applystudy&project/ApplyProjectRead/${scrap.post_id}`
+                      break;
+                    case 5:
+                      window.location.href=`/community/q&a/questionread/${scrap.post_id}`
+                      break;
+                    case 6:
+                      window.location.href=`/community/recomendcontents/textbookread${scrap.post_id}`
+                      break;
+                    case 7:
+                      window.location.href=`/project/read/${scrap.post_id}`
+                      break;
+                    case 8:
+                      window.location.href=`/project/read/${scrap.post_id}`
+                      break;
+                  }
+                }
+                }}>해당 게시글로 이동</Button></td>
             </tr>
             )}
         </tbody>

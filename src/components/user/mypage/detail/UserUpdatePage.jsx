@@ -14,7 +14,6 @@ const UserUpdatePage = () => {
     nickname: '',
     profile_image: '',
     file: null
-    //login id 할건지?
   });
   const { user_id, password, email, nickname, profile_image, file } = user;
   const ref_file = useRef(null);
@@ -46,7 +45,8 @@ const UserUpdatePage = () => {
       show: true,
       message: '정보를수정하시겠어요?',
       action: async () => {
-        //수정 api
+        const res = await axios.post('/users/update', {user_id,email,nickname,profile_image});
+        alert(res.data)
       }
     })
 
@@ -109,7 +109,7 @@ const UserUpdatePage = () => {
                 </InputGroup>
 
                 <div className='updatebutton_group'>
-                  <Button variant='dark' className='me-2 px-5' type='submit'>저장</Button>
+                  <Button variant='dark' className='me-2 px-5' type='submit' onClick={onUpdate}>저장</Button>
                   <Button onClick={() => getUser()} variant='outline-dark' className='px-5' type='reset'>취소</Button>
                 </div>
               </form>
