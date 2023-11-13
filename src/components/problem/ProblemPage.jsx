@@ -6,6 +6,7 @@ import { BoxContext } from '../BoxContext';
 
 import { FaUndoAlt } from 'react-icons/fa';
 import { BsCalendar2CheckFill, BsCalendar2XFill } from 'react-icons/bs';
+import { RiBookmark3Fill } from 'react-icons/ri';
 
 import { Badge, Button, Card, CardBody, CardHeader, Col, Container, Dropdown, Form, InputGroup, Row, Table, ListGroup } from 'react-bootstrap'
 import Pagination from 'react-js-pagination';
@@ -256,7 +257,7 @@ const ProblemMain = () => {
                   </CardBody>
                 </Card>
                 <hr />
-
+                <RiBookmark3Fill style={{fontSize:"1.4rem"}}/> 나중에 풀어볼 문제
               </CardBody>
             </Card>
           </Col>
