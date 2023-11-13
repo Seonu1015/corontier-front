@@ -50,7 +50,8 @@ import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
 import OXNoteDetailPage from './user/mypage/detail/OXNoteDetailPage'
 import KakaoRedirectHandler from './user/KakaoRedirectHandler'; import AdminPage from './admin/AdminPage'
 import AdminManagement from './admin/admin_detail/AdminManagement'
-import Myactive from './admin/admin_detail/Myactive'
+import AdminProblem from './admin/admin_detail/AdminProblem'
+import AdminContest from './admin/admin_detail/AdminContest'
 
 
 import ProjectInsert from './project/ProjectInsert'
@@ -99,9 +100,9 @@ const RouterPage = () => {
             <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
 
             <Route path="/admin/adminpage" element={<AdminPage />} >
-                <Route path='' element={<AdminManagement />}></Route>
-                <Route path='myactive' element={<Myactive />}></Route>
-                <Route path='problemlist' element={<ProblemList />}></Route>
+                <Route path='' element={<AdminManagement/>}></Route>            
+                <Route path='adminproblem' element={<AdminProblem/>}></Route>            
+                <Route path='admincontest' element={<AdminContest/>}></Route>            
             </Route>
 
             <Route path="/user/mypage" element={<Mypage />} >

@@ -160,7 +160,8 @@ const SolutionPage = () => {
     }
 
     return (
-        <>
+        <div className='solution_wrap'>
+            <Button href="/problem/main"></Button>
             {prob_id === 0 && (
                 <div className='m-5'>
                     <Container>
@@ -245,7 +246,7 @@ const SolutionPage = () => {
                     <Question prob_id={prob_id} />
                 </>
             )}
-        </>
+        </div>
     )
 }
 
