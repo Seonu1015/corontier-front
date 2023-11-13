@@ -47,7 +47,7 @@ const HeaderPage = () => {
                             sessionStorage.getItem('user_id') && sessionStorage.getItem('user_id') !== 'admin' && 
                             <>
                             <NavLink href="/user/mypage">mypage(user)</NavLink>
-                            <NavLink onClick={onLogout} href="/user/signin">logout (user)</NavLink>
+                            <NavLink onClick={onLogout} href="/user/signin">logout </NavLink>
                             </>
                         }
                         {

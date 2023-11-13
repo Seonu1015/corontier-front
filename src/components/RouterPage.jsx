@@ -52,6 +52,7 @@ import AdminManagement from './admin/admin_detail/AdminManagement'
 import Myactive from './admin/admin_detail/Myactive'
 
 import ProjectInsert from './project/ProjectInsert'
+import UserProbsDataAnaly from './user/mypage/detail/UserProbsDataAnaly'
 
 const RouterPage = () => {
     return (
@@ -108,7 +109,7 @@ const RouterPage = () => {
                 <Route path="oxnote" element={<OXNotePage />} />               
                 <Route path="mylist" element={<MyListPage />} />               
                 <Route path="userupdate" element={<UserUpdatePage />} />               
-                <Route path="analysis"  />               
+                <Route path="analysis" element={<UserProbsDataAnaly/>} />               
 
             </Route>
             <Route path="/user/signin" element={<SigninPage />} />
