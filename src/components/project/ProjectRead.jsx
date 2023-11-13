@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { Spinner, Row, Col, Card, Table, Button } from 'react-bootstrap';
+import { Spinner, Row, Col, Card, Table, Button, Badge } from 'react-bootstrap';
 import ProjectComments from './ProjectComments';
 
 const ProjectRead = () => {
@@ -12,6 +12,7 @@ const ProjectRead = () => {
         dev_bgn_date: "", dev_end_date: "", dev_mem_cnt: "", git_url: "", demo_url: "",
         intro: "", major: "", hard: "", disapoint: "", nickname: ""
     })
+    const [postTags, setPostTags] = useState([]);
 
     const { menu, title, content, created_at, updated_at, view_cnt,
         dev_bgn_date, dev_end_date, dev_mem_cnt, git_url, demo_url,
@@ -25,7 +26,13 @@ const ProjectRead = () => {
         setLoading(false);
     }
 
-    useEffect(() => { getProject(); }, [])
+    const getPostTags = async () => {
+        const res = await axios.get("/project/projecttag.json?post_id=" + post_id);
+        let postTags = res.data;
+        setPostTags(postTags);
+    }
+
+    useEffect(() => { getProject(); getPostTags(); }, [])
 
     if (loading) return <div><Spinner /></div>
     return (
@@ -44,7 +51,7 @@ const ProjectRead = () => {
                                 <Row className='mb-3'>
                                     <Col className='me-3'>
                                         <div className='thumbnail'>
-                                            <img src="http://via.placeholder.com/620x620" />
+                                            <img src={post.atch_path || "http://via.placeholder.com/620x620"}/>
                                         </div>
                                     </Col>
                                     <Col>
@@ -62,7 +69,11 @@ const ProjectRead = () => {
                                         </div>
                                         <div className='mb-5'>
                                             <h5><span style={{ color: "red" }}>✔</span> 기술스택 </h5>
-                                            <h4>　어쩌구저쩌구</h4>
+                                            {postTags.map(postTag =>
+                                                <span key={postTag.post_tags_id} className='me-2'>
+                                                    <Badge bg="success" style={{ fontSize: "1.2rem" }} className='mb-2'>{postTag.tag_name}</Badge>
+                                                </span>
+                                            )}
                                         </div>
                                         <div className='mb-5'>
                                             <h5><span style={{ color: "red" }}>✔</span> 프로젝트 깃허브 주소 </h5>

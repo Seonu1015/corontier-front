@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router';
+import { useParams, NavLink } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap'
 import Pagination from 'react-js-pagination';
 import '../../css/Pagination.css';
@@ -11,26 +12,46 @@ const ProjectMain = () => {
     const [projects, setProjects] = useState([]);
     const [total, setTotal] = useState(0);
     const size = 9;
-    const [page, setPage] = useState(1);
+    //const [page, setPage] = useState(1);
+    const navi = useNavigate();
+    const location = useLocation();
+    const path = location.pathname;
+    const search = new URLSearchParams(location.search);
+    const page = search.get("page") ? parseInt(search.get("page")) : 1;
+    const [query, setQuery] = useState(search.get("query") ? search.get("query") : "");
 
-    const getTag = async () => { //왼쪽메뉴 기술스택 가져오는거
-        const res = await axios.get("/project/taglist.json?tag_type_id=3");
-        setTags(res.data)
+    const getTags = async () => { //왼쪽메뉴 프로그래밍언어
+        const res = await axios.get("/project/taglist.json");
+        let skills = res.data;
+        skills = skills.map(skill => skill && { ...skill, checked: false })
+        setTags(skills);
     }
 
     const getProject = async () => { //오른쪽 프로젝트게시판 글 가져오는거
-        const url = `/project/prcedures?page=${page}&size=${size}`
+        const url = `/project/prcedures?page=${page}&size=${size}`;
         const res = await axios.get(url);
         setTotal(res.data.total);
         let listAll = res.data.listAll;
         setProjects(listAll);
     }
 
-    const onChangePage = (page) => {
-        setPage(page);
+    const onClickTag = async (tag_id) => { //왼쪽메뉴 선택했을 때 선택결과만 나오는
+        const url = `/project/tagsearch.json?tag_id=${tag_id}`;
+        const res = await axios.get(url);
+        console.log(res);
+        navi(`${path}?page=1&size=${size}`)
+        
     }
 
-    useEffect(() => { getTag(); getProject(); }, [page])
+    const onReset = () => {
+        getProject();
+    }
+
+    const onChangePage = (page) => {
+        navi(`${path}?query=${query}&page=${page}&size=${size}`);
+    }
+
+    useEffect(() => { getTags(); getProject(); }, [page])
 
     if (loading) return <div><Spinner /></div>
     return (
@@ -71,12 +92,14 @@ const ProjectMain = () => {
                                 </div>
                             </div>
 
+                            <Button onClick={onReset}>검색 초기화!</Button>
+
                             <div className='study_plan_recommendCourse'>
                                 <h3 className='title'> 기술 스택 </h3>
                                 <div>
                                     {tags.map(tag =>
                                         <div key={tag.tag_id}>
-                                            <input type='checkbox' /> {tag.tag_name}
+                                            <input type='checkbox' onClick={() => onClickTag(tag.tag_id)} /> {tag.tag_name}
                                         </div>
                                     )}
                                 </div>
@@ -86,12 +109,11 @@ const ProjectMain = () => {
                                 <h3 className='title'> 개발 인원 </h3>
                                 <div>
                                     <input type='checkbox' /> 개인
+                                    <br />
                                     <input type='checkbox' /> 팀
                                 </div>
                             </div>
-
                         </div>
-
 
                         <div className='study_plan_wrap_l_prj ms-4'>
                             <h5 className='mb-3'><span style={{ color: "red" }}>✔</span> 총 {total}건 </h5>
