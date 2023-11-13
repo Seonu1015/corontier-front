@@ -27,6 +27,7 @@ import KakaoRedirectHandler from './user/KakaoRedirectHandler';import AdminPage 
 import AdminManagement from './admin/admin_detail/AdminManagement'
 import Question from './problem/Question'
 import AdminProblem from './admin/admin_detail/AdminProblem'
+import AdminContest from './admin/admin_detail/AdminContest'
 
 
 const RouterPage = () => {
@@ -51,7 +52,8 @@ const RouterPage = () => {
 
             <Route path="/admin/adminpage" element={<AdminPage />} >
                 <Route path='' element={<AdminManagement/>}></Route>            
-                <Route path='myactive' element={<AdminProblem/>}></Route>            
+                <Route path='adminproblem' element={<AdminProblem/>}></Route>            
+                <Route path='admincontest' element={<AdminContest/>}></Route>            
             </Route>
     
             <Route path="/user/mypage" element={<Mypage />} >

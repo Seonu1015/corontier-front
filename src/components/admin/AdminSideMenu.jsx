@@ -1,41 +1,48 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const AdminSideMenu = () => {
-  
+  const location = useLocation();
+  const [selectedMenu, setSelectedMenu] = useState('');
+
+  const handleMenuClick = (menu) => {
+    setSelectedMenu(menu);
+  };
+
   return (
     <div className='admin_sidebar_wrap'>
       <div className='admin_sidebar_box'>
         <ol className='admin_sidebar_ol'>
           <li className='account_management'>
-            <h3 className='my_account'> Problems </h3>
+            <h3 className='my_account'> 관리자 </h3>
             <ol>
-              <Link to="">계정관리</Link>
-              <Link to="myactive">문제관리</Link> 
+              <Link to="" onClick={() => handleMenuClick('admin_account')} className={selectedMenu === 'admin_account' ? 'selected' : ''}> 관리자 계정 </Link>
+              <Link to="adminproblem" onClick={() => handleMenuClick('problem_management')} className={selectedMenu === 'problem_management' ? 'selected' : ''}> 문제관리 </Link>
+              <Link to="admincontest" onClick={() => handleMenuClick('competition_management')} className={selectedMenu === 'competition_management' ? 'selected' : ''}> 공모전 관리 </Link>
+              <Link to="#" onClick={() => handleMenuClick('community_management')} className={selectedMenu === 'community_management' ? 'selected' : ''}> 커뮤니티 관리 </Link>
+              <Link to="#" onClick={() => handleMenuClick('feature_management')} className={selectedMenu === 'feature_management' ? 'selected' : ''}> 기능관리 </Link>
             </ol>
           </li>
 
           <li className='school_management'>
-            <h3 className='my_account'> Projects </h3>
+            <h3 className='my_account'> 회원 </h3>
             <ol>
-              <a href="#">프로젝트 관리</a>
-              <a href="#">나의활동</a>
+              <Link to="#" onClick={() => handleMenuClick('member_info_management')} className={selectedMenu === 'member_info_management' ? 'selected' : ''}> 회원정보 관리 </Link>
+              <Link to="#" onClick={() => handleMenuClick('view_delete')} className={selectedMenu === 'view_delete' ? 'selected' : ''}> 조회 / 삭제 </Link>
             </ol>
           </li>
 
           <li className='career_management'>
-            <h3 className='my_account'> Contest </h3>
+            <h3 className='my_account'> 페이지 관리 </h3>
             <ol>
-              <a href="#">공모전 관리</a>
-              <a href="#">나의활동</a>
-              <a href="#">나의활동</a>
-              <a href="#">나의활동</a>
+              <Link to="#" onClick={() => handleMenuClick('admin_page')} className={selectedMenu === 'admin_page' ? 'selected' : ''}> admin </Link>
+              <Link to="#" onClick={() => handleMenuClick('user_page')} className={selectedMenu === 'user_page' ? 'selected' : ''}> user </Link>
             </ol>
           </li>
         </ol>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminSideMenu
+export default AdminSideMenu;

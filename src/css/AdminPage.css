@@ -8,11 +8,14 @@
 .admin_sidebar_ol {padding: 0 1.5rem; margin-bottom: initial;}
 .account_management, .school_management, .career_management {margin-bottom: 2.5rem; font-size: inherit;}
 
-.my_account {margin-top: 2.5rem; margin-bottom: 1.0625rem; color: #9b9b9b; font-size: .9375rem; font-weight: 700; line-height: 1.375rem;}
-
 .account_management ol, .school_management ol, .career_management ol {padding-left: 0;}
-.account_management ol a, .school_management ol a, .career_management ol a {padding: 0.6875rem 1rem; border-radius: 0.25rem;  font-size: 1rem; line-height: 1.4375rem; display: flex; flex-direction: column; color: #666;}
-.account_management a:first-child {background: #e6f2ff; font-weight: bold;}
+.account_management ol a, .school_management ol a, .career_management ol a {margin-bottom: 0.1875rem; padding: 0.6875rem 1rem; border-radius: 0.25rem;  font-size: 1rem; line-height: 1.4375rem; display: flex; flex-direction: column; color: #666;}
+/* .account_management a:first-child {background: #e6f2ff; font-weight: bold;} */
+.account_management a:hover, .school_management a:hover, .career_management a:hover {background: #f8fafc;}
+
+.my_account { margin-top: 2.5rem; margin-bottom: 1.0625rem; color: #9b9b9b; font-size: 0.9375rem; font-weight: 700; line-height: 1.375rem;}
+.selected {background-color: #e6f2ff; font-weight: bold;}
+.selected:hover {background: #f8fafc;}
 
 
 /* AdminManagement */
@@ -20,18 +23,11 @@
 .admin_management_contents_wrap {display: flex; flex-direction: column;}
 .admin_management_contents {display: flex; width: 100%; flex-direction: column; margin-bottom: 48px; row-gap: 24px;}
 .admin_management_subtitle {font-size: 1.125rem; font-weight: 700;}
-
 .basic_info_box {display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; border: #d7e2eb solid 1px; border-radius: 15px; background-color: #fff; row-gap: 15px;}
 .info_img {width: 124px; height: 124px; border-radius: 50%; margin-bottom: 9px;}
 .info_name {color: #263747; font-size: 1.375rem; font-weight: 500; text-align: center; word-break: break-all;}
 .info_email {display: flex; height: 25px; align-items: center; color: #44576c; column-gap: 10px;}
 .info_btn {margin-top: 40px;}
-
-
-
-
-
-
 
 
 
