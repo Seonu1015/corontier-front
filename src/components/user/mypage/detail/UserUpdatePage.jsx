@@ -82,11 +82,11 @@ const UserUpdatePage = () => {
     <div className='page_wrap'>
       <div className='userupdatepage_wrap'>
         <div className='userupdatepage_title'>
-          <p>✏️ 개인정보 수정</p>
+          <p>개인정보 수정</p>
         </div>
         <div className='userupdatepage_contents'>
           <div className='userupdatepage_img text-center'>
-            <img src={profile_image || "http://via.placeholder.com/250x250"} width="100" className='photo' />
+            <img src={profile_image || "http://via.placeholder.com/250x250"} width="100" className='photo' alt=''/>
             <input type="file" ref={ref_file} onChange={onChangeFile} style={{ display: 'none' }} />
             <Button onClick={() => { ref_file.current.click() }}>변경</Button><Button onClick={onUpdateProfileIMG}>저장</Button>
           </div>

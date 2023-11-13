@@ -1,7 +1,26 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Button, Dropdown, Table } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom';
 
 const MyListPage = () => {
+  const [mylists, setMyLists] = useState([]);
+
+  const getMyList = async () => {
+    const res = await axios.get(`/mypage/mylist.list?user_id=${sessionStorage.getItem("user_id")}`)
+    console.log(res.data);
+    setMyLists(res.data);
+  }
+
+  useEffect(() => {
+    getMyList();
+  });
+
+  // 문제페이지 이동
+  const onClickLink = (problem_id) => {
+    window.location.href="/problem/" + problem_id;
+  }
+
   return (
     <div className='page_wrap'>
       <div className='mylistpage_wrap'>
@@ -40,74 +59,28 @@ const MyListPage = () => {
             <thead>
               <tr>
                 <th width='5%'>번호</th>
-                <th width='50%'>문제</th>
-                <th width='8%'>문제풀이</th>
-                <th width='8%'>난이도</th>
-                <th width='15%'>날짜</th>
+                <th width='48%'>문제</th>
+                <th width='11%'>문제풀이</th>
+                <th width='10%'>난이도</th>
+                <th width='12%'>날짜</th>
                 <th width='14%'></th>
               </tr>
             </thead>
             <tbody>
-              <tr className='mylistpage_list'>
-                <td>01</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='mylistpage_difficulty_hard'>
-                    <p className='mylistpage_difficultytext'>Lv. 2</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
-              <tr className='mylistpage_list'>
-                <td>02</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='mylistpage_difficulty_easy'>
-                    <p className='mylistpage_difficultytext'>Lv. 0</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
-              <tr className='mylistpage_list'>
-                <td>03</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='mylistpage_difficulty_normal'>
-                    <p className='mylistpage_difficultytext'>Lv. 1</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
-              <tr className='mylistpage_list'>
-                <td>04</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='mylistpage_difficulty_normal'>
-                    <p className='mylistpage_difficultytext'>Lv. 1</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
-              <tr className='mylistpage_list'>
-                <td>05</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='mylistpage_difficulty_hard'>
-                    <p className='mylistpage_difficultytext'>Lv. 2</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
+              {mylists.map(mylist =>
+                <tr className='mylistpage_list'>
+                  <td>{mylist.problem_id}</td>
+                  <td>{mylist.title}</td>
+                  <td>O</td>
+                  <td>
+                    <div className='mylistpage_difficulty_hard'>
+                      <p className='mylistpage_difficultytext'>{mylist.grade_id}</p>
+                    </div>
+                  </td>
+                  <td>2023.11.01</td>
+                  <td><Button size='sm px-4' variant='dark' className=''><NavLink onClick={()=>onClickLink(mylist.problem_id)}>문제보기</NavLink></Button></td>
+                </tr>
+              )}
             </tbody>
           </Table>
         </div>
