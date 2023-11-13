@@ -6,8 +6,10 @@ import HomePage from './HomePage'
 import ProblemPage from './problem/ProblemPage'
 import ProblemInsert from './problem/ProblemInsert'
 import ProblemList from './problem/ProblemList'
-import SolutionPage from './problem/solution/SolutionPage'
 import Question from './problem/Question'
+import SolutionPage from './problem/solution/SolutionPage'
+import SolutionList from './problem/solution/SolutionList'
+import SolutionRead from './problem/solution/SolutionRead'
 
 import ContestMain from './contest/ContestMain'
 import ContestTip from './contest/contestlist/ContestTip'
@@ -24,9 +26,15 @@ import NoticePage from './community/notice/NoticePage'
 import NoticeInsert from './community/notice/NoticeInsert'
 import NoticeUpdate from './community/notice/NoticeUpdate'
 import LoungePage from './community/lounge/LoungePage'
-import ProjectPage from './community/project/ProjectPage'
+import LoungeRead from './community/lounge/LoungeRead'
+import ApplyProjectPage from './community/applystudy&project/ApplyProjectPage'
+import ApplyProjectRead from './community/applystudy&project/ApplyProjectRead'
 import QuestionPage from './community/q&a/QuestionPage'
-import TextbookPage from './community/study/TextbookPage'
+import QuestionRead from './community/q&a/QuestionRead'
+import TextbookPage from './community/recomendcontents/TextbookPage'
+import TextbookRead from './community/recomendcontents/TextbookRead'
+import LecturePage from './community/recomendcontents/LecturePage'
+import LectureRead from './community/recomendcontents/LectureRead'
 
 import ProjectMain from './project/ProjectMain'
 import ProjectRead from './project/ProjectRead'
@@ -44,8 +52,6 @@ import AdminManagement from './admin/admin_detail/AdminManagement'
 import Myactive from './admin/admin_detail/Myactive'
 
 import ProjectInsert from './project/ProjectInsert'
-import SolutionList from './problem/solution/SolutionList'
-import SolutionRead from './problem/solution/SolutionRead'
 
 const RouterPage = () => {
     return (
@@ -74,9 +80,15 @@ const RouterPage = () => {
             <Route path="/community/notice/NoticeInsert" element={<NoticeInsert />} />
             <Route path="/community/notice/NoticeUpdate/:post_id" element={<NoticeUpdate />} />
             <Route path="/community/lounge/loungepage" element={<LoungePage />} />
-            <Route path="/community/project/projectpage" element={<ProjectPage />} />
+            <Route path="/community/lounge/loungeread/:post_id" element={<LoungeRead />} />
+            <Route path="/community/applystudy&project/applyprojectpage" element={<ApplyProjectPage />} />
+            <Route path="/community/applystudy&project/applyprojectread/:post_id" element={<ApplyProjectRead />} />
             <Route path="/community/q&a/questionpage" element={<QuestionPage />} />
-            <Route path="/community/study/textbookpage" element={<TextbookPage />} />
+            <Route path="/community/q&a/questionread/:post_id" element={<QuestionRead />} />
+            <Route path="/community/recomendcontents/textbookpage" element={<TextbookPage />} />
+            <Route path="/community/recomendcontents/Textbookread" element={<TextbookRead />} />
+            <Route path="/community/recomendcontents/lecturepage" element={<LecturePage />} />
+            <Route path="/community/recomendcontents/lectureread" element={<LectureRead />} />
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
             <Route path="/project/read/:post_id" element={<ProjectRead />} />
@@ -91,11 +103,13 @@ const RouterPage = () => {
             </Route>
 
             <Route path="/user/mypage" element={<Mypage />} >
-                <Route path='' element={<MyQuizPage />}></Route>
-                <Route path="myactivity" element={<MyActivityPage />} />
-                <Route path="oxnote" element={<OXNotePage />} />
-                <Route path="mylist" element={<MyListPage />} />
-                <Route path="userupdate" element={<UserUpdatePage />} />
+                <Route path='' element={<MyQuizPage/>}></Route>
+                <Route path="myactivity" element={<MyActivityPage />} />               
+                <Route path="oxnote" element={<OXNotePage />} />               
+                <Route path="mylist" element={<MyListPage />} />               
+                <Route path="userupdate" element={<UserUpdatePage />} />               
+                <Route path="analysis"  />               
+
             </Route>
             <Route path="/user/signin" element={<SigninPage />} />
             <Route path="/user/signup" element={<SignupPage />} />

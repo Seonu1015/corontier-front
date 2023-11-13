@@ -13,14 +13,13 @@ const ProjectRead = () => {
         intro: "", major: "", hard: "", disapoint: "", nickname: ""
     })
 
-    // const { menu, title, content, created_at, updated_at, view_cnt,
-    //     dev_bgn_date, dev_end_date, dev_mem_cnt, git_url, demo_url,
-    //     intro, major, hard, disapoint } = post;
+    const { menu, title, content, created_at, updated_at, view_cnt,
+        dev_bgn_date, dev_end_date, dev_mem_cnt, git_url, demo_url,
+        intro, major, hard, disapoint } = post;
 
     const getProject = async () => {
         setLoading(true);
         const res = await axios.get("/project/prcedures?post_id=" + post_id);
-        //console.log(res.data)
         let listOne = res.data.listOne;
         setPost(listOne);
         setLoading(false);
@@ -38,15 +37,21 @@ const ProjectRead = () => {
                 <div className='page_contents_wrap_prj_read'>
                     <div className='page_contents_prj'>
                         <div className='mt-5'>
-                            <span className='contents_title'> {post.title} </span>
+                            <span className='contents_title'> {title} </span>
                         </div>
                         <div className='study_plan_wrap justify-content-center p-10'>
                             <Card className='p-5' style={{ width: '110rem' }}>
                                 <Row className='mb-3'>
                                     <Col className='me-3'>
-                                        <div className='thumbnail'>썸네일 들어갈 예정</div>
+                                        <div className='thumbnail'>
+                                            <img src="http://via.placeholder.com/620x620" />
+                                        </div>
                                     </Col>
                                     <Col>
+                                        <div className='mb-5'>
+                                            <h5><span style={{ color: "red" }}>✔</span> 개발자 </h5>
+                                            <h4>　{post.nickname}</h4>
+                                        </div>
                                         <div className='mb-5'>
                                             <h5><span style={{ color: "red" }}>✔</span> 개발 기간 </h5>
                                             <h4>　{post.dev_bgn_date} ~ {post.dev_end_date}</h4>

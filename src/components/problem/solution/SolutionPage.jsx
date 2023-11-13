@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useContext } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
 
@@ -37,6 +37,8 @@ const SolutionPage = () => {
     const [complete, setComplete] = useState('0');
 
     const [executed, setExecuted] = useState(false);
+
+    const navi = useNavigate();
 
     const onChange = useCallback((val, viewUpdate) => {
         // console.log('val:', val);
@@ -137,12 +139,12 @@ const SolutionPage = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         if (executed) {
-            await axios.post("/problem/insert/solution", { problem_id, content: value, complete, user_id: sessionStorage.getItem("user_id") });
+            await axios.post("/problem/insert/solution", { problem_id, content: value, complete, language, user_id: sessionStorage.getItem("user_id") });
             setBox({
                 show: true,
                 message: "풀이가 등록되었습니다.\n풀이페이지로 이동하시겠습니까?",
                 action: () => {
-
+                    navi(`/solution/${sessionStorage.getItem("user_id")}`);
                 }
             });
         } else {
@@ -166,7 +168,7 @@ const SolutionPage = () => {
                             {title}
                         </div>
                         <Row>
-                            <Col xs={6} sm={6} md={6} className='border-end border-dark-subtle scrollbar' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px", overflow: "auto", height: "750px" }}>
+                            <Col xs={6} sm={6} md={6} className='border-end border-dark-subtle scrollbar' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px", overflow: "auto", height: "751px" }}>
                                 <div className='my-3 mx-3'>
                                     <p>Description</p><br />
                                     <p style={{ fontSize: "16px" }} dangerouslySetInnerHTML={{ __html: content }} />
