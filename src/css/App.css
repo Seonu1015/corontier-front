@@ -2,7 +2,7 @@
 .container {max-width: 1920px !important; margin:0 auto!important; padding:0 !important;}
 
 /* header */
-.navbar {width: 94.8%; margin: 0 auto;}
+.navbar {width: 94.8%; margin: 0 auto; font-size: 110%;}
 
 /* main */
 .main_img{width: 94.8%; height: 480px; margin: 0 auto; position:relative; background: #ccc;  background: url('../../public/images/main.jpg') no-repeat 50% 50% ; background-size: cover; 

@@ -7,7 +7,15 @@ import axios from 'axios';
 const ModalPwdUpdate = ({user,setUser}) => {
   const { setBox } = useContext(BoxContext);
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setFormData({
+      password: '',
+      newPassword1: '',
+      newPassword2: '',
+    })
+    setShow(false);
+    
+  }
   const handleShow = () => setShow(true);
   
   const [formData, setFormData] = useState({
@@ -31,10 +39,36 @@ const ModalPwdUpdate = ({user,setUser}) => {
         show: true,
         message: '새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다',
       });
-    }else {
-      const res = await axios(`/users/read/${user.user_id}`);
-      console.log(res);
       
+    }else {
+      //현재 비밀번호확인과정       
+      const res = await axios(`/users/read/${user.user_id}`);
+      const regpassword = res.data.password
+      if(password !== regpassword){
+        setBox({
+          show: true,
+          message: '현재비밀번호를 잘못입력하셨습니다.',
+        });
+      }else {
+        //비밀번호 수정 api
+        const res = await axios.post('/users/update',{...user,password:newPassword1});
+        if(res.data === 1){
+          setBox({
+            show: true,
+            message: '비밀번호가 변경되었습니다.',
+            action:()=>{
+              setUser({...user,password:newPassword1});
+            }
+          });
+          //수정완료시 비밀번호 변경 전체 모달창 close();
+          handleClose();
+        }else {
+          setBox({
+            show: true,
+            message: '비밀번호 변경에러, 다시 입력해주세요',
+          });
+        }
+      }
     }
   }
   const handleChange = (e) => {
@@ -60,21 +94,21 @@ const ModalPwdUpdate = ({user,setUser}) => {
             <Form.Control name="password"
               value={formData.password}
               onChange={handleChange}
-              ref={passwordInputRef} />
+              ref={passwordInputRef} type='password'/>
           </InputGroup>
           <InputGroup className='inputgroup mb-2'>
             <InputGroup.Text>새비밀번호</InputGroup.Text>
             <Form.Control name="newPassword1"
               value={formData.newPassword1}
               onChange={handleChange}
-              ref={newPassword1InputRef}/>
+              ref={newPassword1InputRef} type='password'/>
           </InputGroup>
           <InputGroup className='inputgroup mb-2'>
             <InputGroup.Text>새비밀번호확인</InputGroup.Text>
             <Form.Control name="newPassword2"
               value={formData.newPassword2}
               onChange={handleChange}
-              ref={newPassword2InputRef}/>
+              ref={newPassword2InputRef} type='password'/>
           </InputGroup>
         </Modal.Body>
         <Modal.Footer>

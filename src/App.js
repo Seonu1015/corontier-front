@@ -1,6 +1,8 @@
 import './css/App.css';
 import './css/default.css';
 import './css/problempage.css';
+import './css/Community.css';
+import './css/Project.css';
 import { Container } from 'react-bootstrap'
 import HeaderPage from './components/HeaderPage';
 import RouterPage from './components/RouterPage';

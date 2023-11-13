@@ -1,11 +1,12 @@
 import React from 'react'
 
 const HomePage = () => {
-  return (
-    <div className='wrap'>
-      <div className="main_img">
-        <div className="main_text_box">
-          <p className="main_article_t" data-aos="fade-up" data-aos-duration="800">LIVE YOUR NEW BEAUTY</p>
+    // alert(sessionStorage.getItem("user_id"));
+    return (
+        <div className='wrap'>
+            <div className="main_img">
+                <div className="main_text_box">
+                    <p className="main_article_t" data-aos="fade-up" data-aos-duration="800">LIVE YOUR NEW BEAUTY</p>
 
           <p className="main_title" data-aos="fade-up" data-aos-duration="900">
             WE MAKE <br />

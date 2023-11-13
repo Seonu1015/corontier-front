@@ -12,9 +12,16 @@
 .study_plan_box:nth-child(2) {background: #fffdcd;}
 .study_plan_box:last-child{margin-right: 0; background: #e8d7fb;}
 
+/* Scrollbar */
+.scrollbar{width: 250px; height: 250px; overflow: scroll;}
+.scrollbar::-webkit-scrollbar {width: 10px;}
+.scrollbar::-webkit-scrollbar-thumb {background: rgb(54, 54, 54);}
+.scrollbar::-webkit-scrollbar-track {background: rgba(214, 214, 214, 0.322);}
+
+
 /* Challengesstyle_SearchForm */
 .Challengesstyle_SearchForm{margin-bottom: 8px;}
-.SearchForm{width: 100%; height: 3.5rem; position: relative;}
+.SearchForm{width: 100%; height: 3.5rem; position: relative; margin-bottom: 10px;}
 .keyword{width: inherit; height: inherit; padding: 0 3.875rem 0 1.0625rem; background-color: rgb(255, 255, 255); border: 0.0625rem solid rgb(215, 226, 235); border-radius: 0.25rem; appearance: none;}
 .SearchFormstyle_Button{width: 6%; height: 100%; line-height: 0; position: absolute; top: 0; right: 0.0625rem; display: flex; align-items: center; gap: 0.75rem; font-size: 17px !important; font-weight: 500 !important;}
 

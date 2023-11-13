@@ -1,227 +1,266 @@
-import React, { useState, useEffect } from 'react'
-import { Dropdown, Button } from 'react-bootstrap';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router';
+import { NavLink } from 'react-router-dom';
+import { BoxContext } from '../BoxContext';
+
+import { FaUndoAlt } from 'react-icons/fa';
+import { BsCalendar2CheckFill, BsCalendar2XFill } from 'react-icons/bs';
+
+import { Badge, Button, Card, CardBody, CardHeader, Col, Container, Dropdown, Form, InputGroup, Row, Table, ListGroup } from 'react-bootstrap'
 import Pagination from 'react-js-pagination';
 import '../../css/Pagination.css';
-import { useLocation, Link, NavLink, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import DonutChart from './DonutChart';
 
-const ProblemPage = () => {
-    const [problems, setProblems] = useState([]);
+const ProblemMain = () => {
+    const { setBox } = useContext(BoxContext);
     const [loading, setLoading] = useState(false);
-    const [keyword, setKeyword] = useState('');
+    const [tags, setTags] = useState([]);
+    const [grades, setGrades] = useState([]);
+    const [problems, setProblems] = useState([]);
+    const [total, setTotal] = useState(0);
+    const [clearData, setClearData] = useState([]);
+    const [user, setUser] = useState({});
+    const [clearcnt, setClearcnt] = useState({});
+
     const navi = useNavigate();
 
-    const size = 20;
+    const size = 10;
     const location = useLocation();
+    const path = location.pathname;
     const search = new URLSearchParams(location.search);
     const page = search.get("page") ? parseInt(search.get("page")) : 1;
+    const [query, setQuery] = useState(search.get("query") ? search.get("query") : "");
 
     const getProblems = async () => {
         setLoading(true);
-        const res = await axios(`/problem/list.json?page=${page}&size=${size}`);
-        const list = res.data.list;
-        for (let i = 0; i < list.length; i++) {
-            const buffer = list[i].content.data;
-            const uintArray = new Uint8Array(buffer);
-            const content = new TextDecoder().decode(uintArray);
-            list[i].content = content;
-        }
-        // console.log(list);
-        setProblems(list);
+        const res = await axios(`/problem/list.json?query=${query}&page=${page}&size=${size}`);
+        setProblems(res.data.list);
+        setTotal(res.data.total);
         setLoading(false);
+    }
+
+    const getTags = async () => {
+        setLoading(true);
+        const res = await axios('/problem/tag/list.json');
+        setTags(res.data);
+        setLoading(false);
+    }
+
+    const getGrades = async () => {
+        setLoading(true);
+        const res = await axios('/problem/grade/list.json');
+        setGrades(res.data);
+        setLoading(false);
+    }
+
+    const getClearData = async () => {
+        const user_id = sessionStorage.getItem("user_id");
+        setLoading(true);
+        const res = await axios(`/problem/clear/${user_id}`);
+        // console.log(res.data);
+        setClearData(res.data.list);
+        setUser(res.data.user);
+        setClearcnt(res.data.clearcnt);
+        setLoading(false);
+    }
+
+    const onChangePage = (page) => {
+        navi(`${path}?query=${query}&page=${page}&size=${size}`);
+    }
+
+    //태그나 난이도를 선택했을 때, 2페이지를 누르면 초기화되는 문제 발생 - 시간되면 수정 필요
+    const onClickTag = async (tag_id) => {
+        setLoading(true);
+        const res = await axios(`/problem/by_tag/${tag_id}`);
+        // console.log(res.data);
+        setProblems(res.data.list);
+        setTotal(res.data.total);
+        navi(`${path}?page=1&size=${size}`);
+        setLoading(false);
+    }
+
+    const onSelectGrade = async (grade_id) => {
+        setLoading(true);
+        const res = await axios(`/problem/by_grade/${grade_id}`);
+        // console.log(res.data);
+        setProblems(res.data.list);
+        setTotal(res.data.total);
+        navi(`${path}?page=1&size=${size}`);
+        setLoading(false);
+    }
+
+    const onSearch = async (e) => {
+        e.preventDefault();
+        if (query === "") {
+            setBox({
+                show: true,
+                message: "검색어를 입력하세요."
+            });
+        } else {
+            navi(`${path}?query=${query}&page=1&size=${size}`)
+        }
+    }
+
+    const onReset = () => {
+        getProblems();
+    }
+
+    const onLogin = () => {
+        sessionStorage.setItem("target", location.pathname);
+        window.location.href = "/user/signin";
     }
 
     useEffect(() => {
         getProblems();
-    }, [page]);
+    }, [page, query]);
 
-    const onClickLink = (problem_id) => {
-        window.location.href = "/problem/" + problem_id;
-    }
-
-    const handleInputChange = (e) => {
-        setKeyword(e.target.value);
-    };
+    useEffect(() => {
+        getTags();
+        getGrades();
+        getClearData();
+    }, [])
 
     return (
-        <div className='page_wrap'>
-            <div className='banner'>
-                <img src="../images/banner.png" alt="" />
-            </div>
-
-            <div className='page_contents_wrap'>
-                <div className='contents_title_box'>
-                </div>
-
-                <div className='page_contents'>
-                    <div className='study_plan_wrap'>
-                        <div className='study_plan_wrap_l'>
-                            <div className='planbox_wrap'>
-                                <div className='study_plan_box'>SQL문 연습해보기</div>
-                                <div className='study_plan_box'>Python이 뭔지알아?</div>
-                                <div className='study_plan_box'>난 코딩최강자 짱짱</div>
-                            </div>
-
-                            <div className='Challengesstyle_SearchForm'>
-                                <form className='SearchForm'>
-                                    <input className='keyword' type='search' autoComplete='off' placeholder='풀고 싶은 문제 제목, 기출문제 검색' value={keyword} onChange={handleInputChange} />
-                                    <Button className='SearchFormstyle_Button' variant='outline-secondary'>검색</Button>
-                                </form>
-                            </div>
-
-                            <div className='DropdownGroupstyle_DropdownGroup'>
-                                <Dropdown className='DropdownGroup'>
-                                    <Dropdown.Toggle variant='outline-dark' className='title_l'>
-                                        상태
-                                    </Dropdown.Toggle>
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item href='#/action-1'>푼 문제</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-2'>안 푼 문제</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-3'>다른 사람 풀이 확인 문제</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-
-                                <Dropdown className='DropdownGroup'>
-                                    <Dropdown.Toggle variant='outline-dark' className='title_l'>
+        <div className='page_contents_wrap'>
+            <Container>
+                <Row>
+                    <Col md={8}>
+                        <Row className='mb-3'>
+                            <Col>
+                                <img src='/images/studyplan/starterplan.png' style={{ width: "100%", borderRadius: "10px" }} />
+                            </Col>
+                            <Col>
+                                <img src='/images/studyplan/middleplan.png' style={{ width: "100%", borderRadius: "10px" }} />
+                            </Col>
+                            <Col>
+                                <img src='/images/studyplan/hardplan.png' style={{ width: "100%", borderRadius: "10px" }} />
+                            </Col>
+                        </Row>
+                        <Row className='mb-3'>
+                            <Col md={2}>
+                                <Dropdown>
+                                    <Dropdown.Toggle className='w-100' variant="outline-primary" id="dropdown-basic">
                                         난이도
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href='#/action-0'>Lv.0</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-1'>Lv.1</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-2'>Lv.2</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-3'>Lv.3</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-4'>Lv.4</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-5'>Lv.5</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-6'>Lv.6</Dropdown.Item>
+                                        {grades.map(g =>
+                                            <Dropdown.Item key={g.grade_id} onClick={() => onSelectGrade(g.grade_id)}>{g.grade}</Dropdown.Item>
+                                        )}
                                     </Dropdown.Menu>
                                 </Dropdown>
-
-                                <Dropdown className='DropdownGroup'>
-                                    <Dropdown.Toggle variant='outline-dark' className='title_r'>
-                                        언어
-                                    </Dropdown.Toggle>
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item href='#/action-1'>javascript</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-2'>python</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-3'>java</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-4'>C++</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-
-                                <Dropdown className='DropdownGroup'>
-                                    <Dropdown.Toggle variant='outline-dark' className='title_r'>
-                                        등록한 문제
-                                    </Dropdown.Toggle>
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item href='#/action-1'>1</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-2'>2</Dropdown.Item>
-                                        <Dropdown.Item href='#/action-3'>3</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </div>
-
-                            <div className='test_table_wrap'>
-                                <table className='test_table'>
+                            </Col>
+                            <Col>
+                                <form onSubmit={onSearch}>
+                                    <InputGroup>
+                                        <Form.Control value={query} placeholder='Search' onChange={(e) => setQuery(e.target.value)} />
+                                        {/* <Button className='px-4' variant='secondary' type='submit'>검색</Button> */}
+                                    </InputGroup>
+                                </form>
+                            </Col>
+                        </Row>
+                        <Row className='mb-3'>
+                            <Col md={10} style={{ fontSize: "1.2rem" }}>
+                                {tags.map(t =>
+                                    <React.Fragment key={t.tag_id}>
+                                        <Badge className='me-2' onClick={() => onClickTag(t.tag_id)} style={{ cursor: "pointer" }}>
+                                            {t.tag_name}
+                                        </Badge>
+                                    </React.Fragment>
+                                )}
+                            </Col>
+                            <Col className='text-end' style={{ fontSize: "1.2rem" }}>
+                                <Badge className='px-3' size='sm' onClick={onReset} bg="secondary" style={{ cursor: "pointer" }}>초기화 <FaUndoAlt /></Badge>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Table hover className='text-center'>
                                     <thead>
                                         <tr>
-                                            {/* <th className='status'>상태</th> */}
-                                            <th className='title'>제목</th>
-                                            <th className='level'>난이도</th>
-                                            <th className='finished_count'>완료한 사람</th>
-                                            <th className='acceptance_rate'>정답률</th>
+                                            <th width="10%">상태</th>
+                                            <th>제목</th>
+                                            <th width="10%">난이도</th>
                                         </tr>
                                     </thead>
-
                                     <tbody>
                                         {problems.map(p =>
                                             <tr key={p.problem_id}>
-                                                {/* <td></td> */}
-                                                <td>
-                                                    <NavLink onClick={() => onClickLink(p.problem_id)}>{p.title}</NavLink>
+                                                <td style={{ verticalAlign: "middle", fontSize: "120%" }}>
+                                                    {clearData.map((cd, index) => {
+                                                        if ((cd.complete === 0) && (p.problem_id === cd.problem_id)) {
+                                                            return <BsCalendar2XFill key={index} style={{ color: "#FA5858" }} />;
+                                                        } else if ((cd.complete === 1) && (p.problem_id === cd.problem_id)) {
+                                                            return <BsCalendar2CheckFill key={index} style={{ color: "#045FB4" }} />;
+                                                        }
+                                                        return null;
+                                                    })}
                                                 </td>
-                                                <td>{p.grade}</td>
-                                                <td></td>
-                                                <td></td>
+                                                <td style={{ verticalAlign: "middle" }} className='text-start ps-5'>
+                                                    <div><NavLink to={`/problem/${p.problem_id}`} style={{ color: "black" }}>{p.title}</NavLink></div>
+                                                    <div style={{ fontSize: "70%" }}>{p.tag_names}</div>
+                                                </td>
+                                                <td style={{ verticalAlign: "middle" }}>{p.grade}</td>
                                             </tr>
                                         )}
                                     </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                </Table>
+                            </Col>
+                        </Row>
+                        <Pagination
+                            activePage={page}
+                            itemsCountPerPage={size}
+                            totalItemsCount={total}
+                            pageRangeDisplayed={10}
+                            prevPageText={'‹'}
+                            nextPageText={'›'}
+                            onChange={onChangePage} // 이벤트 핸들러 추가
+                        />
+                    </Col>
+                    <Col>
+                        <Card>
+                            <CardHeader className='p-4'>
+                                {sessionStorage.getItem("user_id") ?
+                                    <h5 style={{ color: "#2E9AFE" }}>
+                                        {user.nickname}
+                                    </h5>
+                                    :
+                                    <a className='btn btn-primary w-100' onClick={onLogin}>로그인</a>
+                                }
+                            </CardHeader>
+                            <CardBody>
+                                <Card
+                                    bg={"dark"}
+                                    key={"dark"}
+                                    text={'white'}
+                                    className="mb-2"
+                                >
+                                    <CardHeader>Session</CardHeader>
+                                    <CardBody className='mx-3'>
+                                        <Row>
+                                            <Col>
+                                                <DonutChart clearcnt={clearcnt}/>
+                                            </Col>
+                                            <Col md={4}>
+                                                <Row className='mb-2'><Col style={{color:"#79c7e3"}}><strong>Lv.0</strong></Col><Col className='text-end'>{clearcnt.lv0}개</Col></Row>
+                                                <Row className='mb-2'><Col style={{color:"#12939a"}}><strong>Lv.1</strong></Col><Col className='text-end'>{clearcnt.lv1}개</Col></Row>
+                                                <Row className='mb-2'><Col style={{color:"#ef5d28"}}><strong>Lv.2</strong></Col><Col className='text-end'>{clearcnt.lv2}개</Col></Row>
+                                                <Row className='mb-2'><Col style={{color:"#ff9833"}}><strong>Lv.3</strong></Col><Col className='text-end'>{clearcnt.lv3}개</Col></Row>
+                                                <Row className='mb-2'><Col style={{color:"#1a3177"}}><strong>Lv.4</strong></Col><Col className='text-end'>{clearcnt.lv4}개</Col></Row>
+                                                <Row><Col style={{color:"#12939a"}}><strong>Lv.5</strong></Col><Col className='text-end'>{clearcnt.lv5}개</Col></Row>
+                                            </Col>
+                                        </Row>
+                                    </CardBody>
+                                </Card>
+                                <hr />
 
-                        <div className='study_plan_wrap_r'>
-                            <div className='study_plan_userdata'>
-                                <div className='userdata_loggeding'>
-                                    <h2 className='name'><Link>홍길동</Link></h2>
-                                    <ul className='data'>
-                                        <li>
-                                            <div className='label'>순위</div>
-                                            <div className='value'>12.345위</div>
-                                        </li>
-                                        <li>
-                                            <div className='label'>점수</div>
-                                            <div className='value'>100점</div>
-                                        </li>
-                                        <li>
-                                            <div className='label'>해결한 문제</div>
-                                            <div className='value'>12개</div>
-                                        </li>
-                                    </ul>
-                                    <a href="#" className='clickbox'>###</a>
-                                </div>
-                            </div>
-
-                            <div className='study_plan_recommendCourse'>
-                                <h3 className='title'>
-                                    <a href="">내 실력 향상을 위한 추천 코스 ▸</a>
-                                </h3>
-                                <ul className='content'>
-                                    <li className='item'>
-                                        <div className='thumbnail'>
-                                            <div className='card'>d</div>
-                                        </div>
-                                        <h4 className='title'>실무 자바 개발을 위한 OOP와 핵심 디자인 패턴</h4>
-                                        <div className='tags'>
-                                            <span>중급</span>
-                                            <span>JAVA</span>
-                                        </div>
-                                    </li>
-
-                                    <li className='item'>
-                                        <div className='thumbnail'>
-                                            <div className='card'>d</div>
-                                        </div>
-                                        <h4 className='title'>실무 자바 개발을 위한 OOP와 핵심 디자인 패턴</h4>
-                                        <div className='tags'>
-                                            <span>중급</span>
-                                            <span>JAVA</span>
-                                        </div>
-                                    </li>
-
-                                    <li className='item'>
-                                        <div className='thumbnail'>
-                                            <div className='card'>d</div>
-                                        </div>
-                                        <h4 className='title'>실무 자바 개발을 위한 OOP와 핵심 디자인 패턴</h4>
-                                        <div className='tags'>
-                                            <span className='level'>중급</span>
-                                            <span>JAVA</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div className='study_plan_recommendJob'>
-                                <h3 className='title'>
-                                    <a href="">홍길동님께 추천하는 포지션 ▸</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container >
         </div>
-    );
-};
+    )
+}
 
-export default ProblemPage;
+export default ProblemMain
