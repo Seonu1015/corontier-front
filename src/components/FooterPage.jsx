@@ -1,6 +1,13 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
 
 const FooterPage = () => {
+    const location = useLocation();
+    const path = location.pathname;
+    // console.log(path);
+    
+    if (window.location.pathname === `${path}`) return null;
+
     return (
         <footer>
             <div className="footer_nav">

@@ -1,6 +1,7 @@
+import axios from 'axios';
 import React from 'react'
 import { Container, Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
-import { useNavigate} from 'react-router-dom'
+import { useLocation, useNavigate, useParams} from 'react-router-dom'
 
 
 const HeaderPage = () => {
@@ -12,9 +13,14 @@ const HeaderPage = () => {
             sessionStorage.clear();
             navi("/");
         }
-     
-       
     }
+
+    const location = useLocation();
+    const path = location.pathname;
+    // console.log(path);
+    
+    if (window.location.pathname === `${path}`) return null;
+
     return (
         <Navbar className="navbar">
             <Container>
