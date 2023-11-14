@@ -74,7 +74,7 @@ const RouterPage = () => {
             <Route path="/contest/contest-review/:post_id" element={<ContestReviewDetail />} />
             <Route path="/contest/TipInsert" element={<TipInsert />} />
             <Route path="/contest/ReviewInsert" element={<ReviewInsert />} />
-              
+
             <Route path="/community/communitymain" element={<CommunityMain />} />
             <Route path="/community/notice/NoticePage" element={<NoticePage />} />
             <Route path="/community/notice/NoticeInsert" element={<NoticeInsert />} />
