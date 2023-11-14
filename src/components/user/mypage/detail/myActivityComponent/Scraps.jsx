@@ -39,11 +39,10 @@ const Scraps = ({getMenutype}) => {
 
   return (
     <div>
-      <Dropdown onSelect={handleSelect}>
-        <Dropdown.Toggle variant="success" id="dropdown-basic" className='post-categ-dropdownbtn'>
+      <Dropdown onSelect={handleSelect} className='scrapspage_dropdown'>
+        <Dropdown.Toggle variant="dark" id="dropdown-basic" className='post-categ-dropdownbtn'>
           {getMenutype(menu)}
         </Dropdown.Toggle>
-        
         <Dropdown.Menu>
           <Dropdown.Item eventKey="0">전체</Dropdown.Item>        
           <Dropdown.Item eventKey="1">프로젝트</Dropdown.Item>        
@@ -56,19 +55,19 @@ const Scraps = ({getMenutype}) => {
           <Dropdown.Item eventKey="8">공모전(후기)</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      <Table className='text-center'>
+      <Table className='MyActivityPageex_table text-center'>
         <thead>
           <tr>
-            <th width="12%">카테고리</th>
-            <th >title</th>
-            <th width="15%"></th>
+            <th width="15%">카테고리</th>
+            <th className='ellipsis1'>title</th>
+            <th width="18%"></th>
             
           </tr>
         </thead>
         <tbody>
           {scraps.map(scrap=>
             <tr>
-              <td>{scrap.menu_link}{scrap.menu}{scrap.link}{getMenutype(String(scrap.menu_link||scrap.menu||scrap.link))}</td>
+              <td>{getMenutype(String(scrap.menu_link||scrap.menu||scrap.link))}</td>
               <td><div className='ellipsis1'>{scrap.title}</div> </td>         
               <td><Button variant='outline-dark' size='sm' onClick={()=>{
                 if((scrap.menu_link && scrap.menu_link.length>1)||scrap.link){
