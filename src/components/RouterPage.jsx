@@ -47,9 +47,11 @@ import MyActivityPage from './user/mypage/detail/MyActivityPage'
 import OXNotePage from './user/mypage/detail/OXNotePage'
 import MyListPage from './user/mypage/detail/MyListPage'
 import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
+import OXNoteDetailPage from './user/mypage/detail/OXNoteDetailPage'
 import KakaoRedirectHandler from './user/KakaoRedirectHandler'; import AdminPage from './admin/AdminPage'
 import AdminManagement from './admin/admin_detail/AdminManagement'
 import Myactive from './admin/admin_detail/Myactive'
+
 
 import ProjectInsert from './project/ProjectInsert'
 
@@ -106,7 +108,8 @@ const RouterPage = () => {
                 <Route path='' element={<MyQuizPage/>}></Route>
                 <Route path="myactivity" element={<MyActivityPage />} />               
                 <Route path="oxnote" element={<OXNotePage />} />               
-                <Route path="mylist" element={<MyListPage />} />               
+                <Route path="oxnote/detail/:problem_id" element={<OXNoteDetailPage />} />               
+                <Route path="mylist" element={<MyListPage />} />       
                 <Route path="userupdate" element={<UserUpdatePage />} />               
                 <Route path="analysis"  />               
 

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { useLocation,useNavigate } from 'react-router-dom';
@@ -33,6 +34,7 @@ const OXNotePage = () => {
 
   const onChangePage =(page)=>{
     navigator(`${path}?user_id=${sessionStorage.getItem('user_id')}&page=${page}&size=${size}`)
+
   }
 
   return (
@@ -44,12 +46,13 @@ const OXNotePage = () => {
       {/* 해당 post클릭시 이동한페이지 user_id,problem_id 를가지고 solution list랜더링 , 하단에 note insert 부분 랜더링 -> user_id랑 problem_id같은 note행 update*/}
       <div className='oxnotepage_wrap'>
         <div className='oxnotepage_title'>
-          <p>📖 오답노트</p>
+          <p>오답노트</p>
         </div>
         <div className='oxnotepage_table'>
           <Table>
             <thead>
               <tr>
+
                 <th width='8%'>문제번호</th>
                 <th width='50%'>문제제목</th>
                 <th width='8%'>난이도</th>              

@@ -81,7 +81,7 @@ const UserUpdatePage = () => {
   return (
     <div className='page_wrap'>
       <div className='userupdatepage_wrap'>
-        <div className='userupdatepage_title text-center'>
+        <div className='userupdatepage_title'>
           <p>개인정보 수정</p>
         </div>
         <div className='userupdatepage_contents'>
@@ -96,8 +96,13 @@ const UserUpdatePage = () => {
           <div className='userupdatepage_updateform'>
             <div className='userupdatepage_col'>
               <form onSubmit={onUpdate}>
-                
-                
+
+                <InputGroup className='inputgroup mb-2'>
+                  <InputGroup.Text>비밀번호</InputGroup.Text>
+                  <Form.Control name='password' value={password} style={{ display: 'none' }} onChange={onChange} readOnly />
+                  <ModalPwdUpdate user={user} setUser={setUser} />
+                </InputGroup>
+
                 <InputGroup className='inputgroup mb-2'>
                   <InputGroup.Text>이메일</InputGroup.Text>
                   <Form.Control name='email' value={email} onChange={onChange} />
