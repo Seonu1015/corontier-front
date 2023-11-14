@@ -2,8 +2,11 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router';
 import { Link, NavLink } from 'react-router-dom';
-import { Button, Spinner, Badge } from 'react-bootstrap'
+import { Button, Spinner, Badge, Card } from 'react-bootstrap'
 import { FaUndoAlt } from 'react-icons/fa';
+import { FaRegEye } from "react-icons/fa";
+import { FaRegComment } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 import Pagination from 'react-js-pagination';
 import '../../css/Pagination.css';
 
@@ -35,6 +38,10 @@ const ProjectMain = () => {
         const res = await axios.get(url);
         setTotal(res.data.total);
         let listAll = res.data.listAll;
+
+        console.log(listAll[0].tagGroup);
+        listAll.map(l=> l.tagGroup)
+        
         setProjects(listAll);
         setLoading(false);
     }
@@ -117,22 +124,25 @@ const ProjectMain = () => {
                             <div className='planbox_wrap_prj'>
                                 {projects.map(project =>
                                     <NavLink to={`/project/read/${project.post_id}`} style={{ color: "black" }} key={project.post_id}>
-                                        <div className='study_plan_box_prj'>
-                                            <div>
-                                                <h3>{project.title}</h3>
+                                        <Card className='study_plan_box_prj h-100' >
+                                            <Card.Header>
+                                                <h4>{project.title}</h4>
+                                            </Card.Header>
+                                            <Card.Body>
                                                 <p className='text-center'>
                                                     <img src={project.atch_path || "http://via.placeholder.com/500x200"} className='project_thumbnail' />
                                                 </p>
                                                 <p>{project.intro}</p>
-                                                <p>{project.tagGroup}</p>
-
+                                                <div>{project.tagGroup}</div>
+                                            </Card.Body>
+                                            <Card.Footer>
                                                 <div className='text-end'>
-                                                    <span> 👁‍🗨 {project.view_cnt}</span>
-                                                    <span> 🗨 </span>
-                                                    <span> ❤ </span>
+                                                    <span className='me-2'> <FaRegEye /> {project.view_cnt}</span>
+                                                    <span className='me-2'> <FaRegComment /> </span>
+                                                    <span> <FaRegHeart /> </span>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </Card.Footer>
+                                        </Card>
                                     </NavLink>
                                 )}
                             </div>

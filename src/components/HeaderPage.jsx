@@ -15,12 +15,6 @@ const HeaderPage = () => {
         }
     }
 
-    const location = useLocation();
-    const path = location.pathname;
-    // console.log(path);
-    
-    if (window.location.pathname === `${path}`) return null;
-
     return (
         <Navbar className="navbar">
             <Container>
