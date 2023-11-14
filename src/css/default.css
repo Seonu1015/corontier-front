@@ -1,8 +1,15 @@
 * {font-family: 'Noto Sans KR', 'Gowun Batang', sans-serif; margin:0; padding:0; vertical-align: top;} /* 폰트변경 */
-body {max-width: 1360px !important; min-width: 320px !important; margin: 0 auto !important;}
+body {max-width: 1920px !important; min-width: 320px !important; margin: 0 auto !important;}
 li {list-style:none;}
 a {text-decoration:none !important;}
 img {border:0; max-width:100%;}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /* 공통서식 */
 .page_wrap {width: 100%; margin: 0 auto;}

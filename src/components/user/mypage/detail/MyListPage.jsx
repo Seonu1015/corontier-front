@@ -1,17 +1,19 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Button, Dropdown, Table } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom';
 
 const MyListPage = () => {
-  
+
   return (
     <div className='page_wrap'>
       <div className='mylistpage_wrap'>
         <div className='mylistpage_title'>
-          <p>📖 My List</p>
+          <p>My List</p>
         </div>
         <div className='mylistpage_top'>
           <div className='mylistpage_dropdowngroup'>
-            <Dropdown className='dropdown'>
+            <Dropdown className='mylistpage_dropdown'>
               <Dropdown.Toggle variant='outline-dark'>
                 난이도
               </Dropdown.Toggle>
@@ -21,11 +23,11 @@ const MyListPage = () => {
                 <Dropdown.Item href='#'>Lv. 2</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            <Dropdown>
+            <Dropdown className='mylistpage_dropdown'>
               <Dropdown.Toggle variant='outline-dark'>
                 난이도
               </Dropdown.Toggle>
-              <Dropdown.Menu className='dropdown'>
+              <Dropdown.Menu>
                 <Dropdown.Item href='#'>Lv. 0</Dropdown.Item>
                 <Dropdown.Item href='#'>Lv. 1</Dropdown.Item>
                 <Dropdown.Item href='#'>Lv. 2</Dropdown.Item>
@@ -37,80 +39,34 @@ const MyListPage = () => {
           </div>
         </div>
         <div className='mylistpage_table'>
-          <Table>
+          {/* <Table>
             <thead>
               <tr>
                 <th width='5%'>번호</th>
-                <th width='50%'>문제</th>
-                <th width='8%'>문제풀이</th>
-                <th width='8%'>난이도</th>
-                <th width='15%'>날짜</th>
+                <th width='48%'>문제</th>
+                <th width='11%'>문제풀이</th>
+                <th width='10%'>난이도</th>
+                <th width='12%'>날짜</th>
                 <th width='14%'></th>
               </tr>
             </thead>
             <tbody>
-              <tr className='mylistpage_list'>
-                <td>01</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='mylistpage_difficulty_hard'>
-                    <p className='mylistpage_difficultytext'>Lv. 2</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
-              <tr className='mylistpage_list'>
-                <td>02</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='mylistpage_difficulty_easy'>
-                    <p className='mylistpage_difficultytext'>Lv. 0</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
-              <tr className='mylistpage_list'>
-                <td>03</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='mylistpage_difficulty_normal'>
-                    <p className='mylistpage_difficultytext'>Lv. 1</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
-              <tr className='mylistpage_list'>
-                <td>04</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='mylistpage_difficulty_normal'>
-                    <p className='mylistpage_difficultytext'>Lv. 1</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
-              <tr className='mylistpage_list'>
-                <td>05</td>
-                <td>누가 사과를 먹었을까?</td>
-                <td>O</td>
-                <td>
-                  <div className='mylistpage_difficulty_hard'>
-                    <p className='mylistpage_difficultytext'>Lv. 2</p>
-                  </div>
-                </td>
-                <td>2023.11.01</td>
-                <td><Button size='sm px-4' variant='dark' className=''>문제보기</Button></td>
-              </tr>
+              {mylists.map(mylist =>
+                <tr className='mylistpage_list'>
+                  <td>{mylist.problem_id}</td>
+                  <td>{mylist.title}</td>
+                  <td>O</td>
+                  <td>
+                    <div className='mylistpage_difficulty_hard'>
+                      <p className='mylistpage_difficultytext'>{mylist.grade_id}</p>
+                    </div>
+                  </td>
+                  <td>2023.11.01</td>
+                  <td><Button size='sm px-4' variant='dark' className=''><NavLink onClick={()=>onClickLink(mylist.problem_id)}>문제보기</NavLink></Button></td>
+                </tr>
+              )}
             </tbody>
-          </Table>
+          </Table> */}
         </div>
       </div>
       <div>

@@ -1,16 +1,14 @@
 import React from 'react'
 import "../../../../css/Mypage.css"
+import { Table } from 'react-bootstrap'
 import { useState } from 'react'
 
 const MyQuizPage = () => {
   
   return (
-    <div className='contents'>MyQuizPage
-    <div>맞춘문제 list틀린문제 list</div>
-    <p>난이도별조회</p>
-    <p>문제 카테고리별 조회</p>
-    <p>제목검색</p>
     
+    <div className='page_wrap'>
+     나의커스텀퀴이이즈
 
     </div>
   )
