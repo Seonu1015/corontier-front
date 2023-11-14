@@ -57,6 +57,7 @@ import AdminContest from './admin/admin_detail/AdminContest'
 import ProjectInsert from './project/ProjectInsert'
 import SolutionOthers from './problem/solution/SolutionOthers'
 import UserProbsDataAnaly from './user/mypage/detail/UserProbsDataAnaly'
+import StarterPlan from './problem/studyplan/StarterPlan'
 
 const RouterPage = () => {
     return (
@@ -71,6 +72,7 @@ const RouterPage = () => {
             <Route path="/solution/:user_id" element={<SolutionList />} />
             <Route path="/solution/read/:sol_id" element={<SolutionRead />} />
             <Route path="/solution/other/:problem_id" element={<SolutionOthers />} />
+            <Route path="/plan/starter" element={<StarterPlan />} />
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
             <Route path="/contest/contest-tip" element={<ContestTip />} />
@@ -103,19 +105,19 @@ const RouterPage = () => {
             <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
 
             <Route path="/admin/adminpage" element={<AdminPage />} >
-                <Route path='' element={<AdminManagement/>}></Route>            
-                <Route path='adminproblem' element={<AdminProblem/>}></Route>            
-                <Route path='admincontest' element={<AdminContest/>}></Route>            
+                <Route path='' element={<AdminManagement />}></Route>
+                <Route path='adminproblem' element={<AdminProblem />}></Route>
+                <Route path='admincontest' element={<AdminContest />}></Route>
             </Route>
 
             <Route path="/user/mypage" element={<Mypage />} >
-                <Route path='' element={<MyQuizPage/>}></Route>
-                <Route path="myactivity" element={<MyActivityPage />} />               
-                <Route path="oxnote" element={<OXNotePage />} />               
-                <Route path="oxnote/detail/:problem_id" element={<OXNoteDetailPage />} />               
-                <Route path="mylist" element={<MyListPage />} />       
-                <Route path="userupdate" element={<UserUpdatePage />} />               
-                <Route path="analysis" element={<UserProbsDataAnaly/>} />               
+                <Route path='' element={<MyQuizPage />}></Route>
+                <Route path="myactivity" element={<MyActivityPage />} />
+                <Route path="oxnote" element={<OXNotePage />} />
+                <Route path="oxnote/detail/:problem_id" element={<OXNoteDetailPage />} />
+                <Route path="mylist" element={<MyListPage />} />
+                <Route path="userupdate" element={<UserUpdatePage />} />
+                <Route path="analysis" element={<UserProbsDataAnaly />} />
 
             </Route>
             <Route path="/user/signin" element={<SigninPage />} />

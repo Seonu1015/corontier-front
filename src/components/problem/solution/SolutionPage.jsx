@@ -202,7 +202,7 @@ const SolutionPage = () => {
     }
 
     return (
-        <div className='solution_wrap'>
+        <div className='solution_wrap my-5'>
             {prob_id === 0 && (
                 <div>
                     <Container>
@@ -230,7 +230,7 @@ const SolutionPage = () => {
                             </Row>
                         </div>
                         <Row>
-                            <Col xs={6} sm={6} md={6} className='border-end border-dark-subtle scrollbar' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px", overflow: "auto", height: "751px" }}>
+                            <Col className='border-end border-dark-subtle scrollbar' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px", overflow: "auto", height: "751px" }}>
                                 <div className='my-3 mx-3'>
                                     <p>Description</p><br />
                                     <p style={{ fontSize: "16px" }} dangerouslySetInnerHTML={{ __html: content }} />
@@ -243,7 +243,7 @@ const SolutionPage = () => {
                                     <br />
                                 </div>
                             </Col>
-                            <Col>
+                            <Col xs={6} sm={6} md={6}>
                                 <Row>
                                     <Col className='ps-0'>
                                         <div className='pt-2 px-3 border-dark-subtle text-end' style={{ backgroundColor: "#1e1e1e", color: "white" }}>

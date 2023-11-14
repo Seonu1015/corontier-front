@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { BoxContext } from '../BoxContext';
 
 import { FaUndoAlt } from 'react-icons/fa';
@@ -132,7 +132,7 @@ const ProblemMain = () => {
           <Col md={8}>
             <Row className='mb-3'>
               <Col>
-                <img src='/images/studyplan/starterplan.png' style={{ width: "100%", borderRadius: "10px" }} />
+                <Link to="/plan/starter"><img src='/images/studyplan/starterplan.png' style={{ width: "100%", borderRadius: "10px" }} /></Link>
               </Col>
               <Col>
                 <img src='/images/studyplan/middleplan.png' style={{ width: "100%", borderRadius: "10px" }} />
