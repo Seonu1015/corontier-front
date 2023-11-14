@@ -8,7 +8,6 @@ const MyListPage = () => {
 
 
   return (
-    
     <div className='contents'>
       <Nav fill className="mt-5" variant="tabs" defaultActiveKey="0">
         <Nav.Item>
