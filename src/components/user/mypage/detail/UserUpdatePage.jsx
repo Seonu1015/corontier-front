@@ -80,11 +80,11 @@ const UserUpdatePage = () => {
   }
   return (
     <div className='page_wrap'>
-      <div className='userupdatepage_wrap'>
-        <div className='userupdatepage_title'>
+      <div className='allmypage_wrap'>
+        <div className='allmypage_title'>
           <p>개인정보 수정</p>
         </div>
-        <div className='userupdatepage_contents'>
+        <div className='allmypage_contents'>
           <div className='userupdatepage_img text-center'>
             <img src={profile_image||"http://via.placeholder.com/250x250"} width="100" className='photo' />
             <input  type="file" ref={ref_file} onChange={onChangeFile} style={{display:'none'}}/>
@@ -96,13 +96,6 @@ const UserUpdatePage = () => {
           <div className='userupdatepage_updateform'>
             <div className='userupdatepage_col'>
               <form onSubmit={onUpdate}>
-
-                <InputGroup className='inputgroup mb-2'>
-                  <InputGroup.Text>비밀번호</InputGroup.Text>
-                  <Form.Control name='password' value={password} style={{ display: 'none' }} onChange={onChange} readOnly />
-                  <ModalPwdUpdate user={user} setUser={setUser} />
-                </InputGroup>
-
                 <InputGroup className='inputgroup mb-2'>
                   <InputGroup.Text>이메일</InputGroup.Text>
                   <Form.Control name='email' value={email} onChange={onChange} />

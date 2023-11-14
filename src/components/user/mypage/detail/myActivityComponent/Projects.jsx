@@ -32,7 +32,7 @@ const Projects = () => {
   }
   return (
     <div>
-      <Table className='text-center'>
+      <Table className='MyActivityPageex_table text-center'>
         <thead>
           <tr>
 

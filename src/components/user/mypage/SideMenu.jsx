@@ -13,10 +13,10 @@ const SideMenu = () => {
         <li className='activities_menagement'>
           <h3 className='mypage_account'> 나의 활동 관리 </h3>
           <ol>
-            <Link to="">My Quiz</Link>
             <Link to="mylist">My List</Link>
             <Link to="oxnote">오답노트</Link>
             <Link to="myactivity">나의 활동</Link>
+            <Link to="">My Quiz</Link>
           </ol>
         </li>
 

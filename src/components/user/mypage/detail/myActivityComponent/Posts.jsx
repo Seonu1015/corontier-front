@@ -46,11 +46,11 @@ const Posts = ({getMenutype}) => {
 
   
   return (
-    <div className='p-3'>
+    <div>
       
       <div>
-      <Dropdown onSelect={handleSelect}>
-        <Dropdown.Toggle variant="success" id="dropdown-basic" className='post-categ-dropdownbtn'>
+      <Dropdown className='scrapspage_dropdown' onSelect={handleSelect}>
+        <Dropdown.Toggle variant="dark" id="dropdown-basic" className='post-categ-dropdownbtn'>
           {getMenutype(menu)}
         </Dropdown.Toggle>
         
@@ -69,13 +69,13 @@ const Posts = ({getMenutype}) => {
       
     </div>
       {/* 선택한카테고리 ===post.category && 내용출력 */}
-      <Table className='text-center'>
+      <Table className='MyActivityPageex_table text-center'>
         <thead>
           <tr>
-            <th width="12%">카테고리</th>
-            <th>title</th>
-            <th>작성일(수정일)</th>
-            <th></th>
+            <th width="15%">카테고리</th>
+            <th width="45%">title</th>
+            <th width="22%">작성일(수정일)</th>
+            <th width="18%"></th>
           </tr>
         </thead>
         <tbody>
