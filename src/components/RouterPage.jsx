@@ -48,6 +48,7 @@ import OXNotePage from './user/mypage/detail/OXNotePage'
 import MyListPage from './user/mypage/detail/MyListPage'
 import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
 import OXNoteDetailPage from './user/mypage/detail/OXNoteDetailPage'
+
 import KakaoRedirectHandler from './user/KakaoRedirectHandler'; import AdminPage from './admin/AdminPage'
 import AdminManagement from './admin/admin_detail/AdminManagement'
 import AdminProblem from './admin/admin_detail/AdminProblem'
@@ -79,7 +80,7 @@ const RouterPage = () => {
             <Route path="/contest/contest-review/:post_id" element={<ContestReviewDetail />} />
             <Route path="/contest/TipInsert" element={<TipInsert />} />
             <Route path="/contest/ReviewInsert" element={<ReviewInsert />} />
-              
+
             <Route path="/community/communitymain" element={<CommunityMain />} />
             <Route path="/community/notice/NoticePage" element={<NoticePage />} />
             <Route path="/community/notice/NoticeInsert" element={<NoticeInsert />} />

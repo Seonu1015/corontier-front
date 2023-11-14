@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
 
@@ -13,6 +13,7 @@ import { vscodeDark } from '@uiw/codemirror-themes-all';
 import { Row, Col, Container, Button, Spinner } from 'react-bootstrap';
 import { AiOutlineLock, AiOutlineUnlock } from 'react-icons/ai';
 import { RiBookmark3Line, RiBookmark3Fill } from 'react-icons/ri';
+import { FaArrowLeft } from "react-icons/fa";
 
 import Question from '../Question';
 import { BoxContext } from '../../BoxContext';
@@ -202,10 +203,14 @@ const SolutionPage = () => {
 
     return (
         <div className='solution_wrap'>
-            <Button href="/problem/main"></Button>
             {prob_id === 0 && (
-                <div className='m-5'>
+                <div>
                     <Container>
+                        <div className='px-4 border-bottom border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", fontSize: "20px" }}>
+                            <Row>
+                                <Col><Link to="/problem/main" style={{color:"grey"}}><FaArrowLeft className='pb-1' /> Problem Main</Link></Col>
+                            </Row>
+                        </div>
                         <div className='py-2 px-4 border-bottom border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", fontSize: "30px" }}>
                             <Row>
                                 <Col>
