@@ -23,7 +23,7 @@ const ProjectRead = () => {
         const res = await axios.get("/project/prcedures?post_id=" + post_id);
         let listOne = res.data.listOne;
         setPost(listOne);
-        setLoading(false);
+        setLoading(false); 
     }
 
     const getPostTags = async () => {
