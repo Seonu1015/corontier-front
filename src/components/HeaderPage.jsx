@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react'
 import { Container, Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
 import { useLocation, useNavigate, useParams} from 'react-router-dom'
@@ -15,11 +14,7 @@ const HeaderPage = () => {
         }
     }
 
-    const location = useLocation();
-    const path = location.pathname;
-    // console.log(path);
-    
-    if (window.location.pathname === `${path}`) return null;
+    if(window.location.pathname === `/problem/11`) return null;
 
     return (
         <Navbar className="navbar">
