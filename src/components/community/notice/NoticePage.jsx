@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Table } from 'react-bootstrap'
+import { Button, Table } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import CommunityMain from '../CommunityMain';
@@ -48,7 +48,7 @@ const NoticePage = () => {
                 <Table striped hover className='text-center my-3 mb-5'>
                     <thead>
                         <tr>
-                            <th width='5%'>분류</th>
+                            <th width='9%'>분류</th>
                             <th>제목</th>
                             <th width='6%'>작성자</th>
                             <th>작성일</th>
@@ -64,15 +64,15 @@ const NoticePage = () => {
                                     <div onClick={() => onClickTitle(post.post_id)} style={{ cursor: "pointer" }}><strong>{post.title}</strong></div>
                                     <td colSpan={4}>
                                         {post.show &&
-                                            <>
-                                                {post.content}
+                                            <div style={{whiteSpace:"pre-line"}}>
+                                                {post?.content}
                                                 {sessionStorage.getItem('user_id')==='admin' && //admin 계정명 넣었을 때만 보이게
                                                     <div className='text-end'>
                                                         <Button onClick={() => navi(`/community/notice/NoticeUpdate/${post.post_id}`)} variant='success' size='sm'>수정하기</Button>
                                                     </div>          
                                                 }
                                                 
-                                            </>
+                                            </div>
                                         }
                                     </td>
                                 </td>
@@ -85,18 +85,6 @@ const NoticePage = () => {
                 </Table>
             </div>
             </div>
-            {/* {total > size && */}
-            {/* <Pagination
-                activePage={1}
-                itemsCountPerPage={3}
-                totalItemsCount={1}
-                pageRangeDisplayed={5}
-                prevPageText={"‹"}
-                nextPageText={"›"}
-            /> */}
-            {/*onChange={onChangePage} */}
-            {/* } */}
-
         </>
     )
 }

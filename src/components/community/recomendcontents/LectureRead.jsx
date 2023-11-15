@@ -1,9 +1,25 @@
 import React from 'react'
-import { Row, Col, Card, Button, Container, NavLink } from 'react-bootstrap';
+import { Row, Col, Card, Button, Container } from 'react-bootstrap';
 import CommunityMain from '../CommunityMain';
+import { Link, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+import { useEffect } from 'react';
+
 
 const ProjectRead = () => {
+    const { vod_id } = useParams();
+    const [post, setPost] = useState({});
 
+    const getPosts = async () => {
+        const res = await axios.get(`/crawler/javalist/${vod_id}`);
+        setPost(res.data);
+        console.log(post)
+    }
+
+    useEffect(() => {
+        getPosts();
+    }, [])
 
     return (
         <>
@@ -14,48 +30,46 @@ const ProjectRead = () => {
             </div>
             <div className='noticepage_tablegroup'>
                 <div style={{ width: "80%" }} className='mb-5'>
-                    <div className='justify-content-center p-10'>
-                        <Card className='p-5' >
-                            <Row className='mb-3'>
-                                <Col className='me-3'>
-                                    <div className='thumbnail'>썸네일 들어갈 예정</div>
-                                </Col>
-                                <Col>
-                                    <div className='text-end'>
-                                        <Button className='btn btn-secondary'>수정</Button>
-                                        <Button className='btn btn-dark'>삭제</Button>
+
+                        <div className='justify-content-center p-10'>
+                            <Card className='p-5 text-center' >
+                                <Row className='mb-3'>
+                                    <Col>
+                                        <div className='text-end mb-5'>
+                                            <Button className='btn btn-secondary btn-sm mx-1'>수정</Button>
+                                            <Button className='btn btn-dark btn-sm'>삭제</Button>
+                                        </div>
+                                        <div className='text-center mb-5'>
+                                            <h3> 제목 {post.vod_title}</h3>
+                                        </div>
+                                        <div className='mb-3'>
+                                            <h4>소개</h4>
+                                            <p>　{post.vod_contents}</p>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <div className='mb-3'>
+                                            <iframe
+                                            width="100%"
+                                            height="500"
+                                            src={post.vod_link}
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen>
+                                        </iframe>
                                     </div>
-                                    <div className='mb-5'>
-                                        <h5><span style={{ color: "red" }}>✔</span> 제목 </h5>
-                                    </div>
-                                    <div className='mb-5'>
-                                        <h5><span style={{ color: "red" }}>✔</span> 난이도 : 상 </h5>
-                                    </div>
-                                    <div className='mb-5'>
-                                        <h5><span style={{ color: "red" }}>✔</span> 소개 </h5>
-                                        <h4>　어..</h4>
-                                    </div>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <div className='mb-5'>
-                                    <h4><span style={{ color: "red" }}>✔</span> 목차 </h4>
-                                    <h5>..</h5>
-                                </div>
-                                <div className='mb-5'>
-                                    <h4><span style={{ color: "red" }}>✔</span> 내용 </h4>
-                                    <h5>..</h5>
-                                </div>
-                            </Row>
-                        </Card>
-                        <div className='text-end mt-3'>
-                            <NavLink to={`../community/recomendcontents/textbookpage`}>
-                                <Button className='btn btn-secondary' size="lg">목록보기</Button>
-                            </NavLink>
+                                </Row>
+                            </Card>
+                            <div className='text-end mt-3'>
+                                <Link to={`/community/recomendcontents/textbookpage`}>
+                                    <Button className='btn btn-secondary' size="lg">목록보기</Button>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
+               
                 </div>
-                
+
             </div>
 
 
