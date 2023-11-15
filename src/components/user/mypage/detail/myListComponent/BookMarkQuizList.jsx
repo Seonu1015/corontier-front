@@ -107,18 +107,21 @@ function BookMarkQuizList() {
       </div>     
     </div>
     
-    <Table>
+    <Table className='text-center'>
       <thead>
         <tr>
-          <th></th>
+          <th>문제난이도</th>
+          <th>문제번호</th>
+          <th>문제제목</th>
+          <th>문제유형</th>
         </tr>
       </thead>
       <tbody>
         {bookmarks.map(bookmark=>
           <tr>
+            <td>{bookmark.grade}</td>
             <td>{bookmark.problem_id}</td>
             <td>{bookmark.title}</td>
-            <td>{bookmark.grade}</td>
             <td>{bookmark.tag_names}</td>
           </tr>      
         )}
