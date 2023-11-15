@@ -39,11 +39,10 @@ const Scraps = ({getMenutype}) => {
 
   return (
     <div>
-      <Dropdown onSelect={handleSelect}>
-        <Dropdown.Toggle variant="success" id="dropdown-basic" className='post-categ-dropdownbtn'>
+      <Dropdown onSelect={handleSelect} className='scrapspage_dropdown'>
+        <Dropdown.Toggle variant="dark" id="dropdown-basic" className='post-categ-dropdownbtn'>
           {getMenutype(menu)}
         </Dropdown.Toggle>
-        
         <Dropdown.Menu>
           <Dropdown.Item eventKey="0">전체</Dropdown.Item>        
           <Dropdown.Item eventKey="1">프로젝트</Dropdown.Item>        
@@ -56,23 +55,50 @@ const Scraps = ({getMenutype}) => {
           <Dropdown.Item eventKey="8">공모전(후기)</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      <Table className='text-center'>
+      <Table className='MyActivityPageex_table text-center'>
         <thead>
           <tr>
-            <th width="12%">카테고리</th>
-            <th>title</th>
-            <th>작성일(수정일)</th>
-            <th></th>
+            <th width="15%">카테고리</th>
+            <th className='ellipsis1'>title</th>
+            <th width="18%"></th>
+            
           </tr>
         </thead>
         <tbody>
           {scraps.map(scrap=>
             <tr>
-              <td>{scrap.menu_link}{scrap.menu}{scrap.link}{getMenutype(String(scrap.menu_link||scrap.menu||scrap.link))}</td>
-              <td><div className='ellipsis1'>{scrap.title}</div> </td>
-              <td>{scrap.created_at === scrap.updated_at ?
-              scrap.date:scrap.newdate}</td>
-              <td><Button variant='outline-dark' size='sm'>해당 게시글로 이동</Button></td>
+              <td>{getMenutype(String(scrap.menu_link||scrap.menu||scrap.link))}</td>
+              <td><div className='ellipsis1'>{scrap.title}</div> </td>         
+              <td><Button variant='outline-dark' size='sm' onClick={()=>{
+                if((scrap.menu_link && scrap.menu_link.length>1)||scrap.link){
+                  window.location.href=scrap.menu_link||scrap.link
+                } else {
+                  const menutype = scrap.menu_link||scrap.menu;
+                  switch (menutype) {
+                    case 1:
+                      window.location.href=`/project/read/${scrap.post_id}`
+                      break;
+                    case 3:
+                      window.location.href=`/community/lounge/loungeread/${scrap.post_id}`
+                      break;
+                    case 4:
+                      window.location.href=`/community/applystudy&project/ApplyProjectRead/${scrap.post_id}`
+                      break;
+                    case 5:
+                      window.location.href=`/community/q&a/questionread/${scrap.post_id}`
+                      break;
+                    case 6:
+                      window.location.href=`/community/recomendcontents/textbookread${scrap.post_id}`
+                      break;
+                    case 7:
+                      window.location.href=`/project/read/${scrap.post_id}`
+                      break;
+                    case 8:
+                      window.location.href=`/project/read/${scrap.post_id}`
+                      break;
+                  }
+                }
+                }}>해당 게시글로 이동</Button></td>
             </tr>
             )}
         </tbody>

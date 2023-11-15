@@ -44,8 +44,8 @@ const Comments = ({getMenutype}) => {
   }
   return (
     <div className='commentspage_content'>
-      <Dropdown onSelect={handleSelect}>
-        <Dropdown.Toggle variant="success" id="dropdown-basic" className='post-categ-dropdownbtn'>
+      <Dropdown className='scrapspage_dropdown' onSelect={handleSelect}>
+        <Dropdown.Toggle variant="dark" id="dropdown-basic" className='post-categ-dropdownbtn'>
           {getMenutype(menu)}
         </Dropdown.Toggle>
         
@@ -60,25 +60,25 @@ const Comments = ({getMenutype}) => {
           <Dropdown.Item eventKey="8">공모전(후기)</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      <Table className='text-center'>
+      <Table className='MyActivityPageex_table text-center'>
         <thead>
           <tr>
-            <th>게시글 카테고리</th>
-            <th>댓글 내용</th>
+            <th width="15%">카테고리</th>
+            <th width="43%">댓글 내용</th>
             <th></th>
-            <th>작성일(수정일)</th>
-            <th></th>
+            <th width="14%">작성일(수정일)</th>
+            <th width="18%"></th>
           </tr>
         </thead>
         <tbody>
         {comments.map(comment=>
             <tr>         
               <td>{getMenutype(String(comment.menu))}</td>            
-              <td><div className='ellipsis1 d-flex justifiy-content-between'>{comment.content}</div> </td>
+              <td><div className='ellipsis1'>{comment.content}</div> </td>
               <td><Button variant='outline-dark' size='sm'>더보기</Button></td>
               <td>{comment.created_at === comment.updated_at ?
               comment.date:comment.newdate}</td>
-              <td><Button variant='outline-dark' size='sm'>해당 게시글로 이동</Button></td>
+              <td><Button variant='outline-dark' size='sm'>게시글로 이동</Button></td>
             </tr>
             )}
         </tbody>
