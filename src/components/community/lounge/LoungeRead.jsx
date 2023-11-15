@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import CommunityMain from '../CommunityMain';
-import { NavLink, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import LoungeComments from './LoungeComments';
 
 
 
@@ -38,26 +37,30 @@ const LoungeRead = () => {
                         {posts.map(post =>
                             <>
                                 <Row>
-                                    <Col md={2}>
+                                    <Col md={2} ket={post.post_id}>
                                         <h4>제목 </h4>
                                     </Col>
                                     <Col>
-                                    <h5>{post.title}</h5>
+                                        <h5>{post.title}</h5>
+                                    </Col>
+                                    <Col md={2} className='text-end'>
+                                        <Button className='btn btn-secondary mx-1' size="sm">수정</Button>
+                                        <Button className='btn btn-dark' size="sm">삭제</Button>
                                     </Col>
                                 </Row>
                                 <hr />
                                 <Row>
-                                    <Col>
+                                    <Col md={2}>
                                         <h4>등록자</h4>
                                     </Col>
                                     <Col>
-                                    <h5>{post.nickname}</h5>
+                                        <h5>{post.nickname}</h5>
                                     </Col>
-                                    <Col>
+                                    <Col md={2}>
                                         <h4>등록일</h4>
                                     </Col>
                                     <Col>
-                                    <h5>{post.fmtdate}</h5>
+                                        <h5>{post.fmtdate}</h5>
                                     </Col>
                                 </Row>
                                 <hr />
@@ -67,18 +70,18 @@ const LoungeRead = () => {
                                         <p>{post.content}</p>
                                     </div>
                                 </div>
-                                <div className='mb-3 text-end'>
-                                    <Button className='btn btn-secondary' size="sm">수정</Button>
-                                    <Button className='btn btn-dark' size="sm">삭제</Button>
+
+                                <div className='text-end mb-5'>
+                                    <Link to={`/community/lounge/LoungePage`}>
+                                        <Button className='btn btn-secondary'>목록보기</Button>
+                                    </Link>
+                                    <hr />
                                 </div>
                             </>
                         )}
-                        <hr />
-                        <div className='text-end mb-5'>
-                            <NavLink to={`../community/lounge/LoungePage`}>
-                                <Button className='btn btn-secondary' size="lg">목록보기</Button>
-                            </NavLink>
-                        </div>
+                        <div className='page_contents_wrap_comm_comm'>
+                        <LoungeComments />
+                    </div>
                     </div>
                 </div>
             </div>

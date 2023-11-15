@@ -86,9 +86,9 @@ const RouterPage = () => {
             <Route path="/community/q&a/questionpage" element={<QuestionPage />} />
             <Route path="/community/q&a/questionread/:post_id" element={<QuestionRead />} />
             <Route path="/community/recomendcontents/textbookpage" element={<TextbookPage />} />
-            <Route path="/community/recomendcontents/Textbookread" element={<TextbookRead />} />
+            <Route path="/community/recomendcontents/Textbookread/:post_id" element={<TextbookRead />} />
             <Route path="/community/recomendcontents/lecturepage" element={<LecturePage />} />
-            <Route path="/community/recomendcontents/lectureread" element={<LectureRead />} />
+            <Route path="/community/recomendcontents/lectureread/:vod_id" element={<LectureRead />} />
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
             <Route path="/project/read/:post_id" element={<ProjectRead />} />

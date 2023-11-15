@@ -3,6 +3,15 @@
 .community_nav {margin: 0 auto;}
 
 .community_wrap{display: flex; width: 100%; justify-content: center;}
-.community_wrap_l{width: 12%; height: 350px; margin-right: 2%; background: #ededed;}
-.community_wrap_r {width: 65%; height: 600px; flex: 0 0 auto; background-color: rgb(255, 255, 255); border-radius: 0.9375rem; display: block;}
-.photo{border-radius:50%; }
+.community_wrap_l{width: 10%; height: 230px; margin-right: 4%; background: #ededed; align-self: flex-end;}
+.community_wrap_r {width: 75%; height: 600px; flex: 0 0 auto; background-color: rgb(255, 255, 255); border-radius: 0.9375rem; display: block;}
+.community_plan_userdata {padding: 1.1rem;}
+.photo{border-radius:50%;}
+
+.textbook_wrap{display: flex; width: 100%; justify-content: center;}
+
+.ellipsis {overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 10;-webkit-box-orient: vertical;}
+  
+.product_container{ display:flex; flex-direction: row; flex-wrap : wrap; width: 100%;}
+
+.page_contents_wrap_comm_comm { width: 100%; margin: 80px auto;}
