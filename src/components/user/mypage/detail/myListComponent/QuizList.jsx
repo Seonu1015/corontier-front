@@ -13,17 +13,20 @@ function QuizList() {
   };
   return (
     <div>
-      <Dropdown onSelect={handleSelect}>
-    <Dropdown.Toggle variant="success" id="dropdown-basic" className='post-categ-dropdownbtn'>
-      전체
-    </Dropdown.Toggle>
+    <Dropdown onSelect={handleSelect}>
+      <Dropdown.Toggle variant="success" id="dropdown-basic" className='post-categ-dropdownbtn'>
+        전체
+      </Dropdown.Toggle>
     
     <Dropdown.Menu>
       <Dropdown.Item eventKey="-1">전체</Dropdown.Item>        
       <Dropdown.Item eventKey="0">틀린문제</Dropdown.Item>        
       <Dropdown.Item eventKey="1">맞은문제</Dropdown.Item>
     </Dropdown.Menu>
-  </Dropdown></div>
+  </Dropdown>
+  
+  
+  </div>
   )
 }
 
