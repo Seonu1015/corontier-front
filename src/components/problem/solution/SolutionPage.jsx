@@ -1,7 +1,7 @@
-import React, { useState, useCallback, useContext } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+
+import React, { useState, useCallback, useContext, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect } from 'react';
 
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
@@ -202,9 +202,9 @@ const SolutionPage = () => {
     }
 
     return (
-        <div className='solution_wrap my-5'>
+        <div className='solution_wrap'>
             {prob_id === 0 && (
-                <div>
+                <div className='my-5'>
                     <Container>
                         <div className='px-4 border-bottom border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", fontSize: "20px" }}>
                             <Row>

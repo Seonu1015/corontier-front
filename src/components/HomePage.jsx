@@ -75,7 +75,7 @@ const HomePage = () => {
 
       <section className="our_brands">
         <div className="contents_title_box">
-          <p className="contents_title" data-aos="fade-right" data-aos-duration="600">추천 강의</p>
+          <p className="contents_title" data-aos="fade-right" data-aos-duration="600">추천 프로그램</p>
           <a href="" data-aos="fade-left" data-aos-duration="600">더 보기 +</a>
         </div>
 
@@ -98,9 +98,6 @@ const HomePage = () => {
       <section className="sustain">
         <div className="contents_title_box">
           <p className="contents_title" data-aos="fade-right" data-aos-duration="600">추천 강의</p>
-          <p className="contents_article" data-aos="fade-right" data-aos-duration="700">
-            .
-          </p>
         </div>
 
         <div className="sustain_contents">

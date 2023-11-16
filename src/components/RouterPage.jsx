@@ -52,12 +52,15 @@ import OXNoteDetailPage from './user/mypage/detail/OXNoteDetailPage'
 import KakaoRedirectHandler from './user/KakaoRedirectHandler'; import AdminPage from './admin/AdminPage'
 import AdminManagement from './admin/admin_detail/AdminManagement'
 import AdminProblem from './admin/admin_detail/AdminProblem'
-import AdminContest from './admin/admin_detail/AdminContest'
 
 import ProjectInsert from './project/ProjectInsert'
+
+import AdminCommunity from './admin/admin_detail/AdminCommunity'
+
 import SolutionOthers from './problem/solution/SolutionOthers'
 import UserProbsDataAnaly from './user/mypage/detail/UserProbsDataAnaly'
 import StarterPlan from './problem/studyplan/StarterPlan'
+
 
 const RouterPage = () => {
     return (
@@ -105,9 +108,9 @@ const RouterPage = () => {
             <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
 
             <Route path="/admin/adminpage" element={<AdminPage />} >
-                <Route path='' element={<AdminManagement />}></Route>
-                <Route path='adminproblem' element={<AdminProblem />}></Route>
-                <Route path='admincontest' element={<AdminContest />}></Route>
+                <Route path='' element={<AdminManagement/>}></Route>            
+                <Route path='adminproblem' element={<AdminProblem/>}></Route>            
+                <Route path='admincommunity' element={<AdminCommunity/>}></Route>
             </Route>
 
             <Route path="/user/mypage" element={<Mypage />} >

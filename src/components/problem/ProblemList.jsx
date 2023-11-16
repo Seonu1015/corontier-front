@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { BoxContext } from '../BoxContext';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Button, Table } from 'react-bootstrap';
 import Pagination from 'react-js-pagination';
