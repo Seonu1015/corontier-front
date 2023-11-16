@@ -2,8 +2,6 @@ import React from 'react'
 
 const FooterPage = () => {
 
-    if(window.location.pathname === `/problem/11`) return null;
-
     return (
         <footer>
             <div className="footer_nav">

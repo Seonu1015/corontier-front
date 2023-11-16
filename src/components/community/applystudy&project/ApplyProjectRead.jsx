@@ -3,8 +3,9 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import CommunityMain from '../CommunityMain';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import ApplyProjectComments from './ApplyProjectComments';
+
 
 
 const LoungeRead = () => {
@@ -32,11 +33,11 @@ const LoungeRead = () => {
             </div>
             <div className='noticepage_tablegroup'>
                 <div style={{ width: "70%" }} >
-                {posts.map(post =>
+                    {posts.map(post =>
                         <>
                             <Row>
                                 <Col md={2}>
-                                    <h4>제목 </h4>
+                                    <h5> 제목</h5>
                                 </Col>
                                 <Col>
                                     <h5>{post.title}</h5>
@@ -44,40 +45,75 @@ const LoungeRead = () => {
                             </Row>
                             <hr />
                             <Row>
-                                <Col>
-                                    <h4>등록자</h4>
+                                <Col md={2}>
+                                    <h5>모집정보</h5>
                                 </Col>
                                 <Col>
-                                    <h5>{post.nickname}</h5>
+                                    <h5>{post.intro}</h5>
+                                </Col>
+                                <Col md={2}>
+                                    <h5>모집인원</h5>
                                 </Col>
                                 <Col>
-                                    <h4>등록일</h4>
+                                    <h5>{post.user_id} 명</h5>
+                                </Col>
+                            </Row>
+                            <hr />
+                            <Row>
+                                <Col md={2}>
+                                    <h5>진행방식</h5>
                                 </Col>
                                 <Col>
-                                    <h5>{post.fmtdate}</h5>
+                                    <h5>{post.major}</h5>
+                                </Col>
+                                <Col md={2}>
+                                    <h5>진행기간</h5>
+                                </Col>
+                                <Col>
+                                    <h5>{post.view_cnt} 개월</h5>
+                                </Col>
+                            </Row>
+                            <hr />
+                            <Row>
+                                <Col md={2}>
+                                    <h5>기술스택</h5>
+                                </Col>
+                                <Col>
+                                    <h5>{post.hard}</h5>
+                                </Col>
+                                <Col md={2}>
+                                    <h5>모집포지션</h5>
+                                </Col>
+                                <Col>
+                                    <h5>{post.disapoint}</h5>
                                 </Col>
                             </Row>
                             <hr />
                             <div>
                                 <div>
-                                    <h4>상세내용</h4>
+                                    <h5>상세내용</h5>
                                     <p>{post.content}</p>
                                 </div>
                             </div>
-                            <div className='mb-3 text-end'>
-                                <Button className='btn btn-secondary mx-1' size="sm">수정</Button>
-                                <Button className='btn btn-dark' size="sm">삭제</Button>
-                            </div>
+                            {sessionStorage.getItem('user_id') === 'admin' &&
+                                <div className='mb-3 text-end'>
+                                    <Button className='btn btn-secondary mx-1' size="sm">수정</Button>
+                                    <Button className='btn btn-dark' size="sm">삭제</Button>
+                                </div>
+                            }
                         </>
                     )}
-                        <hr />
-                        <div className='text-end mb-5'>
-                            <Link to={`/community/applystudy&project/ApplyProjectPage`}>
-                                <Button className='btn btn-secondary' size="lg">목록보기</Button>
-                            </Link>
-                        </div>
+                    <div className='text-end'>
+                        <Link to={`/community/applystudy&project/ApplyProjectPage`}>
+                            <Button className='btn btn-secondary'>목록보기</Button>
+                        </Link>
+                    </div>
+                    <hr />
+                    <div className='page_contents_wrap_comm_comm mb-5'>
+                        <ApplyProjectComments />
                     </div>
                 </div>
+            </div>
         </>
     )
 }

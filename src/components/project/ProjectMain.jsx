@@ -1,132 +1,173 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router';
 import { Link, NavLink } from 'react-router-dom';
-import { Button, Spinner, InputGroup, Form } from 'react-bootstrap'
+import { Button, Spinner, Badge, Card } from 'react-bootstrap'
+import { FaUndoAlt } from 'react-icons/fa';
+import { FaRegEye } from "react-icons/fa";
+import { FaRegComment } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+import { CiBookmark } from "react-icons/ci";
 import Pagination from 'react-js-pagination';
 import '../../css/Pagination.css';
 
 const ProjectMain = () => {
-  const [loading, setLoading] = useState(false);
-  const [tags, setTags] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [total, setTotal] = useState(0);
-  const size = 9;
-  const [page, setPage] = useState(1);
+    const [loading, setLoading] = useState(false);
+    const [tags, setTags] = useState([]);
+    const [projects, setProjects] = useState([]);
+    const [total, setTotal] = useState(0);
+    const size = 9;
+    //const [page, setPage] = useState(1);
+    const navi = useNavigate();
+    const location = useLocation();
+    const path = location.pathname;
+    const search = new URLSearchParams(location.search);
+    const page = search.get("page") ? parseInt(search.get("page")) : 1;
+    const [query, setQuery] = useState(search.get("query") ? search.get("query") : "");
+    const [clicked, setClicked] = useState(false);
 
-  const getTag = async () => { //왼쪽메뉴 기술스택 가져오는거
-    const res = await axios.get("/project/taglist.json?tag_type_id=3");
-    setTags(res.data)
-  }
+    const getTags = async () => { //왼쪽메뉴 프로그래밍언어
+        setLoading(true);
+        const res = await axios.get("/project/taglist.json");
+        setTags(res.data);
+        setLoading(false);
+    }
 
-  const getProject = async () => { //오른쪽 프로젝트게시판 글 가져오는거
-    const url = `/project/prcedures?page=${page}&size=${size}`
-    const res = await axios.get(url);
-    setTotal(res.data.total);
-    let listAll = res.data.listAll;
-    setProjects(listAll);
-  }
+    const getProject = async () => { //오른쪽 프로젝트게시판 글 가져오는거
+        setLoading(true);
+        const url = `/project/prcedures?page=${page}&size=${size}`;
+        const res = await axios.get(url);
+        setTotal(res.data.total);
+        let listAll = res.data.listAll;
 
-  const onChangePage = (page) => {
-    setPage(page);
-  }
 
-  useEffect(() => { getTag(); getProject(); }, [page])
+        console.log(listAll[1].tagGroup);
+        listAll.map(l => l.tagGroup)
 
-  if (loading) return <div><Spinner /></div>
-  return (
+        setProjects(listAll);
+        setLoading(false);
+    }
 
-    <div className='page_wrap'>
-      <div className='banner'>
-        <img src="../images/banner.png" alt="" />
-      </div>
-      <div className='page_contents_wrap_prj'>
-        <div className='text-center my-5'>
-          <div className='Challengesstyle_SearchForm'>
-            <form className='SearchForm'>
-              <InputGroup className='clallenge_inputG'>
-                <Form.Control className='keyword' type='search' autoComplete='off' placeholder='검색어를 입력하세용' value=''  />
-                <Button className='SearchFormstyle_submit' type='submit' aria-label='검색'>검색</Button>
-              </InputGroup>
-            </form>
-          </div>
-        </div>
+    const onClickTag = async (tag_name) => { //왼쪽메뉴 선택했을 때 선택결과만 나오는
+        setLoading(true);
+        const url = `/project/searchbytag.json?tag_name=${tag_name}&page=1&size=9`
+        const res = await axios.get(url);
+        navi(`${path}?query=${tag_name}&page=1&size=${size}`)
+        let select = res.data;
+        setProjects(select);
+        setLoading(false);
+    }
 
-        <div className='page_contents'>
-          <div className='study_plan_wrap justify-content-center'>
-            <div className='proj_sidebar_wrap'>
-              <div className='proj_sidebar_box'>
-                <ol className='proj_sidebar_ol'>
-                  <li className='proj_management'>
-                    <ol>
-                      <Link to={`/project/insert`}> 나의 프로젝트 자랑하기 </Link>
-                      <Link> 프로젝트 모집 보러가기 </Link>
-                    </ol>
-                  </li>
+    const onReset = () => { //왼쪽메뉴 검색 초기화
+        getProject();
+        navi('/project/main');
+    }
 
-                <li className='proj_management'>
-                  <h3 className='proj_title'> 기술 스택 </h3>
-                  <div className='proj_title_wrap'>
-                    {tags.map(tag =>
-                      <p key={tag.tag_id}>
-                        <input type='checkbox' /> {tag.tag_name}
-                      </p>
-                    )}
-                  </div>
-                </li>   
+    const onClickBtnActive = () => {
 
-                <li className='proj_management'>
-                  <h3 className='proj_title'> 개발 인원 </h3>
-                  <div className='proj_title_wrap'>
-                    <p><input type='checkbox' /> 개인</p>
-                    <p><input type='checkbox' /> 팀</p>
-                  </div>
-                </li>                               
-                </ol>
-              </div>
+    }
+
+    const onChangePage = (page) => {
+        navi(`${path}?query=${query}&page=${page}&size=${size}`);
+    }
+
+    useEffect(() => {
+        getTags();
+        getProject();
+    }, [page])
+
+
+    if (loading) return <div><Spinner /></div>
+    return (
+
+        <div className='page_wrap'>
+            <div className='banner'>
+                <img src="../images/banner.png" alt="" />
             </div>
+            <div className='page_contents_wrap_prj'>
+                <div className='page_contents'>
+                    <div className='study_plan_wrap justify-content-center'>
+                        <div className='proj_sidebar_wrap'>
+                            <div className='proj_sidebar_box'>
+                                <ol className='proj_sidebar_ol'>
+                                    <li className='proj_management'>
+                                        <ol>
+                                            <Link to={`/project/insert`}><Button variant="secondary"> 나의 프로젝트 <br /> 자랑하기 🎉 </Button></Link>
+                                            <Link to={'/community/applystudy&project/applyprojectpage'}><Button variant="secondary"> 프로젝트 모집 <br /> 보러가기 👀 </Button></Link>
+                                        </ol>
+                                    </li>
 
-
-            <div className='proj_contents_wrap ms-4'>
-              <h5 className='mb-3'><span style={{ color: "red" }}>✔</span> 총 {total}건 </h5>
-              <div className='planbox_wrap_prj'>
-                {projects.map(project =>
-                  <NavLink to={`/project/read/${project.post_id}`} style={{ color: "black" }}>
-                    <div className='study_plan_box_prj' key={project.post_id}>
-                      <div>
-                        <h3>{project.title}</h3>
-                        <p className='text-center'>
-                          <img src={project.atch_path || "http://via.placeholder.com/500x200"} className='project_thumbnail' />
-                        </p>
-                        <p>{project.intro}</p>
-                        <div className='text-end'>
-                          <span> 👁‍🗨 {project.view_cnt}</span>
-                          <span> 🗨 </span>
-                          <span> ❤ </span>
+                                    <li className='proj_management'>
+                                        <h2 className='proj_title'>
+                                            기술 스택
+                                            <Badge className='ms-5' onClick={onReset} bg="secondary" style={{ cursor: "pointer" }}>초기화 <FaUndoAlt /></Badge>
+                                        </h2>
+                                        <div className='proj_title_wrap'>
+                                            {tags.map(tag =>
+                                                <p key={tag.tag_id}>
+                                                    <Button variant='outline-success btn-sm' className='btn_prj'
+                                                        onClick={() => onClickTag(tag.tag_name)}>{tag.tag_name}</Button>
+                                                </p>
+                                            )}
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
                         </div>
-                      </div>
+
+
+                        <div className='proj_contents_wrap ms-4'>
+
+                            <h5 className='mb-3 ms-3'>
+                                <span style={{ color: "red" }}>✔</span> 총 {total}건
+                            </h5>
+
+                            <div className='planbox_wrap_prj'>
+                                {projects.map(project =>
+                                    <NavLink to={`/project/read/${project.post_id}`} style={{ color: "black" }} key={project.post_id}>
+                                        <Card className='study_plan_box_prj h-100' >
+                                            <Card.Header>
+                                                <h4>{project.title}</h4>
+                                            </Card.Header>
+                                            <Card.Body>
+                                                <p className='text-center'>
+                                                    <img src={project.atch_path || "http://via.placeholder.com/500x200"} className='project_thumbnail' />
+                                                </p>
+                                                <p>{project.intro}</p>
+                                                <div>{project.tagGroup}</div>
+                                            </Card.Body>
+                                            <Card.Footer>
+
+                                                <div className='text-end'>
+                                                    <span className='me-2'> <FaRegEye /> {project.view_cnt}</span>
+                                                    <span className='me-2'> <FaRegComment /> </span>
+                                                    <span> <FaRegHeart /> </span>
+                                                </div>
+                                            </Card.Footer>
+                                        </Card>
+                                    </NavLink>
+                                )}
+                            </div>
+                        </div>
+
                     </div>
-                  </NavLink>
-                )}
-              </div>
+                </div>
+
+
             </div>
-          </div>
+            <div className='page_contents_wrap_prj_read'>
+                <Pagination
+                    activePage={page}
+                    itemsCountPerPage={size}
+                    totalItemsCount={total}
+                    pageRangeDisplayed={9}
+                    prevPageText={'‹'}
+                    nextPageText={'›'}
+                    onChange={onChangePage}
+                />
+            </div>
         </div>
-
-
-      </div>
-      <div className='page_contents_wrap_prj_read'>
-        <Pagination
-          activePage={page}
-          itemsCountPerPage={size}
-          totalItemsCount={total}
-          pageRangeDisplayed={9}
-          prevPageText={'‹'}
-          nextPageText={'›'}
-          onChange={onChangePage}
-        />
-      </div>
-    </div>
-  )
+    )
 }
 
 export default ProjectMain

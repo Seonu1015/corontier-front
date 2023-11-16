@@ -35,7 +35,7 @@ const ProjectRead = () => {
             <div className='noticepage_tablegroup'>
                 <div style={{ width: "80%" }} className='mb-5'>
                     <div className='justify-content-center p-10'>
-                        <Card className='p-5' >
+                        <Card className='p-5 mt-5' >
                             {posts.map(post =>
                                 <>
                                     <Row className='mb-3'>
@@ -45,12 +45,14 @@ const ProjectRead = () => {
                                             </div>
                                         </Col>
                                         <Col>
+                                            {sessionStorage.getItem('user_id')==='admin' &&
                                             <div className='text-end mb-4'>
                                                 <Button className='btn btn-secondary btn-sm mx-1'>수정</Button>
                                                 <Button className='btn btn-dark btn-sm'>삭제</Button>
                                             </div>
+                                            }
                                             <div className='mb-5'>
-                                                <h2><span style={{ color: "red" }}>✔</span> {post.title}</h2>
+                                                <h3><span style={{ color: "red" }}>✔</span> {post.title}</h3>
                                             </div>
                                             <div className='mb-4'>
                                                 <h5><span style={{ color: "red" }}>✔</span> 난이도 : {post.intro} </h5>
@@ -68,7 +70,7 @@ const ProjectRead = () => {
                                                 <p>{post?.major}</p>
                                             </div>
                                             <div className='text-end'>
-                                                <h5>펼쳐보기</h5>
+                                                <h5>v 펼쳐보기</h5>
                                             </div>
                                             <hr />
                                         </div>
@@ -78,7 +80,7 @@ const ProjectRead = () => {
                         </Card>
                         <div className='text-end mt-3'>
                             <Link to={`/community/recomendcontents/textbookpage`}>
-                                <Button className='btn btn-secondary' size="lg">목록보기</Button>
+                                <Button className='btn btn-secondary'>목록보기</Button>
                             </Link>
                         </div>
                     </div>
