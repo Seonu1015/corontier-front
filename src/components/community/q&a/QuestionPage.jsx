@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import CommunityMain from '../CommunityMain';
-import { Row, Col, Button, Card, InputGroup, Form } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom';
+import { Button, Card, InputGroup, Form, Row, Col, Pagination } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -34,7 +34,9 @@ const QuestionPage = () => {
                     <div style={{ width: "80%" }} >
                         <h2 className='text-center'> Q & A </h2>
                         <hr />
-                        <h5>전체 답변완료 답변대기</h5>
+                        <div className='mb-3'>
+                            <h5>전체 답변완료 답변대기</h5>
+                        </div>
                         <Card>
                             <InputGroup>
                                 <Form.Control />
@@ -43,13 +45,19 @@ const QuestionPage = () => {
                         </Card>
                         {posts.map(post =>
                             <div className='my-5'>
-                                <NavLink to={`../community/q&a/questionread/${post.post_id}`} style={{ color: 'black' }}>
-                                    <h5>{post.title}</h5>
+                                <Link to={`/community/q&a/questionread/${post.post_id}`} style={{ color: 'black' }}>
+                                    <div>
+                                        <Button className='btn-secondary btn-sm'>답변완료</Button>
+                                            <strong> {post.title}</strong>
+                                    </div>
                                     <p>{post.content}</p>
-                                </NavLink>
+                                </Link>
                                 <div className='row'>
                                     <div className='col'>
-                                        <p>{post.nickname} / {post.fmtdate}</p>
+                                        <p>
+                                            <img className='photo mx-2' src="http://via.placeholder.com/20x20" />
+                                            {post.nickname} / {post.fmtdate}
+                                        </p>
                                     </div>
                                     <div className='col text-end'>
                                         <p>👁‍🗨{post.view_cnt} 🗨 45</p>
@@ -58,7 +66,8 @@ const QuestionPage = () => {
                                 <hr />
                             </div>
                         )}
-                    </div>
+                    
+                </div>
                 </div>
             </div>
         </>

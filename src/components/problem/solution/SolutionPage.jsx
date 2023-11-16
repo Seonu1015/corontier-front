@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback, useContext, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -11,6 +12,8 @@ import { vscodeDark } from '@uiw/codemirror-themes-all';
 
 import { Row, Col, Container, Button, Spinner } from 'react-bootstrap';
 import { AiOutlineLock, AiOutlineUnlock } from 'react-icons/ai';
+import { RiBookmark3Line, RiBookmark3Fill } from 'react-icons/ri';
+import { FaArrowLeft } from "react-icons/fa";
 
 import Question from '../Question';
 import { BoxContext } from '../../BoxContext';
@@ -26,6 +29,10 @@ const SolutionPage = () => {
         input: '',
         output: ''
     });
+    const [bookmark, setBookmark] = useState(0);
+    const [executedValue, setExecutedValue] = useState("");
+    const [submitcnt, setSubmitcnt] = useState(0);
+
     const { title, content, input, output } = problem;
     const [language, setLanguage] = useState("python");
     const [result, setResult] = useState('........');
@@ -45,12 +52,27 @@ const SolutionPage = () => {
 
     const getProblem = async () => {
         setLoading(true);
-        const res = await axios('/problem/' + problem_id, { problem_id });
+        const res = await axios('/problem/' + problem_id);
         // console.log(res.data);
-        const data = res.data;
-        // console.log(data);
-        setProblem(data);
-        setValue(data.input);
+        setProblem(res.data);
+        setValue(res.data.input);
+        setLoading(false);
+    }
+
+    const getBookmark = async () => {
+        setLoading(true);
+        const res = await axios(`/problem/bookmarkox/list.json?user_id=${sessionStorage.getItem("user_id")}&problem_id=${problem_id}`);
+        // console.log(res.data.bookmark);
+        setBookmark(res.data.bookmark);
+        // console.log(bookmark);
+        setLoading(false);
+    }
+
+    const getSubmitcnt = async () => {
+        setLoading(true);
+        const res = await axios(`/problem/submit/list.json?user_id=${sessionStorage.getItem("user_id")}&problem_id=${problem_id}`);
+        // console.log(res.data.submitcnt);
+        setSubmitcnt(res.data.submitcnt);
         setLoading(false);
     }
 
@@ -101,10 +123,12 @@ const SolutionPage = () => {
 
             if (executionResult.toString() === output) {
                 setResult('테스트 결과 : 성공');
+                setExecutedValue('결과값 : ' + executionResult.toString());
                 setExecuted(true);
                 setComplete('1');
             } else {
                 setResult('테스트 결과 : 실패');
+                setExecutedValue('결과값 : ' + executionResult.toString());
                 setExecuted(true);
                 setComplete('0');
             }
@@ -125,13 +149,10 @@ const SolutionPage = () => {
         });
     }
 
-    const onOthers = async () => {
-        const res = await axios.get("/problem/clear", { problem_id, user_id: sessionStorage.getItem("user_id") });
-        console.log(res);
-    }
-
     useEffect(() => {
+        getBookmark();
         getProblem();
+        getSubmitcnt();
     }, []);
 
     const onSubmit = async (e) => {
@@ -147,8 +168,8 @@ const SolutionPage = () => {
             });
         } else {
             setBox({
-                show:true,
-                message:"코드를 실행한 후에 제출해주세요!"
+                show: true,
+                message: "코드를 실행한 후에 제출해주세요!"
             });
         }
     }
@@ -157,16 +178,59 @@ const SolutionPage = () => {
         setProb_id(problem_id);
     }
 
+    const onClickBookmark = async (problem_id) => {
+        await axios.post('/problem/bookmark/insert', { user_id: sessionStorage.getItem("user_id"), problem_id });
+        getBookmark();
+        getProblem();
+    }
+
+    const onClickFillBookmark = async (problem_id) => {
+        await axios.post('/problem/bookmark/delete', { user_id: sessionStorage.getItem("user_id"), problem_id });
+        getBookmark();
+        getProblem();
+    }
+
+    const onWarning = () => {
+        setBox({
+            show:true,
+            message: "문제를 풀어야만 다른 사람의 풀이를 보실 수 있습니다."
+        });
+    }
+
+    const onOthers = () => {
+        navi(`/solution/other/${problem_id}`);
+    }
+
     return (
         <div className='solution_wrap'>
             {prob_id === 0 && (
                 <div className='my-5'>
                     <Container>
+                        <div className='px-4 border-bottom border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", fontSize: "20px" }}>
+                            <Row>
+                                <Col><Link to="/problem/main" style={{color:"grey"}}><FaArrowLeft className='pb-1' /> Problem Main</Link></Col>
+                            </Row>
+                        </div>
                         <div className='py-2 px-4 border-bottom border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", fontSize: "30px" }}>
-                            {title}
+                            <Row>
+                                <Col>
+                                    {title}
+                                </Col>
+                                <Col className='text-end'>
+                                    {sessionStorage.getItem("user_id") &&
+                                        <div>
+                                            {bookmark === 0 ?
+                                                <RiBookmark3Line onClick={() => onClickBookmark(problem_id)} style={{ cursor: "pointer" }} />
+                                                :
+                                                <RiBookmark3Fill onClick={() => onClickFillBookmark(problem_id)} style={{ color: "#DBA901", cursor: "pointer" }} />
+                                            }
+                                        </div>
+                                    }
+                                </Col>
+                            </Row>
                         </div>
                         <Row>
-                            <Col xs={6} sm={6} md={6} className='border-end border-dark-subtle scrollbar' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px", overflow: "auto", height: "751px" }}>
+                            <Col className='border-end border-dark-subtle scrollbar' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px", overflow: "auto", height: "751px" }}>
                                 <div className='my-3 mx-3'>
                                     <p>Description</p><br />
                                     <p style={{ fontSize: "16px" }} dangerouslySetInnerHTML={{ __html: content }} />
@@ -179,10 +243,10 @@ const SolutionPage = () => {
                                     <br />
                                 </div>
                             </Col>
-                            <Col>
+                            <Col xs={6} sm={6} md={6}>
                                 <Row>
                                     <Col className='ps-0'>
-                                        <div className='pt-2 px-3 border-dark-subtle text-end' style={{ backgroundColor: "#1e1e1e", color: "white"}}>
+                                        <div className='pt-2 px-3 border-dark-subtle text-end' style={{ backgroundColor: "#1e1e1e", color: "white" }}>
                                             <Row>
                                                 <Col></Col>
                                                 <Col md={3} className='pb-1'>
@@ -211,6 +275,7 @@ const SolutionPage = () => {
                                                 </div>
                                             ) : (
                                                 <div style={{ height: '100%', overflow: 'auto' }}>
+                                                    {executedValue}<br />
                                                     {result}
                                                 </div>
                                             )}
@@ -224,11 +289,10 @@ const SolutionPage = () => {
                                 <Button className='me-2 px-4' variant="secondary" onClick={() => onClickQuestion(problem_id)}>Discussion</Button>
                             </div>
                             <div className='sol_btn'>
-                                {
-                                    <>
-                                        <Button className='me-2 px-4' variant="secondary" onClick={onOthers}>다른 사람의 풀이 <AiOutlineLock /></Button>
-                                        <Button className='me-2 px-4' variant="secondary">다른 사람의 풀이 <AiOutlineUnlock /></Button>
-                                    </>
+                                {submitcnt === 0 ?
+                                    <Button className='me-2 px-4' variant="secondary" onClick={onWarning}>다른 사람의 풀이 <AiOutlineLock /></Button>
+                                    :
+                                    <Button className='me-2 px-4' variant="secondary" onClick={onOthers} problem={problem}>다른 사람의 풀이 <AiOutlineUnlock /></Button>
                                 }
                                 <Button className='me-2 px-4' variant="secondary" onClick={onClickReset}>초기화</Button>
                                 <Button className='me-2 px-4' variant="secondary" onClick={onClickExecute}>실행</Button>

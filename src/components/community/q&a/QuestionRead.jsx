@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import CommunityMain from '../CommunityMain';
-import { NavLink, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -73,9 +73,9 @@ const LoungeRead = () => {
                     )}
                     <hr />
                     <div className='text-end mb-5'>
-                        <NavLink to={`../community/q&a/QuestionPage`}>
+                        <Link to={`/community/q&a/QuestionPage`}>
                             <Button className='btn btn-secondary' size="lg">목록보기</Button>
-                        </NavLink>
+                        </Link>
                     </div>
                 </div>
             </div>
