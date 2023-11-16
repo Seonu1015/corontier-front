@@ -31,7 +31,7 @@ const NoticePage = () => {
 
     return (
         <>
-            <div className='page_contents'>
+            <div className='page_contents mb-5'>
                 <Container>
                     <CommunityMain />
                 </Container>

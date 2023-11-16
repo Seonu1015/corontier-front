@@ -3,8 +3,9 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import CommunityMain from '../CommunityMain';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect} from 'react';
+import QuestionComments from './QuestionComments';
+
 
 
 
@@ -65,17 +66,22 @@ const LoungeRead = () => {
                                     <p>{post.content}</p>
                                 </div>
                             </div>
-                            <div className='mb-3 text-end'>
-                                <Button className='btn btn-secondary' size="sm">수정</Button>
-                                <Button className='btn btn-dark' size="sm">삭제</Button>
-                            </div>
+                            {sessionStorage.getItem('user_id') === 'admin' &&
+                                <div className='mb-3 text-end'>
+                                    <Button className='btn btn-secondary' size="sm">수정</Button>
+                                    <Button className='btn btn-dark' size="sm">삭제</Button>
+                                </div>
+                            }
                         </>
                     )}
-                    <hr />
                     <div className='text-end mb-5'>
                         <Link to={`/community/q&a/QuestionPage`}>
-                            <Button className='btn btn-secondary' size="lg">목록보기</Button>
+                            <Button className='btn btn-secondary'>목록보기</Button>
                         </Link>
+                    </div>
+                    <hr />
+                    <div className='page_contents_wrap_comm_comm mb-5'>
+                        <QuestionComments />
                     </div>
                 </div>
             </div>

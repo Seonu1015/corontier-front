@@ -43,10 +43,12 @@ const LoungeRead = () => {
                                     <Col>
                                         <h5>{post.title}</h5>
                                     </Col>
-                                    <Col md={2} className='text-end'>
-                                        <Button className='btn btn-secondary mx-1' size="sm">수정</Button>
-                                        <Button className='btn btn-dark' size="sm">삭제</Button>
-                                    </Col>
+                                    {sessionStorage.getItem('user_id') === 'admin' &&
+                                        <Col md={2} className='text-end'>
+                                            <Button className='btn btn-secondary mx-1' size="sm">수정</Button>
+                                            <Button className='btn btn-dark' size="sm">삭제</Button>
+                                        </Col>
+                                    }
                                 </Row>
                                 <hr />
                                 <Row>
@@ -80,8 +82,8 @@ const LoungeRead = () => {
                             </>
                         )}
                         <div className='page_contents_wrap_comm_comm'>
-                        <LoungeComments />
-                    </div>
+                            <LoungeComments />
+                        </div>
                     </div>
                 </div>
             </div>
