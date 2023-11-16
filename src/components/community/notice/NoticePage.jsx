@@ -7,27 +7,27 @@ import CommunityMain from '../CommunityMain';
 
 
 const NoticePage = () => {
-    const [posts, setPosts] = useState([]);
-    const navi = useNavigate();
+  const [posts, setPosts] = useState([]);
+  const navi = useNavigate();
 
-    const getPosts = async () => {
-        const url = '/community/noticelist.json';
-        const res = await axios(url);
-        let list = res.data;
-        list = list.map(p => p && { ...p, show: false });
-        console.log(list);
-        setPosts(list);
-    }
+  const getPosts = async () => {
+    const url = '/community/noticelist.json';
+    const res = await axios(url);
+    let list = res.data;
+    list = list.map(p => p && { ...p, show: false });
+    console.log(list);
+    setPosts(list);
+  }
 
-    useEffect(() => {
-        getPosts();
-    }, [])
+  useEffect(() => {
+    getPosts();
+  }, [])
 
-    const onClickTitle = (id) => {
-        const newPosts = posts.map(p => p.post_id === id ? { ...p, show: !p.show } : p);
-        // console.log(newPosts)
-        setPosts(newPosts);
-    }
+  const onClickTitle = (id) => {
+    const newPosts = posts.map(p => p.post_id === id ? { ...p, show: !p.show } : p);
+    // console.log(newPosts)
+    setPosts(newPosts);
+  }
 
     return (
         <>
