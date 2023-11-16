@@ -17,7 +17,7 @@ const AdminSideMenu = () => {
             <h3 className='my_account'> 관리자 </h3>
             <ol>
               <Link to="" onClick={() => handleMenuClick('admin_account')} className={selectedMenu === 'admin_account' ? 'selected' : ''}> 관리자 계정 </Link>
-              <Link to="#" onClick={() => handleMenuClick('problem_management')} className={selectedMenu === 'problem_management' ? 'selected' : ''}> 문제등록 </Link>
+              <Link to="#" onClick={() => handleMenuClick('problem_insert')} className={selectedMenu === 'problem_insert' ? 'selected' : ''}> 문제등록 </Link>
               <Link to="adminproblem" onClick={() => handleMenuClick('problem_management')} className={selectedMenu === 'problem_management' ? 'selected' : ''}> 문제관리 </Link>
               {/* <Link to="admincontest" onClick={() => handleMenuClick('competition_management')} className={selectedMenu === 'competition_management' ? 'selected' : ''}> 공모전 관리 </Link> */}
               <Link to="admincommunity" onClick={() => handleMenuClick('community_management')} className={selectedMenu === 'community_management' ? 'selected' : ''}> 커뮤니티 관리 </Link>
