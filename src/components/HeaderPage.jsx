@@ -14,8 +14,6 @@ const HeaderPage = () => {
         }
     }
 
-    if(window.location.pathname === `/problem/11`) return null;
-
     return (
         <Navbar className="navbar">
             <Container>
@@ -24,7 +22,7 @@ const HeaderPage = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <NavLink href="/problem/main">Problems</NavLink>
-                        <NavLink href="/project/projectmain">Projects</NavLink>
+                        <NavLink href="/project/main">Projects</NavLink>
                         <NavDropdown title="Community" id="basic-nav-dropdown">
                             <NavDropdown.Item href="/community/notice/NoticePage">공지사항</NavDropdown.Item>
                             <NavDropdown.Item href="/community/lounge/loungepage">라운지</NavDropdown.Item>

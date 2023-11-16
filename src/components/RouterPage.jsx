@@ -101,7 +101,7 @@ const RouterPage = () => {
             <Route path="/community/recomendcontents/lecturepage" element={<LecturePage />} />
             <Route path="/community/recomendcontents/lectureread/:vod_id" element={<LectureRead />} />
 
-            <Route path="/project/projectmain" element={<ProjectMain />} />
+            <Route path="/project/main" element={<ProjectMain />} />
             <Route path="/project/read/:post_id" element={<ProjectRead />} />
             <Route path="/project/insert" element={<ProjectInsert />} />
 
