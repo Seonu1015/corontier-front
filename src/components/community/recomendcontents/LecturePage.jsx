@@ -3,7 +3,8 @@ import Container from 'react-bootstrap/Container';
 import CommunityMain from '../CommunityMain';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, InputGroup, Form, Button } from 'react-bootstrap'
+
 
 const TextbookPage = () => {
     const [javavideos, setJavavideos] = useState([]);
@@ -19,10 +20,10 @@ const TextbookPage = () => {
         getjavavideos();
     }, []);
 
-    
+
     return (
         <>
-            <div className='page_contents'>
+            <div className='page_contents mb-5'>
                 <Container>
                     <CommunityMain />
                 </Container>
@@ -32,10 +33,22 @@ const TextbookPage = () => {
                 <div className='noticepage_tablegroup'>
                     <div style={{ width: "80%" }} className='mb-5' >
                         <hr />
-                        <div className='mb-5'>
-                            <Link to={`/community/recomendcontents/textbookpage`}>교재</Link>
-                            <Link to={`/community/recomendcontents/lecturepage`}>강의</Link>
-                        </div>
+                        <Row className='mb-5'>
+                            <Col>
+                                <span className='me-3'>
+                                    <Link to={`/community/recomendcontents/textbookpage`} style={{ fontSize: "20px", color: 'black' }}><strong>교재</strong></Link>
+                                </span>
+                                <span>
+                                    <Link to={`/community/recomendcontents/lecturepage`} style={{ fontSize: "20px", color: 'black' }}><strong>강의</strong></Link>
+                                </span>
+                            </Col>
+                            <Col md={4}>
+                                <InputGroup>
+                                    <Form.Control />
+                                    <Button>검색</Button>
+                                </InputGroup>
+                            </Col>
+                        </Row>
                         <Row>
                             {javavideos
                                 .filter(javavideo => javavideo.vod_id <= 8)
@@ -51,8 +64,8 @@ const TextbookPage = () => {
                                         </iframe>
                                         <div className='mt-3'>
                                             <Link to={`/community/recomendcontents/lectureread/${javavideo.vod_id}`}>
-                                                <h5 style={{color:'black'}}>{javavideo.vod_title}</h5>
-                                                <p style={{color:'black'}}>{javavideo.vod_contents}</p>
+                                                <h5 style={{ color: 'black' }}>{javavideo.vod_title}</h5>
+                                                <p style={{ color: 'black' }}>{javavideo.vod_contents}</p>
                                             </Link>
                                         </div>
                                     </div>
@@ -61,6 +74,7 @@ const TextbookPage = () => {
 
                         </Row>
                     </div>
+                    
                 </div>
             </div>
         </>

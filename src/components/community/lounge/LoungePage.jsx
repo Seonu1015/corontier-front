@@ -26,7 +26,7 @@ const LoungePage = () => {
     }, [])
     return (
         <>
-            <div className='page_contents'>
+            <div className='page_contents mb-5'>
                 <Container>
                     <CommunityMain />
                 </Container>
@@ -35,7 +35,7 @@ const LoungePage = () => {
                 <h2 className='text-center mb-5'>개발자 라운지</h2>
             </div>
             <div className='community_wrap mb-5'>
-                <div className='community_wrap_l'>
+                <div className='community_wrap_ll'>
                     <div className='community_plan_userdata'>
                         <div>
                             <h5 className='text-center'>TOP WRITER</h5>
@@ -49,12 +49,12 @@ const LoungePage = () => {
                         </div>
                     </div>
                 </div>
-                <div className='community_wrap_r'>
+                <div className='community_wrap_rr'>
                     {posts.map(post =>
                         <>
                             <hr />
                             <div className='mb-2' ket={post.post_id}>
-                                <img className='photo' src={post.profile_image || "http://via.placeholder.com/30x30"} /> {post.nickname}
+                                <img className='photo2' src={post.profile_image || "http://via.placeholder.com/30x30"} /> {post.nickname}
                             </div>
                             <Row>
                                 <Col>
@@ -68,7 +68,7 @@ const LoungePage = () => {
                             </Row>
                         </>
                     )}
-                <div className='page_contents_wrap_prj_read mb-5'>
+                <div className='page_contents_wrap_comm_read mb-5'>
                 <Pagination
                     activePage={1}
                     itemsCountPerPage={10}
