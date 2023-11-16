@@ -1,7 +1,6 @@
-import React, { useState, useCallback, useContext } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import React, { useState, useCallback, useContext, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect } from 'react';
 
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
@@ -14,7 +13,6 @@ import { Row, Col, Container, Button, Spinner } from 'react-bootstrap';
 import { AiOutlineLock, AiOutlineUnlock } from 'react-icons/ai';
 
 import Question from '../Question';
-import { async } from 'q';
 import { BoxContext } from '../../BoxContext';
 
 const SolutionPage = () => {
@@ -161,9 +159,8 @@ const SolutionPage = () => {
 
     return (
         <div className='solution_wrap'>
-            <Button href="/problem/main"></Button>
             {prob_id === 0 && (
-                <div className='m-5'>
+                <div className='my-5'>
                     <Container>
                         <div className='py-2 px-4 border-bottom border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", fontSize: "30px" }}>
                             {title}

@@ -41,7 +41,6 @@
 .mylistpage_title p{font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
 .mylistpage_top{width: 90%; display: flex; justify-content: space-between; margin: 0 auto;}
 .mylistpage_dropdowngroup{margin: 0; width: 30%; display: flex; justify-content: left; margin-bottom: 30px;}
-.dropdown{margin-right: 10px;}
 .dropdown:last-child{margin-right: 0;} /* 나중에 알아서 삭제하셈 */
 .mylistpage_button{margin-right: 35px;}
 .mylistpage_table{width: 90%; display: flex; justify-content: center; margin:0 auto;}

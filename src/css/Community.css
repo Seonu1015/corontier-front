@@ -1,8 +1,25 @@
-.noticepage_tablegroup {display: flex; justify-content: center;}
-.communitypage_contents_wrap {width: 94.8%; margin: 60px auto;}
-.community_nav {margin: 0 auto;}
+.noticepage_tablegroup {display: flex; justify-content: center;} 
 
 .community_wrap{display: flex; width: 100%; justify-content: center;}
 .community_wrap_l{width: 12%; height: 350px; margin-right: 2%; background: #ededed;}
 .community_wrap_r {width: 65%; height: 600px; flex: 0 0 auto; background-color: rgb(255, 255, 255); border-radius: 0.9375rem; display: block;}
 .photo{border-radius:50%; }
+
+/* 커뮤니티 메뉴 스타일 */
+.commu_menu_wrap { width: 94.6%; display: flex; padding: 10px; overflow-x: auto; margin: 0 auto; }
+.commu_menu_box { display: flex; flex-direction: column; padding: 10px; border-radius: 5px; }
+.commu_sidebar_ol { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: row; flex-wrap: wrap; }
+.commu_menu { margin-bottom: 5px; flex: 1; }
+.commu_menu a { text-decoration: none; color: #333; padding: 10px; border-radius: 3px; margin-right: 10px; transition: background-color 0.3s ease; border: 1px solid #ccc;}
+.commu_menu a:hover { background-color: #ddd; }
+
+
+
+
+
+
+
+
+
+
+

@@ -5,7 +5,7 @@ const MyListPage = () => {
   
   return (
     <div className='page_wrap'>
-      <div className='mylistpage_wrap'>
+      {/* <div className='mylistpage_wrap'>
         <div className='mylistpage_title'>
           <p>📖 My List</p>
         </div>
@@ -112,7 +112,7 @@ const MyListPage = () => {
             </tbody>
           </Table>
         </div>
-      </div>
+      </div> */}
       <div>
 
       </div>

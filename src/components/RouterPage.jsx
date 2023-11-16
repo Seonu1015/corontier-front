@@ -50,9 +50,9 @@ import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
 import KakaoRedirectHandler from './user/KakaoRedirectHandler'; import AdminPage from './admin/AdminPage'
 import AdminManagement from './admin/admin_detail/AdminManagement'
 import AdminProblem from './admin/admin_detail/AdminProblem'
-import AdminContest from './admin/admin_detail/AdminContest'
 
 import ProjectInsert from './project/ProjectInsert'
+import AdminCommunity from './admin/admin_detail/AdminCommunity'
 
 const RouterPage = () => {
     return (
@@ -100,7 +100,7 @@ const RouterPage = () => {
             <Route path="/admin/adminpage" element={<AdminPage />} >
                 <Route path='' element={<AdminManagement/>}></Route>            
                 <Route path='adminproblem' element={<AdminProblem/>}></Route>            
-                <Route path='admincontest' element={<AdminContest/>}></Route>            
+                <Route path='admincommunity' element={<AdminCommunity/>}></Route>            
             </Route>
 
             <Route path="/user/mypage" element={<Mypage />} >

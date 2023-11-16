@@ -49,7 +49,7 @@ const ProblemPage = () => {
                     <p className='contents_title'>Test Page</p>
                 </div>
 
-                <div className='page_contents'>
+                <div className='pro_page_contents'>
                     <div className='study_plan_wrap'>
                         <div className='study_plan_wrap_l'>
                             <div className='planbox_wrap'>
