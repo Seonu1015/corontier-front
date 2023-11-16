@@ -7,6 +7,7 @@ import { FaUndoAlt } from 'react-icons/fa';
 import { FaRegEye } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
+import { CiBookmark } from "react-icons/ci";
 import Pagination from 'react-js-pagination';
 import '../../css/Pagination.css';
 
@@ -39,9 +40,10 @@ const ProjectMain = () => {
         setTotal(res.data.total);
         let listAll = res.data.listAll;
 
-        console.log(listAll[0].tagGroup);
-        listAll.map(l=> l.tagGroup)
-        
+
+        console.log(listAll[1].tagGroup);
+        listAll.map(l => l.tagGroup)
+
         setProjects(listAll);
         setLoading(false);
     }
@@ -52,7 +54,6 @@ const ProjectMain = () => {
         const res = await axios.get(url);
         navi(`${path}?query=${tag_name}&page=1&size=${size}`)
         let select = res.data;
-        select = select.map(s => s && { ...select, active: true });
         setProjects(select);
         setLoading(false);
     }
@@ -63,7 +64,7 @@ const ProjectMain = () => {
     }
 
     const onClickBtnActive = () => {
-        
+
     }
 
     const onChangePage = (page) => {
@@ -91,8 +92,8 @@ const ProjectMain = () => {
                                 <ol className='proj_sidebar_ol'>
                                     <li className='proj_management'>
                                         <ol>
-                                            <Link to={`/project/insert`}><Button> 나의 프로젝트 <br /> 자랑하기 🎉 </Button></Link>
-                                            <Link to={'/community/applystudy&project/applyprojectpage'}><Button> 프로젝트 모집 <br /> 보러가기 👀 </Button></Link>
+                                            <Link to={`/project/insert`}><Button variant="secondary"> 나의 프로젝트 <br /> 자랑하기 🎉 </Button></Link>
+                                            <Link to={'/community/applystudy&project/applyprojectpage'}><Button variant="secondary"> 프로젝트 모집 <br /> 보러가기 👀 </Button></Link>
                                         </ol>
                                     </li>
 
@@ -104,7 +105,7 @@ const ProjectMain = () => {
                                         <div className='proj_title_wrap'>
                                             {tags.map(tag =>
                                                 <p key={tag.tag_id}>
-                                                    <Button variant='outline-success btn-sm' className='btn_prj' 
+                                                    <Button variant='outline-success btn-sm' className='btn_prj'
                                                         onClick={() => onClickTag(tag.tag_name)}>{tag.tag_name}</Button>
                                                 </p>
                                             )}
@@ -136,6 +137,7 @@ const ProjectMain = () => {
                                                 <div>{project.tagGroup}</div>
                                             </Card.Body>
                                             <Card.Footer>
+
                                                 <div className='text-end'>
                                                     <span className='me-2'> <FaRegEye /> {project.view_cnt}</span>
                                                     <span className='me-2'> <FaRegComment /> </span>
