@@ -40,7 +40,7 @@ const CompetitonList = () => {
         });
         if (res.data === 1) {
             getSCRCount();
-     
+    
         }
     }
 
@@ -82,17 +82,18 @@ const CompetitonList = () => {
                 </Container>
         </Navbar>
                 <div className='text-center'>
-
                 <h2>공모전 목록</h2>
                 </div>
-              
-       
         
-        <Table striped hover className='text-center my-3'>
+        <Table hover className='text-center my-3'>
                 <thead>
                     <tr>
-                        <th>공모전ID</th><td>제목</td><td>모집기간</td><td>상태</td>
-                
+                        <th>공모전ID</th>
+                        <td>제목</td>
+                        <td>모집기간</td>
+                        <td>상태</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </thead>
                    <tbody>

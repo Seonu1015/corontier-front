@@ -2,7 +2,7 @@
 .banner img{max-width: 100%;}
 .contents_title_box{font-size: 1.5rem; margin-bottom: 1rem;}
 
-.page_contents{display: flex; flex-wrap: wrap; gap: 2rem;}
+.pro_page_contents{display: flex; flex-wrap: wrap; gap: 2rem;}
 .study_plan_wrap{display: flex; width: 100%;}
 
 .study_plan_wrap_l{width: 75%; height: 1000px; margin-right: 2%;}
@@ -78,7 +78,6 @@
 .study_plan_recommendJob .title a {display: flex; -webkit-box-align: center; align-items: center; font-weight: 700; font-size: 1rem; color: rgb(0, 0, 0); line-height: 150%; letter-spacing: -0.009em;}
 
 /* SolutionPage.css */
-.solution_wrap {background: #000;}
 .sol_btn_wrap {background: #1e1e1e; color: #ffffff; font-size: 30px; display: flex; justify-content: space-between; padding: 20px; border-top: 1px solid#fff;}
 .custom_link {color: #ffffff;}
 

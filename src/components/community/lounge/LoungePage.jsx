@@ -3,7 +3,8 @@ import { Row, Col } from 'react-bootstrap'
 import Container from 'react-bootstrap/Container';
 import CommunityMain from '../CommunityMain';
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Pagination from 'react-js-pagination';
 
 
 
@@ -25,7 +26,7 @@ const LoungePage = () => {
     }, [])
     return (
         <>
-            <div className='page_contents'>
+            <div className='page_contents mb-5'>
                 <Container>
                     <CommunityMain />
                 </Container>
@@ -33,43 +34,51 @@ const LoungePage = () => {
             <div>
                 <h2 className='text-center mb-5'>개발자 라운지</h2>
             </div>
-            <div className='community_wrap'>
-                <div className='community_wrap_l'>
-                    <div className='study_plan_userdata'>
-                        <div >
-                            <h4 className='text-center'>TOP WRITER</h4>
+            <div className='community_wrap mb-5'>
+                <div className='community_wrap_ll'>
+                    <div className='community_plan_userdata'>
+                        <div>
+                            <h5 className='text-center'>TOP WRITER</h5>
                         </div>
                     </div>
                     <div className='study_plan_recommendJob'>
-                        <h3 className='text-center'>
-                            <h5>1. 아이디</h5>
-                            <h5>2. 아이디</h5>
-                            <h5>3. 아이디</h5>
-                            <h5>4. 아이디</h5>
-                            <h5>5. 아이디</h5>
-                        </h3>
+                        <div className='text-center'>
+                            <h5><img className='photo' src="http://via.placeholder.com/20x20" /> Betty</h5>
+                            <h5><img className='photo' src="http://via.placeholder.com/20x20" /> Aaron</h5>
+                            <h5><img className='photo' src="http://via.placeholder.com/20x20" /> Daisy</h5>
+                        </div>
                     </div>
                 </div>
-                <div className='community_wrap_r'>
+                <div className='community_wrap_rr'>
                     {posts.map(post =>
-                    <>
-                        <hr />
-                        <div className='mb-2'>
-                            <img className='photo' src={post.profile_image || "http://via.placeholder.com/30x30"}  /> {post.nickname} 
-                        </div>                        
-                        <Row>
-                            <Col>                             
-                                <NavLink to={`../community/lounge/loungeread/${post.post_id}`}>
-                                    <h3 className='px-5' style={{color:'black'}}>{post.title}</h3>
-                                </NavLink>                               
-                            </Col>
-                            <Col md={2} className='text-end mx-3'>                                                                 
-                                <p>👁‍🗨{post.view_cnt} 🗨 </p>                                                                                                                
-                            </Col>
-                        </Row>                                                                      
-                    </>
+                        <>
+                            <hr />
+                            <div className='mb-2' ket={post.post_id}>
+                                <img className='photo2' src={post.profile_image || "http://via.placeholder.com/30x30"} /> {post.nickname}
+                            </div>
+                            <Row>
+                                <Col>
+                                    <Link to={`/community/lounge/loungeread/${post.post_id}`}>
+                                        <h4 className='px-5' style={{ color: 'black' }}>{post.title}</h4>
+                                    </Link>
+                                </Col>
+                                <Col md={2} className='text-end mx-3'>
+                                    <p>👁‍🗨{post.view_cnt} 🗨 25</p>
+                                </Col>
+                            </Row>
+                        </>
                     )}
+                <div className='page_contents_wrap_comm_read mb-5'>
+                <Pagination
+                    activePage={1}
+                    itemsCountPerPage={10}
+                    totalItemsCount={40}
+                    pageRangeDisplayed={10}
+                    prevPageText={'‹'}
+                    nextPageText={'›'}
+                />
                 </div>
+            </div>
             </div>
         </>
     )

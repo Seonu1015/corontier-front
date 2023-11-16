@@ -1,7 +1,7 @@
-import React, { useState, useCallback, useContext } from 'react';
+
+import React, { useState, useCallback, useContext, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect } from 'react';
 
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
@@ -204,7 +204,7 @@ const SolutionPage = () => {
     return (
         <div className='solution_wrap'>
             {prob_id === 0 && (
-                <div>
+                <div className='my-5'>
                     <Container>
                         <div className='px-4 border-bottom border-dark-subtle' style={{ backgroundColor: "#1e1e1e", color: "white", fontSize: "20px" }}>
                             <Row>
@@ -230,7 +230,7 @@ const SolutionPage = () => {
                             </Row>
                         </div>
                         <Row>
-                            <Col xs={6} sm={6} md={6} className='border-end border-dark-subtle scrollbar' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px", overflow: "auto", height: "751px" }}>
+                            <Col className='border-end border-dark-subtle scrollbar' style={{ backgroundColor: "#1e1e1e", color: "white", marginLeft: "12px", overflow: "auto", height: "751px" }}>
                                 <div className='my-3 mx-3'>
                                     <p>Description</p><br />
                                     <p style={{ fontSize: "16px" }} dangerouslySetInnerHTML={{ __html: content }} />
@@ -243,7 +243,7 @@ const SolutionPage = () => {
                                     <br />
                                 </div>
                             </Col>
-                            <Col>
+                            <Col xs={6} sm={6} md={6}>
                                 <Row>
                                     <Col className='ps-0'>
                                         <div className='pt-2 px-3 border-dark-subtle text-end' style={{ backgroundColor: "#1e1e1e", color: "white" }}>

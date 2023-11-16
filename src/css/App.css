@@ -2,15 +2,14 @@
 .container {max-width: 1440px !important; margin:0 auto!important; padding:0 !important;}
 
 /* header */
-.navbar {width: 94.8%; margin: 0 auto; font-size: 110%;}
+.navbar {width: 100%; margin: 0 auto; font-size: 110%;}
 
 /* main */
-.main_img{width: 94.8%; height: 480px; margin: 0 auto; position:relative; background: #ccc;  background: url('../../public/images/main.jpg') no-repeat 50% 50% ; background-size: cover; 
+.main_img{width: 100%; height: 480px; margin: 0 auto; position:relative; background: #ccc;  background: url('../../public/images/main.jpg') no-repeat 50% 50% ; background-size: cover; 
   margin-bottom: 180px; display: flex; flex-wrap: wrap; text-align: center; align-items: center; justify-content: center;  overflow: hidden;}
 .main_img::before {content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); }
 .main_text_box{ color: #ffffff; z-index: 1;}
 
-.main_article_t{font-weight:200; font-size: 16px ; margin-bottom: 10px;}
 .main_title{ letter-spacing: -3px; line-height :53px; font-size: 60px ; font-weight:100; margin-bottom: 10px;}
 .main_title span{font-weight: 600;}
 .main_article_b{font-size: 14px ; font-weight:200; margin-bottom: 20px;}
@@ -20,12 +19,12 @@
 
 /* section1 */
 .news{width: 1440px;margin: 0 auto 180px auto; overflow: hidden;}
+.news_contents{display: flex; flex-wrap: wrap;}
+.news .contents_title_box{width: 1440px; margin: 0 auto 65px auto; position: relative;}
 
 .news .contents_title_box{position: relative;}
 .news .contents_title_box a{position: absolute; bottom: 0; right: 0; color: #8a8a8a; font-size: 14px; }
 .news .contents_title_box a:hover{color: #000;}
-
-.news_contents{display: flex; flex-wrap: wrap;}
 
 .news_img_box{width: 336px; margin-right: 32px; position: relative; overflow: hidden;}
 .news_img_box:last-child{margin-right: 0; }
@@ -53,6 +52,7 @@
 .sustain{width: 1440px; margin: 0 auto 180px auto;  overflow: hidden;}
 
 .sustain_contents{display: flex; flex-wrap: wrap; }
+.sustain .contents_title_box{width: 1440px; margin: 0 auto 65px auto; position: relative;}
 
 .sustain_img_box{margin-right: 38px; width: 701px; position: relative; }
 .sustain_img_box:last-child{margin-right: 0;}
