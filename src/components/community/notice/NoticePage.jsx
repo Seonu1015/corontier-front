@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Table } from 'react-bootstrap'
+import { Button, Table } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import CommunityMain from '../CommunityMain';

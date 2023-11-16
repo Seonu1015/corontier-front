@@ -47,12 +47,20 @@ import MyActivityPage from './user/mypage/detail/MyActivityPage'
 import OXNotePage from './user/mypage/detail/OXNotePage'
 import MyListPage from './user/mypage/detail/MyListPage'
 import UserUpdatePage from './user/mypage/detail/UserUpdatePage'
+import OXNoteDetailPage from './user/mypage/detail/OXNoteDetailPage'
+
 import KakaoRedirectHandler from './user/KakaoRedirectHandler'; import AdminPage from './admin/AdminPage'
 import AdminManagement from './admin/admin_detail/AdminManagement'
 import AdminProblem from './admin/admin_detail/AdminProblem'
 
 import ProjectInsert from './project/ProjectInsert'
+
 import AdminCommunity from './admin/admin_detail/AdminCommunity'
+
+import SolutionOthers from './problem/solution/SolutionOthers'
+import UserProbsDataAnaly from './user/mypage/detail/UserProbsDataAnaly'
+import StarterPlan from './problem/studyplan/StarterPlan'
+
 
 const RouterPage = () => {
     return (
@@ -66,6 +74,8 @@ const RouterPage = () => {
             <Route path="/problem/question" element={<Question />} />
             <Route path="/solution/:user_id" element={<SolutionList />} />
             <Route path="/solution/read/:sol_id" element={<SolutionRead />} />
+            <Route path="/solution/other/:problem_id" element={<SolutionOthers />} />
+            <Route path="/plan/starter" element={<StarterPlan />} />
 
             <Route path="/contest/contestmain" element={<ContestMain />} />
             <Route path="/contest/contest-tip" element={<ContestTip />} />
@@ -75,7 +85,7 @@ const RouterPage = () => {
             <Route path="/contest/contest-review/:post_id" element={<ContestReviewDetail />} />
             <Route path="/contest/TipInsert" element={<TipInsert />} />
             <Route path="/contest/ReviewInsert" element={<ReviewInsert />} />
-              
+
             <Route path="/community/communitymain" element={<CommunityMain />} />
             <Route path="/community/notice/NoticePage" element={<NoticePage />} />
             <Route path="/community/notice/NoticeInsert" element={<NoticeInsert />} />
@@ -87,9 +97,9 @@ const RouterPage = () => {
             <Route path="/community/q&a/questionpage" element={<QuestionPage />} />
             <Route path="/community/q&a/questionread/:post_id" element={<QuestionRead />} />
             <Route path="/community/recomendcontents/textbookpage" element={<TextbookPage />} />
-            <Route path="/community/recomendcontents/Textbookread" element={<TextbookRead />} />
+            <Route path="/community/recomendcontents/Textbookread/:post_id" element={<TextbookRead />} />
             <Route path="/community/recomendcontents/lecturepage" element={<LecturePage />} />
-            <Route path="/community/recomendcontents/lectureread" element={<LectureRead />} />
+            <Route path="/community/recomendcontents/lectureread/:vod_id" element={<LectureRead />} />
 
             <Route path="/project/projectmain" element={<ProjectMain />} />
             <Route path="/project/read/:post_id" element={<ProjectRead />} />
@@ -100,16 +110,17 @@ const RouterPage = () => {
             <Route path="/admin/adminpage" element={<AdminPage />} >
                 <Route path='' element={<AdminManagement/>}></Route>            
                 <Route path='adminproblem' element={<AdminProblem/>}></Route>            
-                <Route path='admincommunity' element={<AdminCommunity/>}></Route>            
+                <Route path='admincommunity' element={<AdminCommunity/>}></Route>
             </Route>
 
             <Route path="/user/mypage" element={<Mypage />} >
-                <Route path='' element={<MyQuizPage/>}></Route>
-                <Route path="myactivity" element={<MyActivityPage />} />               
-                <Route path="oxnote" element={<OXNotePage />} />               
-                <Route path="mylist" element={<MyListPage />} />               
-                <Route path="userupdate" element={<UserUpdatePage />} />               
-                <Route path="analysis"  />               
+                <Route path='' element={<MyQuizPage />}></Route>
+                <Route path="myactivity" element={<MyActivityPage />} />
+                <Route path="oxnote" element={<OXNotePage />} />
+                <Route path="oxnote/detail/:problem_id" element={<OXNoteDetailPage />} />
+                <Route path="mylist" element={<MyListPage />} />
+                <Route path="userupdate" element={<UserUpdatePage />} />
+                <Route path="analysis" element={<UserProbsDataAnaly />} />
 
             </Route>
             <Route path="/user/signin" element={<SigninPage />} />

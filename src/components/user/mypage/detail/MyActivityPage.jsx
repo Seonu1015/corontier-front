@@ -5,6 +5,7 @@ import Comments from './myActivityComponent/Comments'
 import Posts from './myActivityComponent/Posts'
 import Projects from './myActivityComponent/Projects'
 import Scraps from './myActivityComponent/Scraps'
+
 const MyActivityPage = () => {
   let [tab, setTab] = useState(0)
 
@@ -38,38 +39,44 @@ const MyActivityPage = () => {
   };
 
   return (
-    <div className='contents'>
-      {/* ui는 천천히 수정예정 */}
-      {/* 글 filter걸어서 조회하는거 생각해보기*/}
-      <Nav fill className="mt-5" variant="tabs" defaultActiveKey="0">
-        <Nav.Item>
-          <Nav.Link eventKey="0" onClick={() => setTab(0)}>
-            작성글
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="1" onClick={() => setTab(1)}>
-            내가쓴 댓글
-          </Nav.Link>
-        </Nav.Item>
-        {/* <Nav.Item>
-          <Nav.Link eventKey="2" onClick={() => setTab(2)}>
-            프로젝트
-          </Nav.Link>
-        </Nav.Item> */}
-        <Nav.Item>
-          <Nav.Link eventKey="3" onClick={() => setTab(3)}>
-            스크랩한 글
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
-      
-      {tab === 0 && <Posts getMenutype={getMenutype} />}
-      {tab === 1 && <Comments getMenutype={getMenutype}/>}
-      {/* {tab === 2 && <Projects />} */}
-      {tab === 3 && <Scraps getMenutype={getMenutype}/>}
-    
-
+    <div className='page_wrap'>
+      <div className='allmypage_wrap'>
+        <div className='allmypage_title'>
+          <p>나의 활동</p>
+        </div>
+        {/* ui는 천천히 수정예정 */}
+        {/* 글 filter걸어서 조회하는거 생각해보기*/}
+        <div className='allmypage_contents'>
+          <Nav fill className="mt-5" variant="tabs" defaultActiveKey="0">
+            <Nav.Item className='myacti_navitem'>
+              <Nav.Link eventKey="0" onClick={() => setTab(0)}>
+                작성글
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item className='myacti_navitem'>
+              <Nav.Link eventKey="1" onClick={() => setTab(1)}>
+                내가쓴 댓글
+              </Nav.Link>
+            </Nav.Item>
+            {/* <Nav.Item>
+              <Nav.Link eventKey="2" onClick={() => setTab(2)}>
+                프로젝트
+              </Nav.Link>
+            </Nav.Item> */}
+            <Nav.Item className='myacti_navitem'>
+              <Nav.Link eventKey="3" onClick={() => setTab(3)}>
+                스크랩한 글
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </div>
+        <div className='myactivitiypage_subpage'>
+          {tab === 0 && <Posts getMenutype={getMenutype} />}
+          {tab === 1 && <Comments getMenutype={getMenutype}/>}
+          {/* {tab === 2 && <Projects />} */}
+          {tab === 3 && <Scraps getMenutype={getMenutype}/>}
+        </div>
+      </div>
     </div>
   )
 }

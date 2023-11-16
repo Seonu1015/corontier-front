@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { BoxContext } from '../BoxContext';
 
 import { FaUndoAlt } from 'react-icons/fa';
 import { BsCalendar2CheckFill, BsCalendar2XFill } from 'react-icons/bs';
+import { RiBookmark3Fill } from 'react-icons/ri';
 
 import { Badge, Button, Card, CardBody, CardHeader, Col, Container, Dropdown, Form, InputGroup, Row, Table, ListGroup } from 'react-bootstrap'
 import Pagination from 'react-js-pagination';
@@ -131,7 +132,7 @@ const ProblemMain = () => {
           <Col md={8}>
             <Row className='mb-3'>
               <Col>
-                <img src='/images/studyplan/starterplan.png' style={{ width: "100%", borderRadius: "10px" }} />
+                <Link to="/plan/starter"><img src='/images/studyplan/starterplan.png' style={{ width: "100%", borderRadius: "10px" }} /></Link>
               </Col>
               <Col>
                 <img src='/images/studyplan/middleplan.png' style={{ width: "100%", borderRadius: "10px" }} />
@@ -256,7 +257,7 @@ const ProblemMain = () => {
                   </CardBody>
                 </Card>
                 <hr />
-
+                <RiBookmark3Fill style={{fontSize:"1.4rem"}}/> 나중에 풀어볼 문제
               </CardBody>
             </Card>
           </Col>
