@@ -6,7 +6,6 @@
 .photo{border-radius:50%; }
 
 /* 커뮤니티 메뉴 스타일 - 부트스트랩 deafultCSS 적용 해제 */
-ol, ul {padding-left: 0 !important;}
 ul {margin-bottom: 0 !important;}
 
 /* 커뮤니티 메뉴 스타일 */
@@ -28,20 +27,6 @@ ul {margin-bottom: 0 !important;}
 .community_wrap_l{width: 12%; height: 350px; margin-right: 2%; background: #ededed;}
 .community_wrap_r {width: 65%; height: 600px; flex: 0 0 auto; background-color: rgb(255, 255, 255); border-radius: 0.9375rem; display: block;}
 .photo{border-radius:50%; }
-
-/* 커뮤니티 메뉴 스타일 - 부트스트랩 deafultCSS 적용 해제 */
-ol, ul {padding-left: 0 !important;}
-ul {margin-bottom: 0 !important;}
-
-/* 커뮤니티 메뉴 스타일 */
-.commu_menu_wrap {width: 100%;}
-.commu_menu_box {margin-top: 60px;}
-.commu_menu_box ul {display: flex; flex-wrap: wrap; justify-content: center;}
-.commu_menu_box ul li {cursor: pointer; height: 70px; line-height: 70px; list-style: none; padding: 0 30px; border: 1px solid #ccc; border-radius: 15px;  margin-right: 20px;}
-.commu_menu_box ul li:last-child {margin-right: 0;}
-.commu_menu_box ul li:hover { background-color: #ddd; }
-.commu_menu_box ul li a { text-decoration: none; color: #333; transition: background-color 0.3s ease; }
-.commu_menu_box ul li a {font-size: 26px; font-family: 'GmarketSansMedium';}
 
 .page_contents_wrap_comm_read {
     width: 94.8%;
