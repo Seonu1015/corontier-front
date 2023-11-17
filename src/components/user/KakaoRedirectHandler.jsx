@@ -1,69 +1,100 @@
-import React, { useEffect } from "react";
+import React, { useRef, useState } from 'react'
 import axios from 'axios';
-import queryString from 'query-string';
-import {jwtDecode} from 'jwt-decode'; // 수정된 import
-import { useNavigate } from 'react-router-dom';
+import { Form, InputGroup, Button } from 'react-bootstrap'
+import { useNavigate, Link } from 'react-router-dom';
+import '../../css/LoginPG.css';
 
-const KakaoRedirectHandler = () => {
-  const navigate = useNavigate(); // 수정된 위치
 
-  useEffect(() => {
-    const fetchToken = async () => { // async function 내부로 변경
-      let params = new URL(document.location.toString()).searchParams;
-      let code = params.get("code");
-      const data = queryString.stringify({
-        grant_type: "authorization_code",
-        client_id: "edb2e3648fa374acbe7be705a5474a8a",
-        redirect_uri: "http://localhost:3000/oauth/callback/kakao",
-        code: code,
-      });
 
-      try {
-        const response = await axios.post('https://kauth.kakao.com/oauth/token', data, {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
-          },
-        });
-        console.log(response)
-        console.log(response.data.access_token)
-        console.log(response.data.refresh_token)
-        // JWT 토큰을 디코드합니다.
-        const decodedToken = jwtDecode(response.data.id_token);
-        console.log(decodedToken.nickname);
-        console.log(decodedToken.email);
+export const SigninPage = () => {
 
-        // 서버에 로그인 요청을 보냅니다.
-        const loginResponse = await axios.post('/users/kakaologin',decodedToken ); 
-        if (loginResponse.data.result=='1') {
-          alert(`안녕하세요, ${decodedToken.nickname} 님`);
-          sessionStorage.setItem("user_id", loginResponse.data.user_id);
-          navigate('/');
+
+
+
+  const CLIENT_ID = "edb2e3648fa374acbe7be705a5474a8a";
+  const REDIRECT_URI = "http://localhost:3000/oauth/callback/kakao";
+  // 프런트엔드 리다이랙트 URI 예시
+  // const REDIRECT_URI =  "http://localhost:3000/oauth/callback/kakao";
+
+  // 백엔드 리다이랙트 URI 예시
+  // const REDIRECT_URI =  "http://localhost:5000/kakao/code";
+
+
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+
+  const navi = useNavigate();
+  const ref_email = useRef(null);
+  const [form, setForm] = useState({
+    email: '',
+    Upassword: '',
+  });
+  const { email, Upassword } = form;
+  const onChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    })
+  }
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (email === "") {
+      alert("아이디를 입력하세요!");
+      ref_email.current.focus();
+    } else if (Upassword === "") {
+      alert("비밀번호를 입력하세요!");
+    } else {
+      const res = await axios.post('/users/login', form);
+      console.log(res);
+      console.log(res.data.result);
+      if (res.data.result === '0') {
+
+        alert("아이디가 존재하지 않습니다!");
+        ref_email.current.focus();
+      } else if (res.data.result === '2') {
+        alert("비빌번호가 일치하지 않습니다!");
+      } else {
+        alert("로그인 성공!");
+        // console.log(user_id)
+        sessionStorage.setItem("user_id", res.data.user_id);
+        console.log(sessionStorage.getItem("user_id"));
+        if (sessionStorage.getItem("target")) {
+          navi(sessionStorage.getItem("target"));
         } else {
-          alert("아이디 없음 가입 함 ");  //섭밋같은 확인 or 취소로 바꿔야함 모달에 넣어도될듯
-          const kakaoinsert = await axios.post('/users/kakaologininsert',decodedToken );
-          if (kakaoinsert.data === 1) {
-                const loginResponse2 = await axios.post('/users/kakaologin',decodedToken ); 
-                  if (loginResponse2.data.result=='1') {
-                          alert(`안녕하세요, ${decodedToken.nickname} 님`);
-                           sessionStorage.setItem("user_id", loginResponse2.data.user_id);
-                           navigate('/');
-                  }else{
-                    alert("네트워크 오류");
-                  }
-          }else{
-            alert("가입오류");
-          }
+          navi('/');
         }
-      } catch (error) {
-        // 에러 핸들링
-        console.error("토큰 요청 에러", error);
       }
-    };
+    }
+  }
 
-    fetchToken(); // async function 호출
-  }, [navigate]); // useEffect 의존성 배열에 navigate 추가
 
-  return <div>이 페이지는 로그인 처리 후 첫 화면으로 이동시켜주는 역할을 합니다.</div>;
-};
+  return (
+    <div className='signup_wrap'>
+      <div className='signup_cover'>
+        <video autoPlay muted loop className='video_background'>
+          <source src='/video/bg_video.mp4' type='video/mp4' />
+        </video>
 
-export default KakaoRedirectHandler;
+        <div className='signup_form'>
+          <form onSubmit={onSubmit}>
+            <InputGroup className='mb-2'>
+              <InputGroup.Text>Email</InputGroup.Text>
+              <Form.Control onChange={onChange} ref={ref_email} value={email} name='email' />
+            </InputGroup>
+            <InputGroup className='mb-2'>
+              <InputGroup.Text>Password</InputGroup.Text>
+              <Form.Control onChange={onChange} type="password" value={Upassword} name='Upassword' />
+            </InputGroup>
+            <Button className='mb-2 w-100 signup_btn' type="submit">로그인</Button>
+
+            <Button className='mb-3 w-100 signup_btn' as={Link} to="/user/signup">회원가입 </Button>
+            <a href={KAKAO_AUTH_URL} className="d-flex justify-content-center">
+              <img src="../images/kakao_login_medium_narrow.png" alt="카카오 로그인" style={{ cursor: 'pointer' }} />
+            </a>
+          </form>
+        </div>
+      </div>
+    </div>
+  )
+}
+export default SigninPage
