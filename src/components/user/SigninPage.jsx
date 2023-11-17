@@ -12,7 +12,7 @@ export const SigninPage = () => {
 
 
   const CLIENT_ID = "edb2e3648fa374acbe7be705a5474a8a";
-  const REDIRECT_URI = "http://localhost:5000/kakao/code";
+  const REDIRECT_URI = "http://localhost:3000/oauth/callback/kakao";
   // 프런트엔드 리다이랙트 URI 예시
   // const REDIRECT_URI =  "http://localhost:3000/oauth/callback/kakao";
 
