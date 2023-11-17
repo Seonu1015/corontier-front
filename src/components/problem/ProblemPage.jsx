@@ -267,4 +267,4 @@ const ProblemMain = () => {
   )
 }
 
-export default ProblemMain
+export default ProblemPage;
