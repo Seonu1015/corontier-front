@@ -60,6 +60,7 @@ import AdminCommunity from './admin/admin_detail/AdminCommunity'
 import SolutionOthers from './problem/solution/SolutionOthers'
 import UserProbsDataAnaly from './user/mypage/detail/UserProbsDataAnaly'
 import StarterPlan from './problem/studyplan/StarterPlan'
+import Scraps from './user/mypage/detail/myActivityComponent/Scraps'
 
 
 const RouterPage = () => {
@@ -111,11 +112,13 @@ const RouterPage = () => {
                 <Route path='' element={<AdminManagement/>}></Route>            
                 <Route path='adminproblem' element={<AdminProblem/>}></Route>            
                 <Route path='admincommunity' element={<AdminCommunity/>}></Route>
+                <Route path="problem_insert" element={<ProblemInsert />} />
             </Route>
 
             <Route path="/user/mypage" element={<Mypage />} >
                 <Route path='' element={<MyQuizPage />}></Route>
                 <Route path="myactivity" element={<MyActivityPage />} />
+                {/* <Route path="myactivity1" element={<Scraps />} /> */}
                 <Route path="oxnote" element={<OXNotePage />} />
                 <Route path="oxnote/detail/:problem_id" element={<OXNoteDetailPage />} />
                 <Route path="mylist" element={<MyListPage />} />

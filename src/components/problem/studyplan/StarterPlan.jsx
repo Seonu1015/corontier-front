@@ -12,7 +12,7 @@ const StarterPlan = () => {
             </div>
             <div className='page_contents_wrap'>
                 <Row className="justify-content-center">
-                    <Col md={8}>
+                    <Col md={8} style={{fontSize:'1.4rem'}} className='mb-5'>
                         <Nav justify variant="underline" defaultActiveKey="1" activeKey={selKey} onSelect={(key) => setSelKey(key)}>
                             <Nav.Item>
                                 <Nav.Link eventKey="1">출력</Nav.Link>

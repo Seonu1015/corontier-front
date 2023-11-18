@@ -7,6 +7,7 @@ import { BoxContext } from '../BoxContext';
 import { FaUndoAlt } from 'react-icons/fa';
 import { BsCalendar2CheckFill, BsCalendar2XFill } from 'react-icons/bs';
 import { RiBookmark3Fill } from 'react-icons/ri';
+import { FaArrowRightLong } from "react-icons/fa6";
 
 import { Badge, Button, Card, CardBody, CardHeader, Col, Container, Dropdown, Form, InputGroup, Row, Table, ListGroup } from 'react-bootstrap'
 import Pagination from 'react-js-pagination';
@@ -257,7 +258,76 @@ const ProblemPage = () => {
                   </CardBody>
                 </Card>
                 <hr />
-                <RiBookmark3Fill style={{fontSize:"1.4rem"}}/> 나중에 풀어볼 문제
+                <div className='mb-3'>
+                  <RiBookmark3Fill style={{ fontSize: "1.4rem" }} /> 나중에 풀어볼 문제
+                </div>
+                <ListGroup>
+                  <ListGroup.Item variant="primary">
+                    <Row>
+                      <Col md={2}>
+                        Lv.0
+                      </Col>
+                      <Col>
+                        알람시계
+                      </Col>
+                      <Col className='text-end'>
+                        풀러가기 <FaArrowRightLong />
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                  <ListGroup.Item variant="secondary">
+                    <Row>
+                      <Col md={2}>
+                        Lv.4
+                      </Col>
+                      <Col>
+                        보일의 법칙
+                      </Col>
+                      <Col className='text-end'>
+                        풀러가기 <FaArrowRightLong />
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                  <ListGroup.Item variant="primary">
+                    <Row>
+                      <Col md={2}>
+                        Lv.2
+                      </Col>
+                      <Col>
+                        음식 평론가
+                      </Col>
+                      <Col className='text-end'>
+                        풀러가기 <FaArrowRightLong />
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                  <ListGroup.Item variant="secondary">
+                    <Row>
+                      <Col md={2}>
+                        Lv.3
+                      </Col>
+                      <Col>
+                        거스름돈
+                      </Col>
+                      <Col className='text-end'>
+                        풀러가기 <FaArrowRightLong />
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                  <ListGroup.Item variant="primary">
+                    <Row>
+                      <Col md={2}>
+                        Lv.4
+                      </Col>
+                      <Col>
+                        짝수 행 세기
+                      </Col>
+                      <Col className='text-end'>
+                        풀러가기 <FaArrowRightLong />
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                </ListGroup>
               </CardBody>
             </Card>
           </Col>

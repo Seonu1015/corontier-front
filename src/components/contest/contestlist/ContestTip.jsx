@@ -126,8 +126,6 @@ const ContestTip = () => {
                     <td width="20%"><div className='ellipsis'>{ContestTip.user_id}</div></td>
                     <td>{ContestTip.created_at}</td>
                     <td>{ContestTip.view_cnt}</td>
-                    <td> <Button variant="primary" size="sm" onClick={() => onClickInsertSCR(ContestTip.post_id)} >좋아요 {scrMap[ContestTip.post_id] || 0}</Button></td>
-                    <td> <Button variant="primary" size="sm" onClick={() => onClickDeleteSCR(ContestTip.post_id)} >좋아요 취소</Button></td>
                 </tr>
             )}
         </tbody>

@@ -161,9 +161,9 @@ const SolutionPage = () => {
             await axios.post("/problem/insert/solution", { problem_id, content: value, complete, language, user_id: sessionStorage.getItem("user_id") });
             setBox({
                 show: true,
-                message: "풀이가 등록되었습니다.\n풀이페이지로 이동하시겠습니까?",
+                message: "풀이가 등록되었습니다.\nMyList로 이동하시겠습니까?",
                 action: () => {
-                    navi(`/solution/${sessionStorage.getItem("user_id")}`);
+                    navi(`/user/mypage/mylist`);
                 }
             });
         } else {

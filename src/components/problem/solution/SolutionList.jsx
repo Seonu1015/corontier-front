@@ -22,7 +22,7 @@ const SolutionList = () => {
 
     const getSolutions = async () => {
         setLoading(true);
-        const res = await axios(`/problem/sol.json/${user_id}?page=${page}&size=${size}`);
+        const res = await axios(`/problem/sol.json/${sessionStorage.getItem("user_id")}?page=${page}&size=${size}`);
         setSolutions(res.data.list);
         console.log(res.data.list);
         setTotal(res.data.total);

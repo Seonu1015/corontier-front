@@ -39,22 +39,25 @@ const HeaderPage = () => {
                     <Nav>
                         {/** 로그인 case별 분기 */}
                         {   /** admin일때 */
-                            sessionStorage.getItem('user_id') === 'admin' && 
-                            <NavLink href="#">adminpage</NavLink>
+                            sessionStorage.getItem('user_id') === "21" && 
+                            <>
+                            <NavLink href="/admin/adminpage">adminpage</NavLink>
+                            <NavLink onClick={onLogout} href="/user/signin">Logout</NavLink>
+                            </>
                         }
                         {   /** admin이외 user로그인 */
-                            sessionStorage.getItem('user_id') && sessionStorage.getItem('user_id') !== 'admin' && 
+                            sessionStorage.getItem('user_id') && sessionStorage.getItem('user_id') !== "21" && 
                             <>
-                            <NavLink href="/user/mypage">mypage(user)</NavLink>
-                            <NavLink onClick={onLogout} href="/user/signin">logout (user)</NavLink>
+                            <NavLink href="/user/mypage">Mypage</NavLink>
+                            <NavLink onClick={onLogout} href="/user/signin">Logout</NavLink>
                             </>
                         }
                         {
                             /** 비로그인 일때 */
                             !sessionStorage.getItem('user_id') &&
                             <>
-                            <NavLink href="/user/signup">Sign up(not user)</NavLink>
-                            <NavLink  href="/user/signin">Sign in(not user)</NavLink>
+                            <NavLink href="/user/signup">Sign up</NavLink>
+                            <NavLink  href="/user/signin">Sign in</NavLink>
                             </>
                         }
                         
