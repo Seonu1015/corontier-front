@@ -46,14 +46,15 @@ const StarterDetail = ({ selectedKey }) => {
                             </Row>
                             <hr style={{ borderStyle: "dashed" }} />
                             <div className='text-end mt-4'>
-                                {clearData.map((cd, index) => {
+                                {/* {clearData.map((cd, index) => {
                                     if ((cd.complete === 0) && (p.problem_id === cd.problem_id)) {
                                         return <h3><Badge key={index} bg="secondary">미해결</Badge></h3>;
                                       } else if ((cd.complete === 1) && (p.problem_id === cd.problem_id)) {
                                         return <h3><Badge key={index} bg="success">해결</Badge></h3>;
                                       }
                                       return null;
-                                })}
+                                })} */}
+                                <h3><Badge bg="secondary">미해결</Badge></h3>
                             </div>
                         </CardBody>
                     </Card>

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import axios from 'axios';
-import { Form, InputGroup, Button } from 'react-bootstrap'
+import { Form, InputGroup, Button, Row, Col } from 'react-bootstrap'
 import { useNavigate, Link } from 'react-router-dom';
 import '../../css/LoginPG.css';
 
@@ -88,9 +88,16 @@ export const SigninPage = () => {
             <Button className='mb-2 w-100 signup_btn' type="submit">로그인</Button>
 
             <Button className='mb-3 w-100 signup_btn' as={Link} to="/user/signup">회원가입 </Button>
-            <a href={KAKAO_AUTH_URL} className="d-flex justify-content-center">
-              <img src="../images/kakao_login_medium_narrow.png" alt="카카오 로그인" style={{ cursor: 'pointer' }} />
-            </a>
+            <Row>
+              <Col>
+                <a href={KAKAO_AUTH_URL} className="d-flex justify-content-center">
+                  <img src="../images/kakao_login_medium_narrow.png" alt="카카오 로그인" style={{ cursor: 'pointer' }} />
+                </a>
+              </Col>
+              <Col>
+                <img src="../images/github_login.png" alt="깃허브 로그인" style={{ cursor: 'pointer', borderRadius:'5px' }} />
+              </Col>
+            </Row>
           </form>
         </div>
       </div>

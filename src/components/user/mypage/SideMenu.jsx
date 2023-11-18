@@ -25,6 +25,9 @@ const SideMenu = () => {
           <ol>
             <Link to="userupdate">개인정보수정</Link>
           </ol>
+          <ol>
+            <Link to="analysis">Analysis</Link>
+          </ol>
         </li>
       </ol>
 

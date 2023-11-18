@@ -3,6 +3,8 @@ import { Button, Dropdown, Table,Nav } from 'react-bootstrap'
 import QuizList from './myListComponent/QuizList'
 import BookMarkQuizList from './myListComponent/BookMarkQuizList'
 
+import SolutionList from '../../../problem/solution/SolutionList'
+
 const MyListPage = () => {
   let [tab, setTab] = useState(0)
 
@@ -25,7 +27,7 @@ const MyListPage = () => {
 
       <div>
         </div> 
-      {tab === 0 && <QuizList />}
+      {tab === 0 && <SolutionList />}
       {tab === 1 && <BookMarkQuizList/>}    
     </div>
   )

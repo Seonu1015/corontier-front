@@ -23,6 +23,7 @@ const AdminProblem = () => {
 
       const res = await axios(url);
       setProblems(res.data.list);
+      console.log(res.data.list);
     } catch (error) {
       console.error('에러:', error);
     } finally {
@@ -119,14 +120,14 @@ const AdminProblem = () => {
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <Table hover className='text-center justify-content-center'>
+            <Table hover className='text-center justify-content-center align-self-middle'>
               <thead>
                 <tr>
                   <th width="10%">난이도</th>
                   <th width="40%">제목</th>
-                  <th width="10%">정답</th>
-                  <th width="10%">제출</th>
-                  <th width="10%">정답률</th>
+                  <th width="10%">등록일</th>
+                  <th width="7%">수정</th>
+                  <th width="7%">삭제</th>
                 </tr>
               </thead>
               <tbody>
@@ -134,9 +135,9 @@ const AdminProblem = () => {
                   <tr key={p.problem_id}>
                     <td>{getMenutype(p.grade_id)}</td>
                     <td className='text-center px-3'><NavLink to="">{p.title}</NavLink></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{p.fmt_created}</td>
+                    <td><Button size='sm'>수정</Button></td>
+                    <td><Button variant='danger' size='sm'>삭제</Button></td>
                   </tr>
                 )}
               </tbody>

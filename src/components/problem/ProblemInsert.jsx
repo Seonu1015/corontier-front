@@ -58,10 +58,9 @@ const ProblemInsert = () => {
     }, []);
 
     return (
-        <div className='my-5'>
-            <h1 className='text-center mb-5'>문제 등록</h1>
+        <div>
             <Row className='justify-content-center'>
-                <Col md={8} className='mx-3'>
+                <Col>
                     <Form onSubmit={handleSubmit(onSubmit)}>
                         <Form.Group className="mb-3" controlId="title">
                             <Form.Label>Title</Form.Label>

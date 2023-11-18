@@ -21,7 +21,7 @@ const UserUpdatePage = () => {
   const getUser = async () => {
 
     //로그인구현전 예시로 넣은 로그인된 user정보 
-    sessionStorage.setItem('user_id',8);
+    // sessionStorage.setItem('user_id',8);
     //user정보가져오는 쿼리
     const res = await axios.get(`/users/read/${sessionStorage.getItem("user_id")}`);  
     setUser(res.data);
