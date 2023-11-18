@@ -14,7 +14,7 @@ import Pagination from 'react-js-pagination';
 import '../../css/Pagination.css';
 import DonutChart from './DonutChart';
 
-const ProblemMain = () => {
+const ProblemPage = () => {
   const { setBox } = useContext(BoxContext);
   const [loading, setLoading] = useState(false);
   const [tags, setTags] = useState([]);
@@ -337,4 +337,4 @@ const ProblemMain = () => {
   )
 }
 
-export default ProblemMain
+export default ProblemPage;

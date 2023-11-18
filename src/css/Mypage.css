@@ -7,7 +7,7 @@
 .mypage_sidebar_wrap {margin-top: 5rem;}
 .mypage_sidebar_box {width: 18rem; height: 90%; border: 0.0625rem solid #d7e2eb; border-radius: 0.9375rem; margin-bottom: 6.0625rem; background-color: #fff;}/*height: 100%; 주면 사이드 박스 높이 채워서 가능*/
 .mypage_sidebar_ol {padding: 0 1.5rem; margin-bottom: initial;}
-.activities_menagement, .account_menagement {margin-bottom: 2.5rem; font-size: inherit;}
+.activities_menagement {margin-bottom: 2.5rem; font-size: inherit;}
 
 .mypage_account {margin-top: 2.5rem; margin-bottom: 1.0625rem; color: #9b9b9b; font-size: .9375rem; font-weight: 700; line-height: 1.375rem;}
 
