@@ -308,7 +308,7 @@ function UserProbsDataAnaly() {
                                     from="2023-01-01"
                                     to="2023-11-14"
                                     emptyColor="#eeeeee"
-                                    colors={['#61cdbb', '#97e3d5', '#e8c1a0', '#f47560']}
+                                    colors={['#79c7e3', '#12939a', '#ef5d28', '#ff9833']}
                                     // margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
                                     yearSpacing={40}
                                     monthBorderColor="#ffffff"
