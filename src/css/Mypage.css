@@ -1,0 +1,76 @@
+/* MyPage */
+.mypage_wrap {display: flex; max-width: 90rem; flex-direction: row; justify-content: center; padding: 0 1.25rem; margin: 0 auto;}
+.mypage_contents_wrap {flex-grow: 1; padding-bottom: 40px; padding-left: 30px; margin-top: 48px;}
+.ellipsis1 {overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;}
+.ellipsis2 { overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp:2; -webkit-box-orient: vertical;}
+
+.mypage_sidebar_wrap {margin-top: 5rem;}
+.mypage_sidebar_box {width: 18rem; height: 90%; border: 0.0625rem solid #d7e2eb; border-radius: 0.9375rem; margin-bottom: 6.0625rem; background-color: #fff;}/*height: 100%; 주면 사이드 박스 높이 채워서 가능*/
+.mypage_sidebar_ol {padding: 0 1.5rem; margin-bottom: initial;}
+.activities_menagement {margin-bottom: 2.5rem; font-size: inherit;}
+
+.mypage_account {margin-top: 2.5rem; margin-bottom: 1.0625rem; color: #9b9b9b; font-size: .9375rem; font-weight: 700; line-height: 1.375rem;}
+
+.activities_menagement ol, .account_menagement ol {padding-left: 0;}
+.activities_menagement ol a, .account_menagement ol a {padding: 0.6875rem 1rem; border-radius: 0.25rem;  font-size: 1rem; line-height: 1.4375rem; display: flex; flex-direction: column; color: #666;}
+.activities_menagement a:hover, .account_menagement a:hover {background: #e6f2ff; font-weight: bold;}
+
+.allmypage_wrap{width: 100%;}
+.allmypage_title{width: 100%; margin:2%; padding-left: 3%; margin-bottom: 3%; font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500;}
+.allmypage_contents{width: 90%; margin:0 auto; text-align: center;}
+
+/* OXNOTEPAGE */
+.allmypage_contents td{vertical-align: middle;}
+.oxnotepage_list td {height: 80px;}
+.oxnotepage_difficulty{margin:0; width: 100%; border-radius: 20px;}
+.oxnotepage_difficultytext{margin:0; text-align: center; color: white; font-weight: 700;}
+.oxnotepage_pluslist{margin-top: 15px; display: flex; justify-content: center;}
+.oxnotepage_btnquiz{margin-bottom: 5px;}
+.oxnote_buttonpage {margin:0 auto; width: 90%; height: 100px; border: 1px solid #dde7f0; border-radius: 10px; display: flex; align-items: center; justify-content: center;}
+.oxnotepage_detail_div:hover {font-weight: 800;}
+
+/* MyListPage */
+.mylistpage_wrap{width: 100%;}
+.mylistpage_title{width: 100%; margin: 2%; padding-left: 3%; margin-bottom: 3%; font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500;}
+.mylistpage_top{width: 90%; display: flex; justify-content: space-between; margin: 0 auto;}
+.mylistpage_dropdowngroup{margin: 0; width: 30%; display: flex; justify-content: left; margin-bottom: 30px;}
+
+.dropdown:last-child{margin-right: 0;} /* 나중에 알아서 삭제하셈 */
+
+.mylistpage_button{margin-right: 35px;}
+.mylistpage_table{width: 90%; display: flex; justify-content: center; margin:0 auto;}
+.mylistpage_table th, td{text-align: center;}
+.mylistpage_table td{vertical-align: middle;}
+.mylistpage_list td {height: 80px;}
+.mylistpage_difficultytext{margin:0; text-align: center; color: white; font-weight: 700;}
+.mylistpage_pluslist{margin-top: 15px; display: flex; justify-content: center;}
+
+/* UserUpdatePage */
+.userupdatepage_wrap{width: 100%;}
+.userupdatepage_title{width: 100%;margin-bottom: 50px;}
+.userupdatepage_title p{ font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
+.userupdatepage_contents{width: 100%;}
+.userupdatepage_img{width: 23%; margin: 0 auto;}
+.userupdatepage_img img{width: 100%; border-radius: 100%;}
+.userupdatepage_userid p{text-align: center; font-weight: 700; font-size: 1.7rem; margin: 25px;}
+.userupdatepage_updateform{width: 100%; margin-top: 20px;}
+.userupdatepage_col {width: 35%; margin: 0 auto;}
+.userupdatepage_col .input-group-text { width:35%;}
+.updatebutton_group{text-align: center; margin-top: 15%;}
+
+
+/* MyQuizPage */
+.myquizpage_wrap{width: 100%;}
+.myquizpage_title{width: 100%; margin: 2%;}
+.myquizpage_title p{padding-left: 2%; font-size: 40px; letter-spacing: -3px; color: #3d3d3d; font-weight: 500; margin-bottom: -3px;}
+.myquizpage_recentquizgroup{width: 90%; margin: 0 auto; background-color:#f0f0f0; border-radius: 15px;}
+.myquizpage_recentquiz{width: 100%; margin: 0 auto; padding: 30px;}
+.myquizpage_recenttable{margin: 0 !important;}
+.myquizpage_recentquiz th, td{text-align: center;}
+.myquizpage_recentquiz td{height: 40px;}
+
+/* MyActivityPage */
+.post-categ-dropdownbtn {width: 150px;}
+.MyActivityPageex_table{margin-top: 3%;}
+.scrapspage_dropdown{width: 100%; margin: 0 auto; padding-top: 4%;}
+.myactivitiypage_subpage{width: 90%; margin: 0 auto;}
